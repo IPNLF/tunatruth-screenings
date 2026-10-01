@@ -223,8 +223,6 @@ a { color: var(--text-link); }
    no dividers, no per-section decoration. */
 .tts-section { padding: var(--space-7) 0; }
 .tts-section--soft { background: var(--surface-soft); }
-.tts-section--dark { background: var(--surface-dark); color: var(--text-on-dark-soft); }
-.tts-section--dark .tts-section__title { color: var(--ipnlf-white); }
 .tts-section--form { background: var(--surface-soft); }
 
 .tts-section__title {
@@ -243,36 +241,40 @@ a { color: var(--text-link); }
   color: var(--text-muted);
 }
 
-/* ---- section emphasis ----
-   RESTRUCTURE 2026-10-01. The page used to give all eight sections the
-   same weight and the same alternating-background treatment, so each
-   one read as a fresh chapter and the whole thing felt stop-start.
-   Now only the invitation, the film and the enquiry carry the display
-   type and generous spacing; the two reference sections between them
-   are quieter and tighter. The condensed capitals are used selectively
-   rather than on every heading. */
+/* ---- section rhythm ----
+   One spacing system. Sections 1, 2 and 5 carry the display type and
+   the generous spacing; 3 and 4 are quieter and tighter. Supporting
+   headings are sentence case in the body face, so the condensed
+   capitals stay reserved for the five section titles. */
 .tts-film, .tts-section--form { padding: var(--space-8) 0; }
 .tts-hosting, .tts-how { padding: var(--space-7) 0; }
-.tts-hosting .tts-section__title,
-.tts-how .tts-section__title { font-size: clamp(1.5rem, 4vw, 1.75rem); }
 
-/* Quiet subheadings inside the reference sections — sentence case,
-   body face, not another run of condensed capitals. */
 .tts-sub {
-  margin: var(--space-6) 0 var(--space-3);
+  margin: 0 0 var(--space-3);
   font-family: var(--font-text);
   font-size: var(--fs-body);
   font-weight: 700;
   color: var(--text-strong);
   letter-spacing: 0;
 }
-.tts-sub:first-of-type { margin-top: var(--space-5); }
+.tts-sub--spaced { margin-top: var(--space-7); }
+
+/* A quiet text link, used where a second action would otherwise
+   become a button competing with the one primary action. */
+.tts-quiet-link {
+  color: var(--text-on-dark);
+  font-size: var(--fs-body);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.tts-quiet-link:hover { color: var(--ipnlf-gold); }
 
 /* ---- trailer ----
    The facade and the real player occupy the same 16:9 box, so nothing
    shifts when one replaces the other. Capped rather than full width so
-   it does not swamp the top of the film section. */
-.tts-trailer { margin: 0 0 var(--space-6); max-width: 820px; }
+   it does not swamp the top of the film section. It now sits in a
+   grid column, so it fills that column rather than being capped. */
+.tts-trailer { margin: 0; }
 .tts-trailer__play {
   position: relative;
   display: block;
@@ -316,7 +318,6 @@ a { color: var(--text-link); }
 .tts-trailer__frame {
   display: block;
   width: 100%;
-  max-width: 820px;
   aspect-ratio: 16 / 9;
   border: 0;
   border-radius: var(--radius-md);
@@ -325,114 +326,82 @@ a { color: var(--text-link); }
 .tts-trailer__caption { margin-top: var(--space-2); font-size: var(--fs-body-sm); color: var(--text-muted); }
 
 /* ---- 2. the film ---- */
-.tts-film__grid { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+/* Row 1: trailer beside the synopsis. The trailer used to sit full
+   width above an uneven synopsis/portrait split, which ran to
+   excessive height and left a large empty area beside it. */
+.tts-film__top { display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
 @media (min-width: 860px) {
-  .tts-film__grid { grid-template-columns: 1.3fr 1fr; gap: var(--space-8); align-items: start; }
+  .tts-film__top { grid-template-columns: 1.15fr 1fr; gap: var(--space-7); align-items: start; }
 }
-.tts-film__synopsis p { color: var(--text-muted); max-width: 58ch; }
-/* The synopsis leads the section, so it is set a step up from the
-   paragraph under it. */
-.tts-lede-para { font-size: var(--fs-body-lg); color: var(--text-body) !important; }
+.tts-film__synopsis p { color: var(--text-muted); max-width: 54ch; }
+.tts-lede-para { font-size: var(--fs-body-lg); color: var(--text-body) !important; margin-top: 0 !important; }
 
-/* Award: one compact line with the mark, not a panel competing with
-   the synopsis for attention. */
+/* Restrained credibility detail: a line with the mark, not a panel. */
 .tts-award-line {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-3);
-  margin: var(--space-5) 0 !important;
-  padding: var(--space-4);
-  border-left: 3px solid var(--ipnlf-gold);
-  background: var(--surface-soft);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: var(--space-5) 0 0 !important;
   font-size: var(--fs-body-sm);
-  max-width: none !important;
+  color: var(--text-muted) !important;
 }
-.tts-award-line img { height: 26px; width: auto; border-radius: 3px; flex-shrink: 0; }
-.tts-award-line strong { color: var(--text-strong); }
+.tts-award-line img { height: 24px; width: auto; border-radius: 3px; flex-shrink: 0; }
 
-/* Credits, available but out of the way. */
-.tts-credits { margin-top: var(--space-5); }
-.tts-credits summary {
-  cursor: pointer;
-  font-size: var(--fs-body-sm);
-  font-weight: 600;
-  color: var(--text-link);
+/* Row 2: compact presenter row. */
+.tts-presenter {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
 }
-.tts-credits summary:hover { text-decoration: underline; }
-.tts-credits p { margin: var(--space-3) 0 0; font-size: var(--fs-body-sm); }
-
-/* Serena, now an aside inside the film section rather than her own
-   full-width dark band. */
-.tts-serena { margin: 0; }
-.tts-serena__media { margin: 0 0 var(--space-4); }
-.tts-serena__media img {
+@media (min-width: 620px) {
+  .tts-presenter { grid-template-columns: 220px 1fr; gap: var(--space-6); align-items: start; }
+}
+@media (min-width: 1100px) {
+  .tts-presenter { grid-template-columns: 280px 1fr; }
+}
+.tts-presenter__photo {
   width: 100%;
   /* height:auto is load-bearing: the width/height attributes map to
-     presentational hints, and without this the explicit height wins
-     over aspect-ratio and the portrait renders at full natural size. */
+     presentational hints, and without it the explicit height wins over
+     aspect-ratio and the image renders at full natural size. */
   height: auto;
-  border-radius: var(--radius-md);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: var(--radius-md);
 }
-/* On a phone the 4:5 portrait is ~469px tall, which is the single
-   biggest block delaying the feasibility answer below. A 3:2 crop
-   keeps her face (object-position holds the top third) and gives back
-   roughly 220px without losing the picture. */
-@media (max-width: 619px) {
-  .tts-serena__media img { aspect-ratio: 3 / 2; object-position: 50% 22%; }
-}
-.tts-serena h3 {
+.tts-presenter__text h3 {
   margin: 0 0 var(--space-2);
   font-family: var(--font-display);
   font-size: var(--fs-h2);
   letter-spacing: var(--ls-display);
   color: var(--text-strong);
 }
-.tts-serena p { margin: 0 0 var(--space-3); color: var(--text-muted); font-size: var(--fs-body-sm); }
-.tts-serena__bio { font-size: var(--fs-caption) !important; }
+.tts-presenter__text p { margin: 0 0 var(--space-3); color: var(--text-muted); max-width: 62ch; }
+
+/* Disclosures: available, out of the way, native and keyboard-usable. */
+.tts-disclosure { margin-top: var(--space-2); }
+.tts-disclosure summary {
+  cursor: pointer;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--text-link);
+}
+.tts-disclosure summary:hover { text-decoration: underline; }
+.tts-disclosure p { margin: var(--space-2) 0 0; font-size: var(--fs-body-sm); }
 
 /* ---- 3. hosting ---- */
-/* A plain list, not cards: this is scanned, and a card grid here would
-   compete with the film section above it. */
-.tts-audience {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-4) var(--space-6);
-  grid-template-columns: 1fr;
-}
-@media (min-width: 620px) { .tts-audience { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 960px) { .tts-audience { grid-template-columns: repeat(3, 1fr); } }
-.tts-audience li { border-top: 2px solid var(--ipnlf-mist); padding-top: var(--space-2); }
-.tts-audience h4 {
-  margin: 0 0 var(--space-1);
-  font-size: var(--fs-body-sm);
-  font-weight: 700;
-  color: var(--ipnlf-deep);
-}
-.tts-audience p { margin: 0; color: var(--text-muted); font-size: var(--fs-body-sm); }
-
-/* "We provide" / "You organise" — the pairing that answers how much
-   work this is for the host. */
-.tts-split { display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+/* The feasibility answer leads the section. */
+.tts-split { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
 @media (min-width: 760px) { .tts-split { grid-template-columns: 1fr 1fr; gap: var(--space-7); } }
-.tts-split__col h4 {
-  margin: 0 0 var(--space-3);
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  letter-spacing: var(--ls-display);
-  color: var(--text-strong);
-}
-.tts-split__note { margin: var(--space-3) 0 0; font-size: var(--fs-caption); color: var(--text-muted); }
 
 .tts-checklist { list-style: none; margin: 0; padding: 0; }
 .tts-checklist li {
   position: relative;
   padding-left: var(--space-6);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   color: var(--text-body);
   font-size: var(--fs-body-sm);
 }
@@ -448,8 +417,8 @@ a { color: var(--text-link); }
   border-bottom: 2.5px solid var(--ipnlf-teal-deep);
   transform: rotate(-45deg);
 }
-/* The host's own column is marked differently from ours, so the two
-   lists are not mistaken for one continuous set of promises. */
+/* The host's column is marked differently from ours, so the two lists
+   are not read as one continuous set of promises. */
 .tts-checklist--alt li::before {
   border: 0;
   top: 0.55em;
@@ -460,49 +429,56 @@ a { color: var(--text-link); }
   background: var(--ipnlf-orange);
   transform: none;
 }
-
-.tts-formats {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-.tts-formats li {
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  background: var(--ipnlf-white);
+.tts-pack {
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
   font-size: var(--fs-body-sm);
-  color: var(--text-body);
+  color: var(--text-muted);
 }
-.tts-formats__note { margin: var(--space-3) 0 0; font-size: var(--fs-caption); color: var(--text-muted); font-style: italic; }
+.tts-split__note { margin: var(--space-3) 0 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
+
+/* Audience categories, compact. Previously six equally prominent
+   blocks standing between the visitor and the practical answer. */
+.tts-audience { list-style: none; margin: 0; padding: 0; columns: 1; }
+@media (min-width: 720px) { .tts-audience { columns: 2; column-gap: var(--space-7); } }
+.tts-audience li {
+  break-inside: avoid;
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+}
+.tts-audience strong { color: var(--ipnlf-deep); }
+
+.tts-formats-line {
+  margin: var(--space-6) 0 0;
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+  max-width: 68ch;
+}
 
 /* ---- 4. how it works ---- */
-.tts-steps { list-style: none; margin: 0 0 var(--space-5); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+.tts-steps { list-style: none; margin: 0 0 var(--space-4); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
 @media (min-width: 760px) { .tts-steps { grid-template-columns: repeat(3, 1fr); } }
 .tts-step { display: flex; gap: var(--space-4); align-items: flex-start; }
-@media (min-width: 760px) { .tts-step { flex-direction: column; gap: var(--space-3); } }
 .tts-step__n {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--ipnlf-deep);
   color: var(--ipnlf-white);
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   line-height: 1;
-  padding-top: 4px; /* Bebas sits high in its box */
+  padding-top: 3px; /* Bebas sits high in its box */
 }
 .tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
 .tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
-.tts-after { margin: 0 0 var(--space-6); font-size: var(--fs-body-sm); color: var(--text-muted); max-width: 60ch; }
-.tts-how__cta { margin: 0; }
+.tts-after { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
 
 /* ---- form ---- */
 .tts-form-wrap { max-width: 760px; }
@@ -534,7 +510,10 @@ select:focus-visible, textarea:focus-visible {
 }
 /* On the dark sections gold-on-near-black is the visible pair; on
    light sections it needs the darker ring to stay distinguishable. */
-.tts-section:not(.tts-section--dark) a:focus-visible,
-.tts-section:not(.tts-section--dark) button:focus-visible {
+/* Gold reads on the hero's near-black; on the light sections the
+   darker ring is the visible pair. */
+.tts-section a:focus-visible,
+.tts-section button:focus-visible,
+.tts-section summary:focus-visible {
   outline-color: var(--ipnlf-deep);
 }

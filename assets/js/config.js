@@ -159,38 +159,50 @@ const SCREENINGS_CONFIG = {
     },
   ],
 
-  // --- What we provide / what you organise --------------------------
-  // Added 2026-10-01. A prospective host's real question is "how much
-  // work is this for me?", and splitting it this way answers it far
-  // better than describing only our side. It also fills the dead space
-  // that was sitting in this section waiting for an image.
+  // --- What IPNLF provides / what the host organises -----------------
+  // The host's real question is "how much work is this for us?", so
+  // this leads the hosting section rather than following the audience
+  // list.
   //
-  // Wording stays scoped (brief §5): nothing here promises a speaker,
-  // travel, AV support, filmmaker attendance, bespoke production, or
-  // that screenings are free.
-  // HOLDING COPY — the screening pack does not exist yet. Do not
-  // publish this list until the materials it describes are real.
-  weProvide: [
-    "Access to the film, and guidance on the permissions that apply to your type of event",
-    "A host checklist and a suggested running order",
-    "Discussion prompts and post-screening questions",
-    "Promotional assets and sample invitation copy",
-  ],
-  youOrganise: [
-    "A venue and a screen, with sound your audience can hear",
-    "Your invitations and guest list",
-    "Someone to introduce the film and keep the discussion going",
-    "The date, and anything you want to serve",
+  // PACK STATUS (2026-10-01): draft materials exist. Only the poster
+  // set has been seen in this repo's working directory; the checklist,
+  // discussion prompts, templates and invitation copy are reported as
+  // drafted but have not been reviewed here. They are therefore NAMED
+  // but NOT offered as downloads, and nothing claims they are
+  // finished. Do not add download links until the materials are
+  // approved for public release.
+  packName: "digital screening host pack",
+  packContents: [
+    "a host checklist",
+    "discussion prompts for after the film",
+    "editable promotional templates (PowerPoint)",
+    "invitation copy you can adapt",
   ],
 
-  // Brief §12. These were lost when the "More than a screening" aside
-  // was removed on 2026-10-01; restored here, where they answer the
-  // "what does a screening actually look like" question in context.
+  // Film access is described as confirmed FOR THE EVENT, deliberately.
+  // Submitting an enquiry does not grant permission to screen, and
+  // nothing on the page should imply that it does.
+  weProvide: [
+    "Film access, confirmed for your specific event",
+    "The host pack above, to plan and promote it",
+    "Someone to answer questions while you are arranging it",
+  ],
+  youOrganise: [
+    "Your venue and equipment",
+    "Promoting the event and inviting your audience",
+    "Running the event on the day",
+  ],
+
+  // Scoped hard (brief §5). Anything beyond the standard model is a
+  // separate conversation, not an expectation set by this page.
+  extraSupportNote: "Anything beyond this — a speaker, or additional content — needs a separate agreement and depends on our team's availability.",
+
+  // Brief §12. Rendered as a plain sentence and list, not as pills:
+  // pills look like selectable controls, and these are not clickable.
   formats: [
-    "Screening only",
-    "Screening plus a facilitated discussion",
-    "Screening plus a local panel",
-    "Screening as part of a team or classroom session",
+    "a facilitated discussion",
+    "a local panel",
+    "a team or classroom session",
   ],
 
   // --- Organisation types offered in the form ------------------------

@@ -2,7 +2,7 @@
 
 A prototype landing page inviting organisations and communities to host a screening of *The Tuna Truth*.
 
-**Status: prototype. Not production-ready.** Several operational questions are unresolved (see the bottom of this file), and the enquiry form is not connected to anything. Per the working standard on the donation page, nothing is marked production-ready while those remain open.
+**Status: candidate. Not production-ready.** The enquiry form is wired to Beacon and renders, but **a form appearing is not proof of delivery** — receipt, CRM mapping and the enquirer's confirmation message have not been verified by an authorised test. Several operational questions are also unresolved. Per the working standard on the donation page, nothing is marked production-ready while those remain open.
 
 Originally built on branch `prototype/host-a-screening` in `IPNLF/tunatruth-support`, cut from `master` — deliberately **not** from `prototype/progress-bar-and-rewards`, so none of the unconfirmed fundraising/reward content came along. Since 2026-10-01 this repo is the home; that branch is only a record of where it started.
 
@@ -46,7 +46,8 @@ The cost is real and recurring: **a brand change now has to be made twice, by ha
 |---|---|---|
 | Award wording, finalist → winner | `config.js` → `award` | One object. Nothing about the award is hard-coded in the markup or CSS (brief §10). |
 | Brand hierarchy, TunaTruth ⇄ IPNLF | `config.js` → `brandOrder` | Same pattern as the donation page. TunaTruth leads here. |
-| Form endpoint | `config.js` → `formEndpoint` | See below. |
+| Beacon account / form id | `config.js` → `beacon` | The form itself is configured in Beacon, not here. |
+| Trailer video | `config.js` → `trailer.youtubeId` | |
 | Who-can-host categories | `config.js` → `hostTypes` | |
 | Form dropdown options | `config.js` → `orgTypes`, `audienceBands`, `screeningKinds` | |
 | Contact address | `config.js` → `fallbackEmail` | ⚠️ Also duplicated by hand in the `<noscript>` block in `index.html`. |
@@ -108,7 +109,7 @@ The brief prefers `screenings.tunatruth.com`. That is not a config change:
 
 ### The site is public but hidden from search
 
-GitHub Pages on a free plan requires a public repo, so this prototype is readable by anyone with the link. Because the copy is unapproved, the contact address is a placeholder and the form is not connected, two guards keep it out of search results:
+GitHub Pages on a free plan requires a public repo, so this is readable by anyone with the link. Because the copy is unapproved and the enquiry journey is unverified, two guards keep it out of search results:
 
 - `<meta name="robots" content="noindex, nofollow">` in `index.html`
 - `robots.txt` at the repo root, disallowing everything
