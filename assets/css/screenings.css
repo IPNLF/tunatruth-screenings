@@ -529,10 +529,15 @@ select:focus-visible, textarea:focus-visible {
 }
 
 /* Hosting: readable responsibilities with one tangible pack preview. */
-.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "support" "preview" "organise" "audience"; }
+/* Running order: "Who can host?" opens the section, the two practical
+   columns sit together beneath it, the poster preview holds the right
+   rail at desktop, and the formats line closes. The areas map is the
+   only thing that sets the order — the markup is not reshuffled. */
+.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "audience" "support" "preview" "organise" "formats"; }
 .tts-hosting-support { grid-area: support; }
 .tts-hosting-organise { grid-area: organise; }
 .tts-hosting-audience { grid-area: audience; }
+.tts-hosting .tts-formats-line { grid-area: formats; }
 .tts-hosting .tts-sub { font-size: 20px; color: var(--ipnlf-deep); margin-top: 0; margin-bottom: 16px; }
 .tts-hosting .tts-checklist li, .tts-hosting .tts-audience-copy, .tts-hosting .tts-formats-line, .tts-hosting .tts-split__note { font-size: 16px; color: var(--text-body); line-height: 1.6; }
 .tts-hosting .tts-checklist li { margin-bottom: 12px; }
@@ -548,10 +553,10 @@ select:focus-visible, textarea:focus-visible {
 
 .tts-template-preview a:focus-visible { outline: 3px solid var(--ipnlf-teal-deep); outline-offset: 6px; }
 @media (min-width: 760px) {
-  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "support organise" "audience preview"; gap: 32px 40px; }
+  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "audience preview" "support organise" "formats formats"; gap: 32px 40px; }
 }
 @media (min-width: 1100px) {
-  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "support organise preview" "audience audience preview"; gap: 28px 36px; }
+  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "audience audience preview" "support organise preview" "formats formats formats"; gap: 28px 36px; }
   .tts-template-preview { display: block; }
   .tts-template-preview > a { display: block; }
   .tts-template-preview figcaption { margin-top: 16px; }

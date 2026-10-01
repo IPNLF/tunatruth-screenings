@@ -183,10 +183,11 @@ const SCREENINGS_CONFIG = {
   // Submitting an enquiry does not grant permission to screen, and
   // nothing on the page should imply that it does.
   weProvide: [
-    "Film access and permissions agreed for your event",
-    "A digital host pack with a checklist, discussion prompts, editable PowerPoint promotional templates and sample invitations",
+    "Film access and permissions for your event",
+    "A digital host pack including discussion prompts, editable promotional templates and sample invitations",
     "Practical guidance to help you plan your screening",
   ],
+
   youOrganise: [
     "A suitable venue, screen and sound equipment",
     "Inviting your audience and promoting the screening",
