@@ -66,6 +66,30 @@ const SCREENINGS_CONFIG = {
   // NOTE: duplicated by hand in the <noscript> block in index.html.
   fallbackEmail: "info@ipnlf.org",
 
+  // --- Trailer ------------------------------------------------------
+  // Hosted on YouTube (unlisted), NOT in this repo. The master export is
+  // 1.3GB: GitHub rejects any file over 100MB, Pages caps a site at ~1GB,
+  // and its terms exclude video hosting — so self-hosting was never an
+  // option. YouTube also transcodes and serves adaptive quality, which a
+  // static file cannot.
+  //
+  // The page loads a click-to-play facade (a still plus a play button)
+  // and only creates the iframe once someone clicks. That keeps the page
+  // fast AND keeps third-party cookies off it until the viewer opts in,
+  // which is why there is no cookie banner here. youtube-nocookie.com is
+  // used for the same reason. Do not swap it for a plain embed that
+  // loads on page load without revisiting the consent question.
+  //
+  // Unlisted means it stays out of YouTube search, not that it is
+  // secret: embedding puts the ID in the page source.
+  trailer: {
+    enabled: true,
+    youtubeId: "5piItxcGaAY",
+    // Poster frame, from this repo. Deliberately not YouTube's own
+    // thumbnail, which would be a third-party request before consent.
+    poster: "assets/img/og-image.jpg",
+  },
+
   // --- Award status -------------------------------------------------
   // The 2026 Jackson Wild Media Awards are close (brief §10), so this
   // is deliberately one config object rather than award wording spread

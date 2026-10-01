@@ -358,6 +358,70 @@ a { color: var(--text-link); }
 .tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
 
 
+/* ---- trailer ----
+   The facade and the real player occupy the same 16:9 box, so nothing
+   shifts when one replaces the other. */
+.tts-trailer { margin: 0 0 var(--space-5); }
+.tts-trailer__play {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-dark);
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
+}
+.tts-trailer__play img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Dimmed so the play button and label stay legible over any frame. */
+  filter: brightness(0.72);
+  transition: filter 0.2s, transform 0.3s;
+}
+.tts-trailer__play:hover img { filter: brightness(0.6); transform: scale(1.02); }
+.tts-trailer__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  /* Optical centring: the triangle's visual mass sits left of centre. */
+  padding-left: 4px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s;
+}
+.tts-trailer__play:hover .tts-trailer__icon { transform: translate(-50%, -50%) scale(1.08); }
+.tts-trailer__label {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  color: var(--ipnlf-white);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-display);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+.tts-trailer__frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--surface-dark);
+}
+.tts-trailer__caption { margin-top: var(--space-2); font-size: var(--fs-body-sm); }
+
 /* ---- about the film + award ---- */
 .tts-about { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
 @media (min-width: 860px) { .tts-about { grid-template-columns: 1.4fr 1fr; gap: var(--space-8); align-items: start; } }

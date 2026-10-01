@@ -258,6 +258,31 @@ const TTS = (() => {
     </section>`;
   }
 
+  // ---- trailer -------------------------------------------------
+  // Click-to-play facade: a still and a play button, with the iframe
+  // created only on click. Nothing from YouTube is requested until the
+  // viewer asks for it — see config.js trailer for why that matters.
+  //
+  // The "Watch on YouTube" link is not decoration: it is the fallback
+  // for any context where the iframe cannot load (a strict corporate
+  // network, an embedded preview that blocks iframes). It always works.
+  function trailer() {
+    const t = cfg.trailer;
+    if (!t || !t.enabled || !t.youtubeId) return "";
+    return `<figure class="tts-trailer">
+      <button type="button" class="tts-trailer__play" data-role="trailer-play" data-youtube-id="${t.youtubeId}" aria-label="Play the trailer for ${cfg.filmName}">
+        <img src="${t.poster}" alt="" loading="lazy" width="1200" height="630">
+        <span class="tts-trailer__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span class="tts-trailer__label">Watch the trailer</span>
+      </button>
+      <figcaption class="tts-trailer__caption">
+        <a href="https://www.youtube.com/watch?v=${t.youtubeId}" target="_blank" rel="noopener">Watch on YouTube</a>
+      </figcaption>
+    </figure>`;
+  }
+
   // ---- 6. about the film (+ award) -----------------------------
   // Placed BEFORE the form, which is a deliberate change from the
   // brief's order (§15 puts the form at 6 and the film at 7). A
@@ -272,6 +297,7 @@ const TTS = (() => {
       <div class="tt-container tts-about">
         <div class="tts-about__body">
           <h2 class="tts-section__title">About ${cfg.filmName}</h2>
+          ${trailer()}
           <!-- REVIEW 2026-10-01 — these three paragraphs were supplied by
                the user and match the donation page's "Behind the film"
                copy, replacing the holding synopsis that was here before. -->
@@ -494,6 +520,27 @@ const TTS = (() => {
   // ---- behaviour --------------------------------------------------
 
   function initInteractions() {
+    // Trailer: swap the facade for the real player on click. Nothing is
+    // requested from YouTube before this runs.
+    const trailerBtn = document.querySelector('[data-role="trailer-play"]');
+    if (trailerBtn) {
+      trailerBtn.addEventListener("click", () => {
+        const id = trailerBtn.dataset.youtubeId;
+        if (!id) return;
+        const frame = document.createElement("iframe");
+        // youtube-nocookie + autoplay (the click IS the gesture that
+        // permits it) + rel=0 so the end screen does not fill with
+        // unrelated channels' videos.
+        frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+        frame.title = `Trailer for ${cfg.filmName}`;
+        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        frame.allowFullscreen = true;
+        frame.className = "tts-trailer__frame";
+        trailerBtn.replaceWith(frame);
+        frame.focus();
+      });
+    }
+
     const form = document.querySelector(".tts-form");
     if (!form) return;
     const errorEl = form.querySelector('[data-role="form-error"]');

@@ -172,7 +172,8 @@ Everything below is marked `<!-- HOLDING COPY -->` in the source.
 - **An image for the "We'll help you get started" section.** Still outstanding. The right-hand column is held open and blank; see the `IMAGE SLOT — AWAITING ASSET` comment in `whatWeProvide()` and the `.tts-provide__aside--empty` rule in the CSS, and follow the `<figure>` pattern in `serena()` when one arrives.
 - **A dedicated Open Graph image** for share previews (currently reuses the donation page's).
 - **The screening pack itself** — host guide, checklist, discussion guide, promo assets, social tiles, invitation copy.
-- Confirmation of whether the film has a trailer that could be embedded or linked.
+- ~~Confirmation of whether the film has a trailer.~~ **Added 2026-10-01**, unlisted on YouTube (`5piItxcGaAY`), embedded in "About the film" as a click-to-play facade. **It is currently on a personal channel (@naturevideos96, "James Wareing"), not an IPNLF or Tuna Truth channel.** That is a continuity risk and it shows the uploader's name in the player, so it should be re-uploaded to an organisation-owned channel before launch — at which point only `trailer.youtubeId` in `config.js` changes.
+- **A dedicated poster frame for the trailer.** It currently reuses `og-image.jpg`.
 
 ## Operational decisions still needed
 
