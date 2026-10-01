@@ -206,7 +206,7 @@ const TTS = (() => {
               <img src="assets/img/screening-poster-preview.png" alt="Sample screening poster with The Tuna Truth and IPNLF logos, Serena Appleby, and editable host, date, time, venue and booking details" width="842" height="1191">
               <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
             </a>
-            <figcaption><strong>Make it your event</strong>Editable promotional templates included.<small>Sample design. Add your own event details in PowerPoint.</small></figcaption>
+            <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>
           </figure>
           <div class="tts-hosting-organise">
             <h3 class="tts-sub">What you organise</h3>

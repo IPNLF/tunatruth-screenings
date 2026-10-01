@@ -200,7 +200,7 @@ const SCREENINGS_CONFIG = {
   // The public section names the audiences once, without six repeated
   // benefit descriptions. The original hostTypes copy remains above
   // as reference wording rather than adding another long reading task.
-  hostAudience: "Companies and workplaces, schools and universities, NGOs and community groups, seafood and hospitality teams, conferences, and film or environmental societies are all welcome to enquire.",
+  hostAudience: "Anyone. Companies and workplaces, schools and universities, NGOs and community groups, seafood and hospitality teams, conferences, and film or environmental societies are all welcome to enquire.",
 
   // Brief §12. Rendered as a plain sentence and list, not as pills:
   // pills look like selectable controls, and these are not clickable.

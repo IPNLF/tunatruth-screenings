@@ -520,7 +520,7 @@ select:focus-visible, textarea:focus-visible {
 .tts-hosting .tts-sub { font-size: 20px; color: var(--ipnlf-deep); margin-top: 0; margin-bottom: 16px; }
 .tts-hosting .tts-checklist li, .tts-hosting .tts-audience-copy, .tts-hosting .tts-formats-line, .tts-hosting .tts-split__note { font-size: 16px; color: var(--text-body); line-height: 1.6; }
 .tts-hosting .tts-checklist li { margin-bottom: 12px; }
-.tts-hosting .tts-split__note { max-width: 48ch; }
+.tts-hosting .tts-split__note { max-width: 48ch; margin-top: 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--ipnlf-teal-deep); }
 .tts-hosting .tts-audience-copy { max-width: 68ch; }
 .tts-hosting .tts-formats-line { margin-top: 16px; }
 .tts-template-preview { grid-area: preview; margin: 0; display: flex; align-items: center; gap: 20px; }
@@ -529,7 +529,7 @@ select:focus-visible, textarea:focus-visible {
 .tts-template-preview__link { display: block; margin-top: 10px; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .tts-template-preview figcaption { font-size: 14px; line-height: 1.5; color: var(--text-body); max-width: 26ch; }
 .tts-template-preview strong { display: block; color: var(--ipnlf-deep); font-size: 17px; margin-bottom: 6px; }
-.tts-template-preview small { display: block; font-size: 12px; margin-top: 10px; }
+
 .tts-template-preview a:focus-visible { outline: 3px solid var(--ipnlf-teal-deep); outline-offset: 6px; }
 @media (min-width: 760px) {
   .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "support organise" "audience preview"; gap: 32px 40px; }
