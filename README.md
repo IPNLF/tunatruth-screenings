@@ -1,0 +1,211 @@
+# Host a screening — prototype
+
+A prototype landing page inviting organisations and communities to host a screening of *The Tuna Truth*.
+
+**Status: prototype. Not production-ready.** Several operational questions are unresolved (see the bottom of this file), and the enquiry form is not connected to anything. Per the working standard on the donation page, nothing is marked production-ready while those remain open.
+
+Originally built on branch `prototype/host-a-screening` in `IPNLF/tunatruth-support`, cut from `master` — deliberately **not** from `prototype/progress-bar-and-rewards`, so none of the unconfirmed fundraising/reward content came along. Since 2026-10-01 this repo is the home; that branch is only a record of where it started.
+
+---
+
+## How to run it
+
+From the repo root:
+
+```bash
+python -m http.server 8843
+```
+
+Then open <http://localhost:8843/>.
+
+## Structure
+
+```
+index.html                  page shell, section order, no-JS fallback
+robots.txt                  prototype guard, see below
+assets/css/tokens.css       design tokens, derived from the donation page
+assets/css/screenings.css   this page's components
+assets/js/config.js         everything likely to change lives here
+assets/js/components.js     HTML-string components + form behaviour
+assets/img/                 copies of the shared brand assets
+```
+
+Same no-framework, no-build-step pattern as the donation page, so anyone who can maintain that can maintain this.
+
+**All paths inside the folder are relative**, on purpose. The same files work unchanged at a domain root *or* in a subfolder, so the hosting decision below is a copy operation rather than a rewrite. The only self-referencing absolute URLs are the Open Graph tags in `index.html` and `canonicalUrl` in `config.js`.
+
+### The folder is a standalone copy, and that has a cost
+
+`tokens.css` and the brand images are **duplicated** from the donation site rather than shared. This is a deliberate trade-off: the intended production home is a separate subdomain, which on GitHub Pages means a separate repo, and there is no build step to share a file between two Pages sites without inventing one.
+
+The cost is real and recurring: **a brand change now has to be made twice, by hand, forever.** If the hosting decision lands on "a path under the existing domain" instead, collapse these back to the shared `/assets/` files and delete the copies.
+
+## Things designed to change without a redesign
+
+| What | Where | Notes |
+|---|---|---|
+| Award wording, finalist → winner | `config.js` → `award` | One object. Nothing about the award is hard-coded in the markup or CSS (brief §10). |
+| Brand hierarchy, TunaTruth ⇄ IPNLF | `config.js` → `brandOrder` | Same pattern as the donation page. TunaTruth leads here. |
+| Form endpoint | `config.js` → `formEndpoint` | See below. |
+| Who-can-host categories | `config.js` → `hostTypes` | |
+| Form dropdown options | `config.js` → `orgTypes`, `audienceBands`, `screeningKinds` | |
+| Contact address | `config.js` → `fallbackEmail` | ⚠️ Also duplicated by hand in the `<noscript>` block in `index.html`. |
+
+---
+
+## The form is not connected
+
+`config.js` → `formEndpoint` is `null`. While it is null:
+
+- the form renders fully — real fields, real validation, real error states;
+- a loud dashed notice says it is preview only and nothing will be received;
+- the submit button is **disabled**;
+- a valid submission is blocked, logs its payload to the console, and shows an honest message pointing at the email address.
+
+**It never shows a "thanks, we'll be in touch" screen.** A demo that looks like it works is how real enquiries get silently binned if this is shared with a stakeholder or indexed.
+
+Setting `formEndpoint` to a real URL turns all of that off in one edit: the form gains `action`/`method`, the notice disappears, the button enables, and it POSTs natively (no `fetch` wrapper — a native POST still works if the script fails to load).
+
+### To make it real, someone at IPNLF must decide
+
+1. **Which mechanism.** Recommended: a third-party form endpoint (Formspree, Basin, Getform) behind the page's own styled form — it keeps the page on-brand, accessible and mobile-correct. Fallback: an embedded Google or Microsoft form, whichever suite IPNLF actually runs — free and unlimited, but it cannot be styled and will look like a Google product dropped into the page.
+2. **A destination mailbox — a shared alias, not an individual's inbox.** `screenings@ipnlf.org` is used throughout as a placeholder; **do not assume it exists.**
+3. **Who owns that inbox, and what response time we are willing to state.** An enquiry form with no named owner is worse than no form.
+4. If a paid tier: who holds the account. Formspree's free tier is ~50 submissions/month *account-wide* and keeps submissions for only 30 days — over the cap, submissions stop silently.
+5. **Privacy.** Name + email + organisation + country is personal data. The page links IPNLF's existing privacy policy at the point of collection, but someone must confirm that policy covers enquiries processed by a third-party (likely US-based) processor, and agree a retention period. If addresses would later be added to any mailing list, that needs its own separate, unticked consent — not this form.
+
+---
+
+## Where this actually gets hosted
+
+The brief prefers `screenings.tunatruth.com`. That is not a config change:
+
+- GitHub Pages binds **one custom domain per Pages site**, and this repo's `CNAME` is already `donate.tunatruth.com`.
+
+| Option | Trade-off |
+|---|---|
+| **A. Second repo** + `CNAME` = `screenings.tunatruth.com` + one DNS record | Clean separation, right URL, £0. Shared CSS/assets duplicated and will drift. |
+| **B. A path on the existing domain** (`donate.tunatruth.com/screenings/`) | Ships today, no DNS, assets shared for free. The URL says "donate" on a page that is not asking for money — a real problem when writing to schools and film societies. |
+| **C. Move to Netlify / Cloudflare Pages** | Multiple domains per site, and would restore Netlify Forms. Undoes a migration made deliberately; re-introduces a vendor. |
+| **D. A subfolder of a wider tunatruth.com site**, if one exists | Best long-term URL; depends on infrastructure outside this repo. |
+
+**Decided 2026-10-01: Option A.** This folder now lives in its own repo, `IPNLF/tunatruth-screenings`, with its contents at the repo root. It is served by GitHub Pages from `master` at <https://ipnlf.github.io/tunatruth-screenings/>.
+
+`screenings.tunatruth.com` is **not** set up yet, deliberately: pointing Pages at a custom domain before the DNS record exists leaves the site unreachable and the Pages build reporting a domain error. To finish the job later:
+
+1. Add a DNS `CNAME` record for `screenings` → `ipnlf.github.io` in the Wix account that manages `tunatruth.com` (the same place `donate` was set up).
+2. Set the custom domain in the new repo's Pages settings, which writes a `CNAME` file, and enable Enforce HTTPS once the certificate is issued.
+3. Update `canonicalUrl` in `config.js` and the two Open Graph tags in `index.html`.
+
+### The site is public but hidden from search
+
+GitHub Pages on a free plan requires a public repo, so this prototype is readable by anyone with the link. Because the copy is unapproved, the contact address is a placeholder and the form is not connected, two guards keep it out of search results:
+
+- `<meta name="robots" content="noindex, nofollow">` in `index.html`
+- `robots.txt` at the repo root, disallowing everything
+
+**Removing both is a go-live step.** Neither prevents someone opening a link that is sent to them — they only stop the page being found by search.
+
+---
+
+## Measurement
+
+The brief (§18) asks to track page visits, CTA clicks, completed enquiries, organisation type, country and audience size. What is actually achievable:
+
+- **Page visits** — the Cloudflare beacon, already in place (same token as the donation site, so both appear in one dashboard).
+- **Enquiries, organisation type, country, audience size** — these come **free from the form service's own dashboard** once an endpoint exists. Building custom analytics to count something the form already counts would be duplicated maintenance.
+- **CTA clicks** — **not achievable as things stand.** Cloudflare Web Analytics' free beacon supports page views and referrers only; its own FAQ states custom events are not supported. Cloudflare Zaraz does support custom events but requires the domain to be proxied through Cloudflare and still needs a destination tool, which is more moving parts than the metric is worth. Plausible or Fathom (~£7–9/month) would give it in three lines, if IPNLF wants better analytics across the whole estate.
+
+**Nothing fake is instrumented to paper over this gap.** With page views and completed enquiries you get a conversion rate, which is more useful than a raw click count on a page with one primary action.
+
+---
+
+## Deliberate deviations from the brief
+
+Flagged rather than done silently, per the working standard in §21.
+
+**1. The film section moved above the form.** The brief's §15 order puts the form at 6 and "About the film" at 7. A sustainability manager who has never heard of *The Tuna Truth* cannot decide to put it in front of 200 colleagues on the strength of the hosting logistics alone — credibility has to land before the ask. The hero CTA anchors straight to `#request`, so anyone already sold skips all of it, and the header carries a persistent "Request a screening" link. If you disagree, moving `TTS.requestForm()` up the array in `index.html` is a one-line change.
+
+**2. "We'll help you get started" and "More than a screening" merged into one section.** The brief lists them separately (§5 and §12), but both answer the same question — *what do I actually get, and how much work is this for me?* Split across two sections each had to be padded, so the reader met the same reassurance twice and it read thinner, not more generous. They are now one section with a checklist and a sidebar.
+
+**3. The form is 9 fields, not 11.**
+- **"Proposed screening location" cut.** Country plus organisation is enough to reply usefully at first contact; the venue is a second-email question and it made the form look longer than it is.
+- **"Is the screening" reduced from four options to two.** Internal/educational/public/conference largely duplicated organisation type — a school's screening is educational by definition. What it uniquely carried was *private vs open to the public*, which is the distinction that actually drives the permissions answer, so that is what it now asks.
+- **Audience size is a band, not a number.** Hosts rarely know a figure at enquiry stage, and a band is all that is needed to qualify.
+- **Preferred date is free text, not a date picker.** "Some time in the spring term" is a valid and useful answer; a picker forces a false precision that then has to be unpicked over email.
+
+**4. Only one card grid on the page.** "Why host" is cards; "Who can host" is a plain list, "We'll help you" is a checklist, "How it works" is numbered steps. Three consecutive card grids reads as an information dump regardless of word count (brief §16). Section differentiation is done with alternating surfaces — white / cinematic dark / soft foam — not with per-section decoration.
+
+**5. No "coming soon" download tiles for the screening pack.** The materials do not exist yet, and a page with four greyed-out placeholders looks abandoned on day one. The pack is described in prose. Adding a downloads block later is additive.
+
+**6. The "Oscars of nature filmmaking" framing is not used here**, per brief §10, even though the donation page uses it.
+
+---
+
+## Content requiring approval
+
+Everything below is marked `<!-- HOLDING COPY -->` in the source.
+
+- Hero heading and support line.
+- "Who can host" — all six category descriptions (`config.js` → `hostTypes`).
+- "Why host" — all four benefit points.
+- **"We'll help you get started" — the five-item screening-pack list. This is the most important one: it describes materials that do not exist yet. Do not publish this section until they do, or until the list is cut back to what does.**
+- "More than a screening", including the four optional event formats.
+- The four "How it works" steps.
+- "About The Tuna Truth" synopsis paragraph.
+- "Serena's journey", both paragraphs.
+- The permissions note under "How it works".
+- Privacy sentence under the submit button.
+
+**Confirmed and carried over unchanged from the donation page** (not holding copy): the production credit block, and the Jackson Wild finalist facts (verified 2026-09-08 against jacksonwild.org/2026-media-awards).
+
+## Assets still needed
+
+- **A Serena portrait or a strong still of her.** The section currently reuses `og-image.jpg` and describes it honestly as "a still from The Tuna Truth". Brief §9 asks for a portrait. Swapping it is a `src` change in `serena()`.
+- **A hero still chosen for this page.** It currently reuses the donation page's `hero-photo.jpg`. Fine for a prototype, but the two pages will look like the same page if they sit side by side.
+- **A dedicated Open Graph image** for share previews (currently reuses the donation page's).
+- **The screening pack itself** — host guide, checklist, discussion guide, promo assets, social tiles, invitation copy.
+- Confirmation of whether the film has a trailer that could be embedded or linked.
+
+## Operational decisions still needed
+
+Not blocking the prototype. All of these need answers before launch, and none should be guessed.
+
+**Rights and access**
+1. Who controls public-performance/screening rights for the film? If IPNLF does not, this page is soliciting requests it may not be able to fulfil.
+2. Is screening access free, paid or discretionary? *This is the first question a decision-maker asks, and the page currently does not answer it — expect it to generate email until it does.*
+3. Are virtual screenings permitted?
+4. Can hosts charge ticket fees? Can screenings be used for fundraising?
+5. Are schools treated differently from commercial organisations?
+6. Is there a minimum or maximum audience size?
+
+**Service and capacity**
+7. Who responds to screening requests, and what response time can IPNLF realistically promise? *The page deliberately states none right now. A line in "How it works" would prevent a lot of mismatched expectations.*
+8. Can IPNLF or the filmmakers offer speakers, and under what circumstances? The page is scoped to "depending on availability, we may also be able to help" and the form asks only about *interest* — but if the honest answer is "we cannot", **delete the speaker checkbox rather than reword it.** An unanswerable question is worse than an absent one.
+9. Which starter-kit materials already exist, if any?
+10. What feedback and data should hosts submit afterwards? Step 4 currently asks for "rough attendance, photos or feedback" with no mechanism behind it.
+
+**Systems**
+11. Which email/CRM system should enquiries feed into? Does IPNLF run Google Workspace or Microsoft 365? This changes the form recommendation.
+12. Which subdomain, and therefore which hosting option above.
+
+### Known risks worth stating plainly
+
+- **The enquiry inbox is this project's failure point.** Structured enquiries are worthless if nobody triages them. Expect a burst at launch, then a long tail that is easy to miss. If nobody will own it, the right move is to cut the form back to name/email/message and treat it as a contact form.
+- **"Preferred date" implies a booking process that does not exist.** There is no calendar and no availability checking. It is worded as context ("some time in the spring term"), not a booking request — keep it that way unless a manual workflow is documented behind it.
+- **Free-tier submission caps fail silently.** Budget for a paid tier, or use the unlimited Google/Microsoft route.
+
+---
+
+## Verified during the build
+
+- No horizontal overflow at 320px, 375px or 390px.
+- Primary CTA clears the usable fold at 375×667 and 390×844. At **320×568** the button starts at ~450px and is clipped by roughly a line — the smallest legacy phone size, and the header's persistent "Request a screening" link is above the fold at every size. Worth knowing before adding anything to the hero; re-measure if you do.
+- Form: required-field errors on all 7 required fields, focus moves to the first invalid field, per-field messages tied to inputs via `aria-describedby`, email format rejected and accepted correctly, and a fully valid submission is blocked with an honest message rather than a fake success.
+- `<header>` and `<footer>` are top-level siblings of `<main>`, so their landmark roles survive.
+- Invalid fields are marked with a border colour *and* a text message, never colour alone.
+- Honeypot field is off-screen, `aria-hidden`, and not focusable.
+- `prefers-reduced-motion` is respected.
+- No JavaScript errors. (Locally the Cloudflare beacon logs a CORS error — that is localhost-only and does not occur on a real domain.)
+
+**Not verified:** real assistive-technology testing, cross-browser testing beyond Chromium, and anything about the form once it is connected.

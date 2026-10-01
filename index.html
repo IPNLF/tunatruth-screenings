@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host a screening of The Tuna Truth | IPNLF</title>
+<meta name="description" content="Bring The Tuna Truth to your workplace, school, university or community. Tell us about your screening and we'll help you plan it.">
+
+<!-- PROTOTYPE GUARD (2026-10-01) — this site is publicly readable but
+     deliberately kept out of search results, because the copy on it has
+     not been approved by IPNLF, the contact address is a placeholder and
+     the form cannot receive anything. There is a matching robots.txt at
+     the repo root.
+     REMOVE BOTH — this tag and robots.txt — as part of going live. -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph / social sharing.
+     These point at the GitHub Pages URL the prototype currently lives
+     on. When a custom subdomain is set up (see README-screenings.md),
+     change these two and canonicalUrl in config.js — they are the only
+     self-referencing absolute URLs on the page; everything else is
+     relative, so the folder works unchanged at a domain root or in a
+     subfolder. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Host a screening of The Tuna Truth">
+<meta property="og:description" content="Bring the film to your workplace, school, university or community — and start a conversation about where tuna comes from.">
+<meta property="og:image" content="https://ipnlf.github.io/tunatruth-screenings/assets/img/og-image.jpg">
+<meta property="og:url" content="https://ipnlf.github.io/tunatruth-screenings/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/screenings.css">
+</head>
+<body>
+
+<!-- Three separate mount points, not one flat #app div, so <header>
+     and <footer> stay TOP-LEVEL siblings of <main> — nesting them
+     inside <main> would silently strip their implicit banner /
+     contentinfo landmark roles. Same fix the donation page carries. -->
+
+<noscript>
+  <!-- The page is rendered by JS, so with JS off there would otherwise
+       be nothing here at all. This is the irreducible minimum: what the
+       page is, and a route that actually reaches a human.
+       NOTE: the address below is duplicated by hand from
+       config.js fallbackEmail — if that changes, change it here too. -->
+  <div style="max-width:640px;margin:40px auto;padding:0 24px;font-family:Arial,sans-serif;color:#1E2A2E;line-height:1.6;">
+    <h1>Host a screening of The Tuna Truth</h1>
+    <p>Bring the film to your workplace, school, university or community, and use it to start a conversation about the hidden impacts behind the tuna we buy.</p>
+    <p>This page works best with JavaScript enabled. To ask about hosting a screening, email
+      <a href="mailto:screenings@ipnlf.org">screenings@ipnlf.org</a> with your organisation, country,
+      roughly how many people you expect and when you are thinking of.</p>
+    <p><a href="https://www.tunatruth.com/">More about the film</a> · <a href="https://ipnlf.org">IPNLF</a></p>
+  </div>
+</noscript>
+
+<div id="app-header"></div>
+<main id="app-main"></main>
+<div id="app-footer"></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/components.js"></script>
+<script>
+  // Section order is a deliberate change from the brief's §15 list:
+  // "About the film", the award and Serena sit BEFORE the form, not
+  // after it. A decision-maker who has never heard of the film cannot
+  // commit to putting it in front of their colleagues on the strength
+  // of the hosting logistics alone. The hero CTA anchors straight to
+  // #request, so anyone already sold skips all of it.
+  // Reasoning and the alternative are written up in README-screenings.md.
+  document.getElementById('app-header').innerHTML = TTS.header();
+  document.getElementById('app-main').innerHTML = [
+    TTS.hero(),
+    TTS.whoCanHost(),
+    TTS.whyHost(),
+    TTS.whatWeProvide(),
+    TTS.howItWorks(),
+    TTS.aboutFilm(),
+    TTS.serena(),
+    TTS.requestForm(),
+  ].join('');
+  document.getElementById('app-footer').innerHTML = TTS.footer();
+  TTS.initInteractions();
+</script>
+
+<!-- Cloudflare Web Analytics — same beacon token as the donation site,
+     so traffic to both shows in one dashboard.
+     KNOWN LIMIT (verified against Cloudflare's own Web Analytics FAQ):
+     the free beacon supports page views and referrers ONLY — there is
+     no custom-event API, so CTA clicks cannot be counted here. The
+     brief's other measures (enquiry count, organisation type, country,
+     audience size) come from the form service's own dashboard for
+     free once an endpoint is chosen. See README-screenings.md
+     "Measurement" — nothing fake is instrumented to paper over this. -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "815903f9d9ef4758bc72cea958ed2183"}'></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# PROTOTYPE (2026-10-01). This site is publicly readable but deliberately
+# kept out of search results: the copy on it has not been approved by
+# IPNLF, the contact address is a placeholder, and the enquiry form is not
+# connected to anything.
+#
+# There is a matching <meta name="robots" content="noindex, nofollow">
+# in index.html. REMOVE BOTH as part of going live.
+User-agent: *
+Disallow: /

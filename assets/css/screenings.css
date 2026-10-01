@@ -1,0 +1,547 @@
+/* ============================================================
+   TUNATRUTH SCREENINGS — COMPONENTS
+   Mobile-first. Shares the donation page's visual language
+   (tokens, Bebas display type, cinematic dark + warm gold
+   accent) but not its layout: that page is one conversion box,
+   this one is an editorial read with a form at the end.
+
+   Section rhythm is the main structural device — alternating
+   white / cinematic dark / soft-foam surfaces do the section
+   differentiation the brief asks for, so the page does not need
+   a card grid in every section. There is exactly ONE card grid
+   ("Why host"); everything else is a list, a checklist, numbered
+   steps or straight editorial columns.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  /* Backstop against horizontal overflow at 320px — nothing here is
+     meant to need sideways scrolling. */
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--text-link); }
+
+/* Anchor targets sit under nothing sticky, but leave a little air so a
+   jumped-to heading is not flush against the viewport edge. */
+[id] { scroll-margin-top: var(--space-5); }
+
+.tt-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---- logos (same treatment as the donation page) ---- */
+.tt-logo { display: block; width: auto; }
+.tt-logo--ipnlf.tt-logo--xs { height: 18px; }
+.tt-logo--ipnlf.tt-logo--sm { height: 26px; }
+.tt-logo--tunatruth.tt-logo--xs { height: 22px; }
+.tt-logo--tunatruth.tt-logo--sm { height: 34px; }
+
+/* IPNLF's real logo is dark navy on transparent, made for light
+   backgrounds — this chip gives it a light patch wherever it has to
+   sit on a dark surface. */
+.tt-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ipnlf-white);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* ---- header ---- */
+.tt-header {
+  background: var(--surface-page);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.tt-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+.tt-lockup { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.tt-lockup__joiner {
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-overline);
+}
+.tt-header__link {
+  color: var(--ipnlf-deep);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+}
+.tt-header__link:hover { border-bottom-color: currentColor; }
+
+/* ---- buttons ---- */
+.tts-btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+/* Gold is reserved for the ONE primary action on this page (the hero
+   CTA and the form's submit are the same action, stated twice) — the
+   same discipline the donation page uses for Donate. */
+.tts-btn--primary {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  box-shadow: var(--shadow-cta);
+}
+.tts-btn--primary:hover { background: var(--cta-bg-hover); }
+.tts-btn--primary:active { transform: translateY(1px); }
+.tts-btn--primary:disabled {
+  background: var(--ipnlf-mist);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.tts-btn--ghost {
+  background: transparent;
+  color: var(--ipnlf-white);
+  border-color: rgba(255,255,255,0.45);
+  font-weight: 600;
+}
+.tts-btn--ghost:hover { background: rgba(255,255,255,0.10); border-color: var(--ipnlf-white); }
+
+/* ---- hero ----------------------------------------------------
+   The still carries the visual weight; the scrim is heavier on the
+   left, where the type sits, so the headline stays legible whatever
+   the frame is doing behind it. */
+.tts-hero {
+  background-color: var(--surface-dark);
+  background-image:
+    linear-gradient(105deg, rgba(6,14,16,0.94) 0%, rgba(6,14,16,0.86) 38%, rgba(6,14,16,0.55) 70%, rgba(6,14,16,0.35) 100%),
+    url("../img/hero-photo.jpg");
+  background-size: cover;
+  background-position: center 32%;
+  color: var(--text-on-dark);
+}
+.tts-hero__inner { padding-top: var(--space-7); padding-bottom: var(--space-7); }
+@media (min-width: 860px) {
+  .tts-hero__inner { padding-top: var(--space-8); padding-bottom: var(--space-8); max-width: 1120px; }
+  .tts-hero__title, .tts-hero__lede, .tts-hero__note { max-width: 20ch; }
+  .tts-hero__lede, .tts-hero__note { max-width: 46ch; }
+}
+
+/* The donation page needs a separate visible photo banner on mobile,
+   because there its opaque donate panel covers the background still.
+   This page has no such panel — the type sits directly on the image —
+   so the background works at every width, and a banner would only cost
+   ~110px of vertical space above the CTA for a picture already on
+   screen. The <img> stays in the markup as the no-background fallback
+   (some proxies and data-saver modes drop CSS background images) but is
+   never displayed. See the small-phone block below for why that space
+   matters. */
+.tts-hero__photo-mobile { display: none; }
+@media (max-width: 859px) {
+  /* Heavier, flatter scrim: on a narrow column the type runs across the
+     full frame rather than sitting in the darkened left third. */
+  .tts-hero {
+    background-image:
+      linear-gradient(180deg, rgba(6,14,16,0.86) 0%, rgba(6,14,16,0.90) 60%, rgba(6,14,16,0.94) 100%),
+      url("../img/hero-photo.jpg");
+    background-position: center 30%;
+  }
+  .tts-hero__inner { padding-top: var(--space-5); padding-bottom: var(--space-6); }
+}
+
+/* Small phones: the brief is explicit that the CTA must not be buried
+   (§4 "do not bury the CTA below the synopsis"). Measured on a
+   375x667 viewport the primary button was landing at ~571px, which is
+   below the usable fold once browser chrome is counted. These are the
+   trims that bring it up — shorter banner, tighter display size, body
+   -sized lede — re-measured at 320x568, 375x667 and 390x844. If you
+   add anything to the hero, re-measure. */
+@media (max-width: 480px) {
+  .tts-hero__inner { padding-top: var(--space-5); padding-bottom: var(--space-5); }
+  .tts-hero__eyebrow { margin-bottom: var(--space-3); }
+  .tts-hero__title { font-size: clamp(2rem, 8.5vw, 2.5rem); margin-bottom: var(--space-3); }
+  .tts-hero__lede { font-size: var(--fs-body); margin-bottom: var(--space-4); }
+  .tts-hero__actions { margin-bottom: var(--space-3); }
+  .tts-btn { width: 100%; }
+}
+
+.tts-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+}
+.tts-hero__eyebrow span {
+  font-size: var(--fs-overline);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-overline);
+  color: var(--tunatruth-teal);
+  font-weight: 700;
+}
+.tts-hero__title {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 9vw, var(--fs-display-lg));
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--ipnlf-white);
+  text-wrap: balance;
+}
+.tts-hero__lede {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-body-lg);
+  color: var(--text-on-dark-soft);
+}
+.tts-hero__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+.tts-hero__note {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--text-on-dark-soft);
+}
+
+/* ---- generic sections ----
+   Three surfaces, alternated: white (default), cinematic dark, soft
+   foam. That alternation is what separates sections here — no rules,
+   no dividers, no per-section decoration. */
+.tts-section { padding: var(--space-7) 0; }
+.tts-section--soft { background: var(--surface-soft); }
+.tts-section--dark { background: var(--surface-dark); color: var(--text-on-dark-soft); }
+.tts-section--dark .tts-section__title { color: var(--ipnlf-white); }
+.tts-section--form { background: var(--surface-soft); }
+
+.tts-section__title {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-display);
+  color: var(--text-strong);
+  text-wrap: balance;
+}
+.tts-section__lede {
+  margin: 0 0 var(--space-6);
+  max-width: 58ch;
+  font-size: var(--fs-body-lg);
+  color: var(--text-muted);
+}
+
+/* ---- who can host ----
+   A plain list, not cards: this section's only job is "yes, that's
+   me". Making it a card grid would put it in direct visual
+   competition with "Why host", which is the one grid on the page. */
+.tts-hostlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-5) var(--space-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) { .tts-hostlist { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .tts-hostlist { grid-template-columns: repeat(3, 1fr); } }
+.tts-hostlist__item { border-top: 2px solid var(--ipnlf-foam); padding-top: var(--space-3); }
+.tts-hostlist__item h3 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.tts-hostlist__item p { margin: 0; color: var(--text-muted); font-size: var(--fs-body-sm); }
+
+/* ---- why host (the one card grid) ---- */
+.tts-why {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .tts-why { grid-template-columns: 1fr 1fr; } }
+.tts-why__card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-on-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.tts-why__card h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-h3);
+  font-family: var(--font-display);
+  letter-spacing: var(--ls-display);
+  color: var(--tunatruth-teal);
+}
+.tts-why__card p { margin: 0; color: var(--text-on-dark-soft); font-size: var(--fs-body-sm); }
+
+/* ---- what we provide ---- */
+.tts-provide { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+@media (min-width: 860px) { .tts-provide { grid-template-columns: 1.35fr 1fr; gap: var(--space-8); align-items: start; } }
+.tts-provide__main p { color: var(--text-muted); max-width: 56ch; }
+.tts-checklist { list-style: none; margin: var(--space-4) 0; padding: 0; }
+.tts-checklist li {
+  position: relative;
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-3);
+  color: var(--text-body);
+}
+/* Tick drawn in CSS rather than an icon font or six inline SVGs —
+   this is the only icon-ish thing on the page, deliberately. */
+.tts-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.45em;
+  width: 14px;
+  height: 7px;
+  border-left: 2.5px solid var(--ipnlf-teal-deep);
+  border-bottom: 2.5px solid var(--ipnlf-teal-deep);
+  transform: rotate(-45deg);
+}
+.tts-provide__caveat {
+  margin: var(--space-4) 0 0;
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+}
+.tts-provide__aside {
+  background: var(--surface-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.tts-provide__aside h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  letter-spacing: var(--ls-display);
+  color: var(--text-strong);
+}
+.tts-provide__aside p { margin: 0 0 var(--space-3); color: var(--text-muted); font-size: var(--fs-body-sm); }
+.tts-provide__formats { margin-bottom: var(--space-2) !important; font-weight: 600; color: var(--text-body) !important; }
+.tts-formats { margin: 0 0 var(--space-3); padding-left: var(--space-5); color: var(--text-muted); font-size: var(--fs-body-sm); }
+.tts-formats li { margin-bottom: var(--space-1); }
+.tts-provide__formats-note { margin: 0 !important; font-style: italic; }
+
+/* ---- how it works ---- */
+.tts-steps { list-style: none; margin: 0 0 var(--space-6); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+@media (min-width: 760px) { .tts-steps { grid-template-columns: repeat(4, 1fr); gap: var(--space-5); } }
+.tts-step { display: flex; gap: var(--space-4); align-items: flex-start; }
+@media (min-width: 760px) { .tts-step { flex-direction: column; gap: var(--space-3); } }
+.tts-step__n {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ipnlf-deep);
+  color: var(--ipnlf-white);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1;
+  padding-top: 4px; /* Bebas sits high in its box */
+}
+.tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
+.tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
+
+/* The permissions note — quiet, but set apart from the steps so it is
+   not skimmed past. It is the page's one legal-ish caveat. */
+.tts-note {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--ipnlf-orange);
+  background: var(--ipnlf-white);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+  max-width: 68ch;
+}
+.tts-note strong { color: var(--text-strong); }
+
+/* ---- about the film + award ---- */
+.tts-about { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+@media (min-width: 860px) { .tts-about { grid-template-columns: 1.4fr 1fr; gap: var(--space-8); align-items: start; } }
+.tts-about__body p { color: var(--text-muted); max-width: 60ch; }
+.tts-about__credit { font-size: var(--fs-body-sm); }
+
+.tts-award {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.tts-award__badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3) !important;
+}
+.tts-award__badge img { height: 22px; width: auto; border-radius: 3px; }
+.tts-award__badge span {
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-overline);
+  color: var(--ipnlf-teal-deep);
+}
+.tts-award h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  letter-spacing: var(--ls-display);
+  color: var(--text-strong);
+}
+.tts-award p { margin: 0 0 var(--space-3); font-size: var(--fs-body-sm); color: var(--text-muted); }
+.tts-award p:last-child { margin-bottom: 0; }
+
+/* ---- Serena ---- */
+.tts-serena { display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 860px) { .tts-serena { grid-template-columns: 1fr 1.2fr; gap: var(--space-8); } }
+.tts-serena__media { margin: 0; }
+.tts-serena__media img { width: 100%; border-radius: var(--radius-md); aspect-ratio: 4 / 3; object-fit: cover; }
+.tts-serena__body p { color: var(--text-on-dark-soft); max-width: 56ch; }
+.tts-serena__bio { font-size: var(--fs-body-sm); }
+
+/* ---- form ---- */
+.tts-form-wrap { max-width: 760px; }
+.tts-form {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+  background: var(--ipnlf-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+@media (min-width: 680px) { .tts-form { grid-template-columns: 1fr 1fr; padding: var(--space-6); } }
+.tts-field--wide, .tts-form__foot, .tts-form__error { grid-column: 1 / -1; }
+
+.tts-field label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--text-strong);
+}
+.tts-req { color: var(--ipnlf-orange); }
+.tts-field input[type="text"],
+.tts-field input[type="email"],
+.tts-field select,
+.tts-field textarea {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--ipnlf-white);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  color: var(--text-body);
+}
+.tts-field textarea { resize: vertical; }
+.tts-field input:focus, .tts-field select:focus, .tts-field textarea:focus {
+  outline: 2px solid var(--ipnlf-deep);
+  outline-offset: 1px;
+  border-color: var(--ipnlf-deep);
+}
+.tts-field__hint { margin: var(--space-1) 0 0; font-size: var(--fs-caption); color: var(--text-muted); }
+.tts-field--check label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-weight: 400;
+  font-size: var(--fs-body-sm);
+  color: var(--text-body);
+}
+.tts-field--check input { accent-color: var(--ipnlf-deep); margin-top: 3px; flex-shrink: 0; }
+
+/* Invalid state uses a border colour AND a text message — never
+   colour alone. */
+.tts-field.is-invalid input,
+.tts-field.is-invalid select,
+.tts-field.is-invalid textarea { border-color: #B3261E; }
+.tts-field__error { margin: var(--space-1) 0 0; font-size: var(--fs-caption); color: #B3261E; font-weight: 600; }
+
+/* Honeypot — off-screen rather than display:none, since some bots
+   skip hidden fields but fill off-screen ones. aria-hidden and
+   tabindex="-1" in the markup keep it away from real users. */
+.tts-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.tts-form__foot { display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+@media (min-width: 680px) { .tts-form__foot { flex-direction: row; align-items: center; gap: var(--space-5); } }
+.tts-form__privacy { margin: 0; font-size: var(--fs-caption); color: var(--text-muted); max-width: 46ch; }
+.tts-form__error {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: #FDECEA;
+  color: #7A1C16;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+}
+
+/* PROTOTYPE notice — visually loud on purpose. This must never be
+   mistaken for a working form, and it disappears the moment
+   config.js formEndpoint is set. */
+.tts-form__preview {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border: 2px dashed var(--ipnlf-orange);
+  border-radius: var(--radius-md);
+  background: #FFF6EA;
+  color: var(--text-body);
+  font-size: var(--fs-body-sm);
+}
+.tts-form__alt { margin: var(--space-4) 0 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
+
+/* ---- footer ---- */
+.tt-footer { background: var(--surface-dark); padding: var(--space-6) 0; }
+.tt-footer__inner { display: flex; flex-direction: column; gap: var(--space-4); align-items: center; text-align: center; }
+.tt-footer__brands { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; justify-content: center; }
+.tt-footer__x { color: var(--text-on-dark-soft); }
+.tt-footer__links { display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center; }
+.tt-footer__links a { color: var(--text-on-dark-soft); font-size: var(--fs-body-sm); text-decoration: none; }
+.tt-footer__links a:hover { color: var(--ipnlf-white); }
+.tt-footer__copy { margin: 0; color: var(--text-on-dark-soft); font-size: var(--fs-caption); }
+
+/* ---- focus visibility ---- */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--ipnlf-gold);
+  outline-offset: 2px;
+}
+/* On the dark sections gold-on-near-black is the visible pair; on
+   light sections it needs the darker ring to stay distinguishable. */
+.tts-section:not(.tts-section--dark) a:focus-visible,
+.tts-section:not(.tts-section--dark) button:focus-visible {
+  outline-color: var(--ipnlf-deep);
+}
