@@ -38,32 +38,38 @@ const SCREENINGS_CONFIG = {
     secondary: "ipnlf",
   },
 
-  // --- Enquiry form -------------------------------------------------
-  // formEndpoint is the ONE value to change to make this form real.
+  // --- Enquiry form (Beacon CRM) ------------------------------------
+  // Enquiries go straight into IPNLF's Beacon CRM as records, rather
+  // than to an inbox or a form-service dashboard. That is the whole
+  // point of this route: no rekeying, and submissions deduplicate
+  // against people already in the CRM.
   //
-  // null  = prototype mode. The form renders fully (real fields, real
-  //         validation, real error states) but is visibly marked as
-  //         not connected and the submit button is disabled. It will
-  //         NEVER show a fake "thanks, we'll be in touch" screen —
-  //         a demo that looks like it works is how real enquiries get
-  //         silently binned.
-  // "https://formspree.io/f/xxxxxxx" (or Basin/Getform equivalent)
-  //       = live. The form POSTs there; set fallbackEmail below too.
+  // CONSEQUENCE, accepted knowingly: Beacon owns the form. The fields,
+  // their validation, and the form's appearance are all configured in
+  // Beacon, not here. Nothing in this repo controls them. Font, colours
+  // and logo are set on the Beacon side to match this page.
   //
-  // BLOCKED ON IPNLF: which service, who owns the account, and which
-  // mailbox receives it. See README-screenings.md.
-  formEndpoint: null,
+  // There is also a Beacon REST API, which would have let us keep our
+  // own markup — but it needs a secret key, and a key in client-side
+  // code is a public key. That needs a server; this site has none.
+  //
+  // PRIVACY: the SDK is a third-party script that loads with the page,
+  // so a request reaches Beacon before any consent. Beacon's own
+  // guidance is to treat their form as a "necessary" cookie, since
+  // gating it behind consent stops the form loading at all. That is a
+  // deliberate decision, not an oversight — see README "Privacy".
+  // Note it is a different stance from the trailer, which stays behind
+  // a click precisely to avoid this.
+  beacon: {
+    account: "ipnlf",
+    formId: "f5c48138",
+    sdkUrl: "https://static.beaconproducts.co.uk/js-sdk/production/beaconcrm.min.js",
+  },
 
-  // Plain email fallback, shown next to the form. Some institutional
-  // users will not use a web form at all, on policy or habit — and
-  // while formEndpoint is null this is the only thing on the page
-  // that actually reaches anyone.
-  // Confirmed by the user 2026-10-01: info@ipnlf.org, IPNLF's own
-  // general address. A shared alias, not an individual's inbox, which
-  // was the thing that mattered — but it is also the address everything
-  // else comes to, so screening enquiries will land in general traffic.
-  // Worth revisiting if volume justifies a dedicated alias.
-  // NOTE: duplicated by hand in the <noscript> block in index.html.
+  // Plain email route, shown under the form. Some institutional users
+  // will not use a web form at all, on policy or habit, and it is the
+  // fallback if the SDK is blocked by an ad or privacy extension —
+  // which Beacon's own guidance warns does happen.
   fallbackEmail: "info@ipnlf.org",
 
   // --- Trailer ------------------------------------------------------

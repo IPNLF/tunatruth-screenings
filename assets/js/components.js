@@ -364,134 +364,52 @@ const TTS = (() => {
     </section>`;
   }
 
-  // ---- 8. the enquiry form -------------------------------------
-  // See the long comment above renderFormState() for why the submit
-  // button is disabled while cfg.formEndpoint is null, and what has
-  // to happen before this form can receive anything at all.
+  // ---- 8. the enquiry form (Beacon CRM) ------------------------
+  // The form itself is Beacon's, rendered into the container below by
+  // their SDK. Its fields, validation and appearance are configured in
+  // Beacon, not here — see config.js `beacon` for why, and for the
+  // privacy trade-off that comes with it.
+  //
+  // IMPORTANT ORDERING: this page builds <main> with innerHTML at
+  // runtime, so the container does not exist when the document first
+  // parses. The Beacon SDK is therefore loaded AFTER the sections are
+  // rendered (see loadBeacon(), called from index.html), not from a
+  // <script> tag in the markup. Load it earlier and the SDK can scan
+  // for .beacon-form before this container exists, and the form never
+  // appears.
   function requestForm() {
-    const orgOptions = cfg.orgTypes.map((o) => `<option value="${o}">${o}</option>`).join("");
-    const bandOptions = cfg.audienceBands.map((b) => `<option value="${b}">${b}</option>`).join("");
-    const kindOptions = cfg.screeningKinds.map((k) => `<option value="${k}">${k}</option>`).join("");
-    const isLive = Boolean(cfg.formEndpoint);
-
-    // PROTOTYPE NOTICE — rendered only while formEndpoint is null.
-    // Deleting this block and setting formEndpoint are the two (and
-    // only two) steps to go live; they are kept adjacent on purpose.
-    const previewNotice = isLive ? "" : `
-      <p class="tts-form__preview" role="status">
-        <strong>Preview only.</strong>
-        This form is not yet connected — nothing submitted here would be received by anyone.
-        To ask about a screening today, email <a href="mailto:${cfg.fallbackEmail}">${cfg.fallbackEmail}</a>.
-      </p>`;
-
+    const b = cfg.beacon;
+    if (!b || !b.account || !b.formId) return "";
     return `<section class="tts-section tts-section--form" id="request">
       <div class="tt-container tts-form-wrap">
         <h2 class="tts-section__title">Request a screening</h2>
-        ${previewNotice}
 
-        <form class="tts-form" novalidate ${isLive ? `action="${cfg.formEndpoint}" method="POST"` : ""}>
-          <div class="tts-field">
-            <label for="f-name">Your name <span class="tts-req">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-          </div>
+        <!-- Beacon renders into this div. Do not add children: the SDK
+             replaces its contents. -->
+        <div class="beacon-form" data-account="${b.account}" data-form="${b.formId}"></div>
 
-          <div class="tts-field">
-            <label for="f-email">Email <span class="tts-req">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-          </div>
-
-          <div class="tts-field">
-            <label for="f-org">Organisation <span class="tts-req">*</span></label>
-            <input id="f-org" name="organisation" type="text" autocomplete="organization" required>
-          </div>
-
-          <div class="tts-field">
-            <label for="f-orgtype">Type of organisation <span class="tts-req">*</span></label>
-            <select id="f-orgtype" name="organisationType" required>
-              <option value="">Please choose…</option>
-              ${orgOptions}
-            </select>
-          </div>
-
-          <div class="tts-field">
-            <label for="f-country">Country <span class="tts-req">*</span></label>
-            <input id="f-country" name="country" type="text" autocomplete="country-name" required>
-          </div>
-
-          <div class="tts-field">
-            <label for="f-audience">Approximate audience size <span class="tts-req">*</span></label>
-            <select id="f-audience" name="audienceSize" required>
-              <option value="">Please choose…</option>
-              ${bandOptions}
-            </select>
-          </div>
-
-          <div class="tts-field">
-            <label for="f-kind">Is the screening… <span class="tts-req">*</span></label>
-            <select id="f-kind" name="screeningKind" required>
-              <option value="">Please choose…</option>
-              ${kindOptions}
-            </select>
-            <p class="tts-field__hint">This is the part that decides which permissions apply.</p>
-          </div>
-
-          <!-- Free text, not a date picker, on purpose: most hosts do
-               not have a date at enquiry stage, and a picker forces a
-               false precision that then has to be unpicked by email. -->
-          <div class="tts-field">
-            <label for="f-when">Preferred date or timeframe</label>
-            <input id="f-when" name="timeframe" type="text" placeholder="e.g. &quot;some time in the spring term&quot;">
-          </div>
-
-          <div class="tts-field tts-field--wide">
-            <label for="f-notes">Anything else we should know?</label>
-            <textarea id="f-notes" name="notes" rows="4"></textarea>
-          </div>
-
-          <!-- OPEN QUESTION (README-screenings.md): this asks about
-               something IPNLF has not yet decided it can offer. It is
-               worded as interest, not a request, and the copy above it
-               in "We'll help you get started" is scoped to match — but
-               if the answer turns out to be "we cannot offer speakers",
-               remove this field rather than reword it. -->
-          <div class="tts-field tts-field--wide tts-field--check">
-            <label>
-              <input type="checkbox" name="speakerInterest" value="yes">
-              I'd be interested in a post-screening discussion or speaker, if one is available
-            </label>
-          </div>
-
-          <!-- Honeypot: named innocuously, hidden from sight and from
-               assistive tech, never focusable. Most form services also
-               look for a field named _gotcha. -->
-          <div class="tts-honeypot" aria-hidden="true">
-            <label for="f-website">Website</label>
-            <input id="f-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
-          </div>
-
-          <div class="tts-form__foot">
-            <button type="submit" class="tts-btn tts-btn--primary" ${isLive ? "" : "disabled"}>
-              Request a screening
-            </button>
-            <!-- PRIVACY: this is the point of collection, so the notice
-                 belongs here. The link target is IPNLF's existing
-                 privacy policy; whether it already covers enquiries
-                 handled by a third-party form processor is an OPEN
-                 QUESTION — see README-screenings.md. -->
-            <p class="tts-form__privacy">
-              We'll use these details only to reply to you about a screening.
-              See the <a href="https://ipnlf.org/privacy-policy/" target="_blank" rel="noopener">IPNLF privacy policy</a>.
-            </p>
-          </div>
-
-          <!-- tabindex="-1" so initInteractions() can move focus here
-               programmatically; role="alert" so it is announced. -->
-          <p class="tts-form__error" data-role="form-error" role="alert" tabindex="-1" hidden></p>
-        </form>
-
+        <!-- Always visible, not a fallback that only appears on failure:
+             if the SDK is blocked by a privacy extension (Beacon's own
+             guidance warns this happens) the container stays empty and
+             silent, so this line is the only thing left. -->
         <p class="tts-form__alt">Prefer email? Write to <a href="mailto:${cfg.fallbackEmail}">${cfg.fallbackEmail}</a>.</p>
       </div>
     </section>`;
+  }
+
+  // Injects the Beacon SDK. Called from index.html AFTER the sections
+  // are in the DOM — see the ordering note on requestForm().
+  // Guarded on the script id, exactly as Beacon's own snippet is, so it
+  // is safe to call more than once.
+  function loadBeacon() {
+    const b = cfg.beacon;
+    if (!b || !b.sdkUrl) return;
+    const id = "beacon-js-sdk";
+    if (document.getElementById(id)) return;
+    const el = document.createElement("script");
+    el.id = id;
+    el.src = b.sdkUrl;
+    document.head.appendChild(el);
   }
 
   function footer() {
@@ -523,120 +441,26 @@ const TTS = (() => {
     // Trailer: swap the facade for the real player on click. Nothing is
     // requested from YouTube before this runs.
     const trailerBtn = document.querySelector('[data-role="trailer-play"]');
-    if (trailerBtn) {
-      trailerBtn.addEventListener("click", () => {
-        const id = trailerBtn.dataset.youtubeId;
-        if (!id) return;
-        const frame = document.createElement("iframe");
-        // youtube-nocookie + autoplay (the click IS the gesture that
-        // permits it) + rel=0 so the end screen does not fill with
-        // unrelated channels' videos.
-        frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
-        frame.title = `Trailer for ${cfg.filmName}`;
-        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        frame.allowFullscreen = true;
-        frame.className = "tts-trailer__frame";
-        trailerBtn.replaceWith(frame);
-        frame.focus();
-      });
-    }
-
-    const form = document.querySelector(".tts-form");
-    if (!form) return;
-    const errorEl = form.querySelector('[data-role="form-error"]');
-
-    // Native validity is used for the rules themselves (required,
-    // type=email) — no re-implemented email regex — but the messages
-    // are rendered inline rather than left to the browser's bubbles,
-    // which are inconsistent and disappear on scroll.
-    function fieldError(field, message) {
-      const wrap = field.closest(".tts-field");
-      if (!wrap) return;
-      wrap.classList.add("is-invalid");
-      field.setAttribute("aria-invalid", "true");
-      let msg = wrap.querySelector(".tts-field__error");
-      if (!msg) {
-        msg = document.createElement("p");
-        msg.className = "tts-field__error";
-        wrap.appendChild(msg);
-      }
-      msg.textContent = message;
-      // Tie the message to the field so a screen reader hears it.
-      const id = `${field.id}-error`;
-      msg.id = id;
-      field.setAttribute("aria-describedby", id);
-    }
-
-    function clearError(field) {
-      const wrap = field.closest(".tts-field");
-      if (!wrap) return;
-      wrap.classList.remove("is-invalid");
-      field.removeAttribute("aria-invalid");
-      const msg = wrap.querySelector(".tts-field__error");
-      if (msg) msg.remove();
-    }
-
-    const fields = [...form.querySelectorAll("input, select, textarea")]
-      .filter((f) => f.name !== "_gotcha");
-
-    fields.forEach((f) => {
-      // Validate on blur, not on every keystroke — flagging an email
-      // as invalid while it is still being typed is just noise.
-      f.addEventListener("blur", () => {
-        if (f.checkValidity()) clearError(f);
-      });
-      f.addEventListener("input", () => {
-        if (f.checkValidity()) clearError(f);
-      });
-    });
-
-    form.addEventListener("submit", (e) => {
-      let firstInvalid = null;
-      fields.forEach((f) => {
-        clearError(f);
-        if (!f.checkValidity()) {
-          const message = f.validity.valueMissing
-            ? "This one is needed."
-            : f.type === "email"
-              ? "That doesn't look like an email address."
-              : "Please check this.";
-          fieldError(f, message);
-          if (!firstInvalid) firstInvalid = f;
-        }
-      });
-
-      if (firstInvalid) {
-        e.preventDefault();
-        firstInvalid.focus();
-        return;
-      }
-
-      // PROTOTYPE GUARD — while cfg.formEndpoint is null there is
-      // nowhere for this to go, so the submit is stopped and the
-      // preview notice is pointed at. It deliberately does NOT show a
-      // success state: a demo that appears to work is how real
-      // enquiries end up silently binned. The payload is logged so the
-      // field shape can be reviewed without a live endpoint.
-      if (!cfg.formEndpoint) {
-        e.preventDefault();
-        const payload = Object.fromEntries(new FormData(form).entries());
-        delete payload._gotcha;
-        console.info("[screenings prototype] form is valid; this is what would be sent:", payload);
-        if (errorEl) {
-          errorEl.hidden = false;
-          errorEl.textContent = "This form is not connected yet, so nothing was sent. Please email " + cfg.fallbackEmail + " instead.";
-          errorEl.focus();
-        }
-        return;
-      }
-      // Live: the form posts natively to cfg.formEndpoint. No fetch
-      // wrapper — a native POST still works if this script fails to
-      // run, and the form service renders its own confirmation.
+    if (!trailerBtn) return;
+    trailerBtn.addEventListener("click", () => {
+      const id = trailerBtn.dataset.youtubeId;
+      if (!id) return;
+      const frame = document.createElement("iframe");
+      // youtube-nocookie + autoplay (the click IS the gesture that
+      // permits it) + rel=0 so the end screen does not fill with
+      // unrelated channels' videos.
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      frame.title = `Trailer for ${cfg.filmName}`;
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      frame.allowFullscreen = true;
+      frame.className = "tts-trailer__frame";
+      trailerBtn.replaceWith(frame);
+      frame.focus();
     });
   }
 
   return {
     header, hero, whoCanHost, whyHost, whatWeProvide, howItWorks,
-    aboutFilm, serena, requestForm, footer, initInteractions,
+    aboutFilm, serena, requestForm, footer, initInteractions, loadBeacon,
   };
 })();

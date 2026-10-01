@@ -53,28 +53,37 @@ The cost is real and recurring: **a brand change now has to be made twice, by ha
 
 ---
 
-## The form is not connected
+## The form is Beacon's, and that has consequences
 
-`config.js` → `formEndpoint` is `null`. While it is null:
+Enquiries go straight into IPNLF's Beacon CRM as records, deduplicated against people already there. No rekeying, no second dashboard to check. For a small team that is the right trade, and it is why this route was chosen over a form service.
 
-- the form renders fully — real fields, real validation, real error states;
-- a loud dashed notice says it is preview only and nothing will be received;
-- the submit button is **disabled**;
-- a valid submission is blocked, logs its payload to the console, and shows an honest message pointing at the email address.
+`config.js` -> `beacon` holds the account (`ipnlf`), the form id (`f5c48138`) and the SDK URL. Nothing else in this repo touches the form.
 
-**It never shows a "thanks, we'll be in touch" screen.** A demo that looks like it works is how real enquiries get silently binned if this is shared with a stakeholder or indexed.
+**Beacon owns the form completely.** It renders as a cross-origin iframe from `ipnlf.beaconforms.com`, so the page cannot style it, validate it, or change a single field. Font, colours and logo are configured on the Beacon side. The hand-built form that used to live here (nine fields, inline validation, honeypot) was deleted along with its CSS; it is in git history if this is ever revisited.
 
-Setting `formEndpoint` to a real URL turns all of that off in one edit: the form gains `action`/`method`, the notice disappears, the button enables, and it POSTs natively (no `fetch` wrapper — a native POST still works if the script fails to load).
+The Beacon REST API would have let us keep our own markup, but it needs a secret key, and a key in client-side code is a public key. That needs a server, and this site has none.
 
-### To make it real, someone at IPNLF must decide
+### Ordering matters, and it is easy to break
 
-1. **Which mechanism.** Recommended: a third-party form endpoint (Formspree, Basin, Getform) behind the page's own styled form — it keeps the page on-brand, accessible and mobile-correct. Fallback: an embedded Google or Microsoft form, whichever suite IPNLF actually runs — free and unlimited, but it cannot be styled and will look like a Google product dropped into the page.
-2. ~~A destination mailbox.~~ **Confirmed 2026-10-01: `info@ipnlf.org`.** A shared alias rather than an individual's inbox, which was the point. It is also the address everything else arrives at, so screening enquiries will sit in general traffic — worth a dedicated alias if volume ever justifies one.
-3. **Who owns that inbox, and what response time we are willing to state.** An enquiry form with no named owner is worse than no form.
-4. If a paid tier: who holds the account. Formspree's free tier is ~50 submissions/month *account-wide* and keeps submissions for only 30 days — over the cap, submissions stop silently.
-5. **Privacy.** Name + email + organisation + country is personal data. The page links IPNLF's existing privacy policy at the point of collection, but someone must confirm that policy covers enquiries processed by a third-party (likely US-based) processor, and agree a retention period. If addresses would later be added to any mailing list, that needs its own separate, unticked consent — not this form.
+This page builds `<main>` with `innerHTML` at runtime, so the `.beacon-form` container does not exist when the document first parses. The SDK is therefore injected by `TTS.loadBeacon()` **after** the sections render, not from a `<script>` tag in the markup. Move it into the markup and the SDK can scan for `.beacon-form` before the container exists, and the form silently never appears.
 
----
+### What the form currently asks, and what that costs
+
+Because Beacon questions must map to existing CRM fields and new fields carry a cost, the form is much smaller than the one designed for this page. As built on 2026-10-01 it asks:
+
+First name, last name, email, organisation (all required); a contact-consent block; and **one required free-text box** labelled "Approximate audience size? Preferred date or timeframe? Interested in a speaker, if available?"
+
+Three consequences worth deciding on rather than absorbing:
+
+1. **Three questions in one box will produce poor answers.** People answer one of the three, or write a sentence covering none of them cleanly. **This costs nothing to improve:** reword that single existing field's label into one plain prompt rather than three stacked questions. No new fields, no new cost.
+2. **Nobody is asked whether the screening is private or open to the public.** That was the field that drives the permissions and licensing answer, and it is the one question tied to the still-unresolved question of who controls public-performance rights. It now has to be established by email on every single enquiry.
+3. **Country and organisation type are not collected.** Brief §18 wanted reach reported by country and organisation type. That is now impossible from the form, and no amount of analytics replaces it.
+
+### Privacy
+
+The Beacon SDK is a third-party script that loads with the page, so a request reaches Beacon before any consent. Beacon's own guidance is to treat their form as a "necessary" cookie, since gating it behind consent stops the form loading at all. That is a deliberate decision, and it is a **different stance from the trailer**, which stays behind a click specifically so that nothing third-party loads unasked. Someone at IPNLF should confirm they are comfortable with the difference.
+
+The consent block inside the form is marketing consent — "news and information about IPNLF and ways to support us". Worth noting that this page was deliberately kept free of fundraising asks (the donate link sits quietly in the footer), and this puts one in front of every host at the point of enquiry.
 
 ## Where this actually gets hosted
 

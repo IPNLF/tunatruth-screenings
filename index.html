@@ -84,6 +84,12 @@
   ].join('');
   document.getElementById('app-footer').innerHTML = TTS.footer();
   TTS.initInteractions();
+  // MUST come after the sections are rendered above: the Beacon SDK
+  // scans the DOM for .beacon-form, and this page builds <main> at
+  // runtime, so the container does not exist until the line above has
+  // run. Loading the SDK from a <script> tag in the markup instead
+  // would race it. See components.js requestForm().
+  TTS.loadBeacon();
 </script>
 
 <!-- Cloudflare Web Analytics — same beacon token as the donation site,
