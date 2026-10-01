@@ -26,9 +26,9 @@ const TTS = (() => {
 
   // ---- small building blocks ----------------------------------
 
-  function wordmarkIpnlf(size) {
+  function wordmarkIpnlf(size, onDark = false) {
     return `<a href="https://ipnlf.org" target="_blank" rel="noopener" aria-label="IPNLF — for one-by-one fishers (opens ipnlf.org)">
-      <img class="tt-logo tt-logo--ipnlf tt-logo--${size}" src="assets/img/ipnlf-logo.png" alt="IPNLF — for one-by-one fishers">
+      <img class="tt-logo tt-logo--ipnlf tt-logo--${size}" src="assets/img/${onDark ? "ipnlf-logo-white.png" : "ipnlf-logo.png"}" alt="IPNLF — for one-by-one fishers">
     </a>`;
   }
 
@@ -73,7 +73,7 @@ const TTS = (() => {
     return `<section class="tts-hero">
       <img class="tts-hero__photo-mobile" src="assets/img/hero-photo.jpg" alt="A still from The Tuna Truth" loading="eager">
       <div class="tt-container tts-hero__inner">
-        <h1 class="tts-hero__title">Host a screening of ${cfg.filmName}</h1>
+        <h1 class="tts-hero__title"><span class="tts-hero__title-lead">Host a screening</span> of ${cfg.filmName}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
         <p class="tts-hero__lede">Bring your workplace, school, university or community together to explore where tuna really comes from.</p>
         <div class="tts-hero__actions">
@@ -202,8 +202,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="assets/img/screening-poster-preview.png" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
-              <img src="assets/img/screening-poster-preview.png" alt="Sample screening poster with The Tuna Truth and IPNLF logos, Serena Appleby, and editable host, date, time, venue and booking details" width="842" height="1191">
+            <a href="assets/img/screening-poster-preview.png?v=20261001-dark" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
+              <img src="assets/img/screening-poster-preview.png?v=20261001-dark" alt="Sample screening poster with The Tuna Truth and IPNLF logos, Serena Appleby, and editable host, date, time, venue and booking details" width="842" height="1191">
               <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
             </a>
             <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>
@@ -321,7 +321,7 @@ const TTS = (() => {
         <div class="tt-footer__brands">
           ${wordmarkTunaTruth("xs", true)}
           <span class="tt-footer__x">×</span>
-          <span class="tt-logo-chip">${wordmarkIpnlf("xs")}</span>
+          ${wordmarkIpnlf("xs", true)}
         </div>
         <nav class="tt-footer__links" aria-label="Related links">
           <a href="https://www.tunatruth.com/" target="_blank" rel="noopener">tunatruth.com</a>

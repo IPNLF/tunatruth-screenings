@@ -199,6 +199,22 @@ a { color: var(--text-link); }
   color: var(--ipnlf-white);
   text-wrap: balance;
 }
+/* The first line takes the film's own title colour. --ipnlf-orange is
+   #E88C33; the orange baked into the wordmark is #E88C00, so this is
+   within a couple of percent of the poster's title treatment rather
+   than a new decision.
+   It is deliberately NOT --ipnlf-gold: gold stays exclusive to the
+   primary action, so the headline and the button do not become the
+   same colour ~100px apart. If this ever changes, re-check that the
+   button is still the one unmistakable warm element in the hero.
+   display:block makes the line break deliberate rather than leaving it
+   to text-wrap, so the colour always covers exactly "Host a screening"
+   and never half of the next phrase. */
+.tts-hero__title-lead {
+  display: block;
+  color: var(--ipnlf-orange);
+}
+
 .tts-hero__lede {
   margin: 0 0 var(--space-5);
   font-size: var(--fs-body-lg);
@@ -540,3 +556,7 @@ select:focus-visible, textarea:focus-visible {
   .tts-template-preview > a { display: block; }
   .tts-template-preview figcaption { margin-top: 16px; }
 }
+/* Keep practical and presenter copy at the same readable body size. */
+.tts-presenter__text > p, .tts-step p { font-size: var(--fs-body); }
+/* Keyboard focus stays visible for every link and disclosure. */
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--ipnlf-teal); outline-offset: 4px; }
