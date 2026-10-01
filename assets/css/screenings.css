@@ -543,7 +543,15 @@ select:focus-visible, textarea:focus-visible {
 .tts-hosting .tts-checklist li { margin-bottom: 12px; }
 .tts-hosting .tts-split__note { max-width: 48ch; margin-top: 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--ipnlf-teal-deep); }
 .tts-hosting .tts-audience-copy { max-width: 68ch; }
-.tts-hosting .tts-formats-line { margin-top: 16px; }
+/* The closing line is meant to sit on a single horizontal line, so it
+   opts out of the 68ch reading measure that would otherwise break it
+   over two.
+   It does NOT use white-space: nowrap. A previous version of that rule
+   elsewhere on this page met longer copy and silently clipped the text
+   at desktop width while forcing horizontal overflow at tablet width.
+   Letting it wrap naturally means it is one line wherever there is
+   room and still readable where there is not. */
+.tts-hosting .tts-formats-line { margin-top: 16px; max-width: none; }
 .tts-template-preview { grid-area: preview; margin: 0; display: flex; align-items: center; gap: 20px; }
 .tts-template-preview > a { flex: 0 0 130px; text-decoration: none; }
 .tts-template-preview img { width: 100%; height: auto; box-shadow: 0 6px 18px rgba(6,14,16,.14); }

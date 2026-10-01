@@ -184,9 +184,10 @@ const SCREENINGS_CONFIG = {
   // nothing on the page should imply that it does.
   weProvide: [
     "Film access and permissions for your event",
-    "A digital host pack including discussion prompts, editable promotional templates and sample invitations",
-    "Practical guidance to help you plan your screening",
+    "A digital host pack including discussion prompts, editable promotional posters and invitations",
+    "Practical planning guidance for your screening",
   ],
+
 
   youOrganise: [
     "A suitable venue, screen and sound equipment",
