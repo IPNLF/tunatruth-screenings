@@ -80,12 +80,6 @@ a { color: var(--text-link); }
   flex-wrap: wrap;
 }
 .tt-lockup { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
-.tt-lockup__joiner {
-  font-size: var(--fs-caption);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-overline);
-}
 .tt-header__link {
   color: var(--ipnlf-deep);
   font-size: var(--fs-body-sm);
@@ -259,16 +253,6 @@ a { color: var(--text-link); }
 }
 .tts-sub--spaced { margin-top: var(--space-7); }
 
-/* A quiet text link, used where a second action would otherwise
-   become a button competing with the one primary action. */
-.tts-quiet-link {
-  color: var(--text-on-dark);
-  font-size: var(--fs-body);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.tts-quiet-link:hover { color: var(--ipnlf-gold); }
-
 /* ---- trailer ----
    The facade and the real player occupy the same 16:9 box, so nothing
    shifts when one replaces the other. Capped rather than full width so
@@ -323,7 +307,6 @@ a { color: var(--text-link); }
   border-radius: var(--radius-md);
   background: var(--surface-dark);
 }
-.tts-trailer__caption { margin-top: var(--space-2); font-size: var(--fs-body-sm); color: var(--text-muted); }
 
 /* ---- 2. the film ---- */
 /* Row 1: trailer beside the synopsis. The trailer used to sit full
@@ -458,7 +441,7 @@ a { color: var(--text-link); }
 }
 
 /* ---- 4. how it works ---- */
-.tts-steps { list-style: none; margin: 0 0 var(--space-4); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+.tts-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
 @media (min-width: 760px) { .tts-steps { grid-template-columns: repeat(3, 1fr); } }
 .tts-step { display: flex; gap: var(--space-4); align-items: flex-start; }
 .tts-step__n {
@@ -478,7 +461,18 @@ a { color: var(--text-link); }
 }
 .tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
 .tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
-.tts-after { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
+
+/* The enquiry intro sits on one unwrapped line. The section lede
+   elsewhere is capped at a reading measure, which would break this
+   over two lines, so it opts out — but only where there is room.
+   Below ~720px it wraps normally rather than shrinking the type to
+   something unreadable just to hold one line. */
+@media (min-width: 720px) {
+  #request .tts-section__lede {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
 
 /* ---- form ---- */
 .tts-form-wrap { max-width: 760px; }

@@ -15,9 +15,9 @@
      4 How it works        what happens after I enquire?
      5 Enquire             how do I express interest?
 
-   ONE PRIMARY ACTION, worded the same everywhere it appears:
-   "Enquire about a screening", anchored to #request. "Ask a question"
-   is a quiet text link, not a competing button.
+   ONE PRIMARY ACTION, worded the same in the header and the hero:
+   "Enquire about a screening", anchored to #request. Nothing else on
+   the page competes with it.
    ============================================================ */
 const TTS = (() => {
 
@@ -46,11 +46,13 @@ const TTS = (() => {
   // accurate whichever way brandOrder is flipped.
   function brandLockup() {
     const primary = isTunaTruthPrimary ? wordmarkTunaTruth("sm", true) : wordmarkIpnlf("sm");
-    const joiner = isTunaTruthPrimary ? "Executive producer" : "Executive producer of";
     const secondary = isTunaTruthPrimary ? wordmarkIpnlf("xs") : wordmarkTunaTruth("xs", true);
+    // No joiner word (removed 2026-10-01). The marks sit adjacent and
+    // the relationship is stated accurately in the film credits
+    // instead, which avoids compressing "commissioned and executive
+    // produced by" into a two-word label that was previously wrong.
     return `<div class="tt-lockup">
       ${primary}
-      <span class="tt-lockup__joiner">${joiner}</span>
       ${secondary}
     </div>`;
   }
@@ -76,7 +78,6 @@ const TTS = (() => {
         <p class="tts-hero__lede">Workplaces, schools, universities and community groups can bring people together around the film, and start a conversation about where tuna really comes from.</p>
         <div class="tts-hero__actions">
           <a class="tts-btn tts-btn--primary" href="#request">Enquire about a screening</a>
-          <a class="tts-quiet-link" href="mailto:${cfg.fallbackEmail}?subject=${encodeURIComponent("Question about hosting a screening of " + cfg.filmName)}">Ask a question</a>
         </div>
       </div>
     </section>`;
@@ -104,7 +105,6 @@ const TTS = (() => {
           <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
         </span>
       </button>
-      <figcaption class="tts-trailer__caption">Watch the trailer, or <a href="https://www.youtube.com/watch?v=${t.youtubeId}" target="_blank" rel="noopener">open it on YouTube</a>.</figcaption>
     </figure>`;
   }
 
@@ -144,6 +144,16 @@ const TTS = (() => {
               <img src="assets/img/jackson-wild-logo.png" alt="Jackson Wild" loading="lazy">
               <span>Jackson Wild Media Awards 2026 ${a.status} — Onscreen Personality.</span>
             </p>
+
+            <!-- Film credits sit here, with the film, rather than
+                 nested under Serena's biography: they describe the
+                 production, not the presenter. -->
+            <details class="tts-disclosure">
+              <summary>Film credits</summary>
+              <!-- CONFIRMED factual credit — from the official poster
+                   asset, carried over unchanged from the donation page. -->
+              <p>${cfg.filmName} is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
+            </details>
           </div>
         </div>
 
@@ -161,12 +171,6 @@ const TTS = (() => {
               <summary>More about Serena</summary>
               <!-- Public biographical facts, from tunatruth.com/about-1 -->
               <p>Serena is a Filipino-British chef and presenter, known from BBC Three's <em>Hungry For It</em> and ITV's <em>Ainsley Harriott's National Trust Cook Off</em>, and the creator of the Kring Kringz pop-up.</p>
-            </details>
-            <details class="tts-disclosure">
-              <summary>Film credits</summary>
-              <!-- CONFIRMED factual credit — from the official poster
-                   asset, carried over unchanged from the donation page. -->
-              <p>${cfg.filmName} is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
             </details>
           </div>
         </div>
@@ -229,7 +233,7 @@ const TTS = (() => {
       {
         n: "1",
         title: "Enquire",
-        body: "Tell us roughly what you have in mind.",
+        body: "Let us know more about your plans for a screening.",
       },
       {
         n: "2",
@@ -255,7 +259,6 @@ const TTS = (() => {
       <div class="tt-container">
         <h2 class="tts-section__title">How it works</h2>
         <ol class="tts-steps">${items}</ol>
-        <p class="tts-after">Afterwards, share photos or feedback if you are happy to.</p>
       </div>
     </section>`;
   }
@@ -278,8 +281,8 @@ const TTS = (() => {
     if (!b || !b.account || !b.formId) return "";
     return `<section class="tts-section tts-section--form" id="request">
       <div class="tt-container">
-        <h2 class="tts-section__title">Enquire about a screening</h2>
-        <p class="tts-section__lede">Tell us roughly what you have in mind. This is an enquiry, not a booking — we'll reply with what's possible.</p>
+        <h2 class="tts-section__title">Enquire</h2>
+        <p class="tts-section__lede">Let us know your requirements. We will then get in touch to assist.</p>
 
         <div class="tts-form-wrap">
           <!-- Beacon renders into this div. Do not add children: the
