@@ -471,17 +471,8 @@ a { color: var(--text-link); }
 .tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
 .tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
 
-/* The enquiry intro sits on one unwrapped line. The section lede
-   elsewhere is capped at a reading measure, which would break this
-   over two lines, so it opts out — but only where there is room.
-   Below ~720px it wraps normally rather than shrinking the type to
-   something unreadable just to hold one line. */
-@media (min-width: 720px) {
-  #request .tts-section__lede {
-    max-width: none;
-    white-space: nowrap;
-  }
-}
+/* Keep the enquiry introduction readable at every width. */
+#request .tts-section__lede { max-width: 68ch; white-space: normal; }
 
 /* ---- form ---- */
 .tts-form-wrap { max-width: 760px; }
@@ -519,4 +510,33 @@ select:focus-visible, textarea:focus-visible {
 .tts-section button:focus-visible,
 .tts-section summary:focus-visible {
   outline-color: var(--ipnlf-deep);
+}
+
+/* Hosting: readable responsibilities with one tangible pack preview. */
+.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "support" "preview" "organise" "audience"; }
+.tts-hosting-support { grid-area: support; }
+.tts-hosting-organise { grid-area: organise; }
+.tts-hosting-audience { grid-area: audience; }
+.tts-hosting .tts-sub { font-size: 20px; color: var(--ipnlf-deep); margin-top: 0; margin-bottom: 16px; }
+.tts-hosting .tts-checklist li, .tts-hosting .tts-audience-copy, .tts-hosting .tts-formats-line, .tts-hosting .tts-split__note { font-size: 16px; color: var(--text-body); line-height: 1.6; }
+.tts-hosting .tts-checklist li { margin-bottom: 12px; }
+.tts-hosting .tts-split__note { max-width: 48ch; }
+.tts-hosting .tts-audience-copy { max-width: 68ch; }
+.tts-hosting .tts-formats-line { margin-top: 16px; }
+.tts-template-preview { grid-area: preview; margin: 0; display: flex; align-items: center; gap: 20px; }
+.tts-template-preview > a { flex: 0 0 130px; text-decoration: none; }
+.tts-template-preview img { width: 100%; height: auto; box-shadow: 0 6px 18px rgba(6,14,16,.14); }
+.tts-template-preview__link { display: block; margin-top: 10px; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.tts-template-preview figcaption { font-size: 14px; line-height: 1.5; color: var(--text-body); max-width: 26ch; }
+.tts-template-preview strong { display: block; color: var(--ipnlf-deep); font-size: 17px; margin-bottom: 6px; }
+.tts-template-preview small { display: block; font-size: 12px; margin-top: 10px; }
+.tts-template-preview a:focus-visible { outline: 3px solid var(--ipnlf-teal-deep); outline-offset: 6px; }
+@media (min-width: 760px) {
+  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "support organise" "audience preview"; gap: 32px 40px; }
+}
+@media (min-width: 1100px) {
+  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "support organise preview" "audience audience preview"; gap: 28px 36px; }
+  .tts-template-preview { display: block; }
+  .tts-template-preview > a { display: block; }
+  .tts-template-preview figcaption { margin-top: 16px; }
 }

@@ -185,7 +185,7 @@ const SCREENINGS_CONFIG = {
   weProvide: [
     "Film access and permissions agreed for your event",
     "A digital host pack with a checklist, discussion prompts, editable PowerPoint promotional templates and sample invitations",
-    "Help with questions about film access and using the pack",
+    "Practical guidance to help you plan your screening",
   ],
   youOrganise: [
     "A suitable venue, screen and sound equipment",
@@ -195,7 +195,7 @@ const SCREENINGS_CONFIG = {
 
   // Scoped hard (brief §5). Anything beyond the standard model is a
   // separate conversation, not an expectation set by this page.
-  extraSupportNote: "Speakers and additional content may be available by separate arrangement, depending on our team's capacity.",
+  extraSupportNote: "Interested in a speaker or additional content? Let us know when you enquire. Availability depends on our team's capacity.",
 
   // The public section names the audiences once, without six repeated
   // benefit descriptions. The original hostTypes copy remains above

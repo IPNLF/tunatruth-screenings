@@ -75,7 +75,7 @@ const TTS = (() => {
       <div class="tt-container tts-hero__inner">
         <h1 class="tts-hero__title">Host a screening of ${cfg.filmName}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
-        <p class="tts-hero__lede">Workplaces, schools, universities and community groups can bring people together around the film, and start a conversation about where tuna really comes from.</p>
+        <p class="tts-hero__lede">Bring your workplace, school, university or community together to explore where tuna really comes from.</p>
         <div class="tts-hero__actions">
           <a class="tts-btn tts-btn--primary" href="#request">Enquire about a screening</a>
         </div>
@@ -192,36 +192,35 @@ const TTS = (() => {
   function hostingSection() {
     const provide = cfg.weProvide.map((i) => `<li>${i}</li>`).join("");
     const organise = cfg.youOrganise.map((i) => `<li>${i}</li>`).join("");
-    const formats = cfg.formats.join(", ").replace(/, ([^,]*)$/, " or $1");
-
     return `<section class="tts-section tts-section--soft tts-hosting" id="hosting">
       <div class="tt-container">
         <h2 class="tts-section__title">Hosting a screening</h2>
-
-        <div class="tts-split">
-          <div class="tts-split__col">
+        <div class="tts-hosting-grid">
+          <div class="tts-hosting-support">
             <h3 class="tts-sub">Support from IPNLF</h3>
             <ul class="tts-checklist">${provide}</ul>
-            <!-- PACK STATUS: draft materials exist but are not offered
-                 as downloads here — see config.js packContents. Do not
-                 add download links until they are approved for public
-                 release. -->
-          </div>
-          <div class="tts-split__col">
-            <h3 class="tts-sub">What you organise</h3>
-            <ul class="tts-checklist tts-checklist--alt">${organise}</ul>
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
+          <figure class="tts-template-preview">
+            <a href="assets/img/screening-poster-preview.png" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
+              <img src="assets/img/screening-poster-preview.png" alt="Sample screening poster with The Tuna Truth and IPNLF logos, Serena Appleby, and editable host, date, time, venue and booking details" width="842" height="1191">
+              <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
+            </a>
+            <figcaption><strong>Make it your event</strong>Editable promotional templates included.<small>Sample design. Add your own event details in PowerPoint.</small></figcaption>
+          </figure>
+          <div class="tts-hosting-organise">
+            <h3 class="tts-sub">What you organise</h3>
+            <ul class="tts-checklist tts-checklist--alt">${organise}</ul>
+          </div>
+          <div class="tts-hosting-audience">
+            <h3 class="tts-sub">Who can host?</h3>
+            <p class="tts-audience-copy">${cfg.hostAudience}</p>
+            <p class="tts-formats-line">Show the film on its own, or follow it with a discussion, classroom activity or locally organised panel.</p>
+          </div>
         </div>
-
-        <h3 class="tts-sub tts-sub--spaced">Who can host?</h3>
-        <p class="tts-audience-copy">${cfg.hostAudience}</p>
-
-        <p class="tts-formats-line">Keep it simple with a screening, or add ${formats}.</p>
       </div>
     </section>`;
   }
-
   // ---- 4. How it works -----------------------------------------
   // Three short steps that do not restate the support lists above.
   // No repeated CTA at the end: the enquiry section begins a few
