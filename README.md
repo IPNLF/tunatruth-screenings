@@ -126,7 +126,9 @@ Flagged rather than done silently, per the working standard in §21.
 
 **1. The film section moved above the form.** The brief's §15 order puts the form at 6 and "About the film" at 7. A sustainability manager who has never heard of *The Tuna Truth* cannot decide to put it in front of 200 colleagues on the strength of the hosting logistics alone — credibility has to land before the ask. The hero CTA anchors straight to `#request`, so anyone already sold skips all of it, and the header carries a persistent "Request a screening" link. If you disagree, moving `TTS.requestForm()` up the array in `index.html` is a one-line change.
 
-**2. "We'll help you get started" and "More than a screening" merged into one section.** The brief lists them separately (§5 and §12), but both answer the same question — *what do I actually get, and how much work is this for me?* Split across two sections each had to be padded, so the reader met the same reassurance twice and it read thinner, not more generous. They are now one section with a checklist and a sidebar.
+**2. "We'll help you get started" and "More than a screening" were merged into one section — and the second half has since been cut.** The brief lists them separately (§5 and §12), but both answer the same question — *what do I actually get, and how much work is this for me?* Split across two sections each had to be padded, so the reader met the same reassurance twice. They became one section with a checklist and a sidebar.
+
+At review on 2026-10-01 that sidebar was removed, to be replaced by an image from the starter pack. **This means nothing on the page now covers brief §12**: the "a screening is a starting point, not an evening on its own" framing and the four optional event formats (screening only / plus facilitated discussion / plus a local panel / plus a team or classroom session) appear nowhere. That may well be the right call for the page's length, but it should be a deliberate decision rather than a side effect — the copy is preserved in the git history of `assets/js/components.js` if it needs to come back.
 
 **3. The form is 9 fields, not 11.**
 - **"Proposed screening location" cut.** Country plus organisation is enough to reply usefully at first contact; the venue is a second-email question and it made the form look longer than it is.
@@ -134,11 +136,13 @@ Flagged rather than done silently, per the working standard in §21.
 - **Audience size is a band, not a number.** Hosts rarely know a figure at enquiry stage, and a band is all that is needed to qualify.
 - **Preferred date is free text, not a date picker.** "Some time in the spring term" is a valid and useful answer; a picker forces a false precision that then has to be unpicked over email.
 
-**4. Only one card grid on the page.** "Why host" is cards; "Who can host" is a plain list, "We'll help you" is a checklist, "How it works" is numbered steps. Three consecutive card grids reads as an information dump regardless of word count (brief §16). Section differentiation is done with alternating surfaces — white / cinematic dark / soft foam — not with per-section decoration.
+**4. The hero was trimmed at review (2026-10-01).** The eyebrow row (TunaTruth wordmark plus a "Screenings" label) and the "Companies, schools, universities… are all welcome to ask" line below the buttons were both removed, to free vertical space. The wordmark duplicated the one in the header directly above it, and "Who can host" answers the audience question in more useful detail immediately below. The hero is now 439px tall at 375px wide, so both buttons sit well clear of the fold.
 
-**5. No "coming soon" download tiles for the screening pack.** The materials do not exist yet, and a page with four greyed-out placeholders looks abandoned on day one. The pack is described in prose. Adding a downloads block later is additive.
+**5. Only one card grid on the page.** "Why host" is cards; "Who can host" is a plain list, "We'll help you" is a checklist, "How it works" is numbered steps. Three consecutive card grids reads as an information dump regardless of word count (brief §16). Section differentiation is done with alternating surfaces — white / cinematic dark / soft foam — not with per-section decoration.
 
-**6. The "Oscars of nature filmmaking" framing is not used here**, per brief §10, even though the donation page uses it.
+**6. No "coming soon" download tiles for the screening pack.** The materials do not exist yet, and a page with four greyed-out placeholders looks abandoned on day one. The pack is described in prose. Adding a downloads block later is additive.
+
+**7. The "Oscars of nature filmmaking" framing is not used here**, per brief §10, even though the donation page uses it.
 
 ---
 
@@ -163,6 +167,7 @@ Everything below is marked `<!-- HOLDING COPY -->` in the source.
 
 - **A Serena portrait or a strong still of her.** The section currently reuses `og-image.jpg` and describes it honestly as "a still from The Tuna Truth". Brief §9 asks for a portrait. Swapping it is a `src` change in `serena()`.
 - **A hero still chosen for this page.** It currently reuses the donation page's `hero-photo.jpg`. Fine for a prototype, but the two pages will look like the same page if they sit side by side.
+- **An image for the "We'll help you get started" section.** The right-hand column is deliberately held open and blank, awaiting an image from the starter pack. See the `IMAGE SLOT — AWAITING ASSET` comment in `whatWeProvide()` and the `.tts-provide__aside--empty` rule in the CSS; both are to be deleted when the image goes in.
 - **A dedicated Open Graph image** for share previews (currently reuses the donation page's).
 - **The screening pack itself** — host guide, checklist, discussion guide, promo assets, social tiles, invitation copy.
 - Confirmation of whether the film has a trailer that could be embedded or linked.

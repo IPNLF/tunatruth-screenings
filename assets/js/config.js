@@ -99,7 +99,7 @@ const SCREENINGS_CONFIG = {
     },
     {
       title: "Schools &amp; universities",
-      body: "Use the film as a starting point for discussion around food systems, sustainability, marine conservation and human rights.",
+      body: "Use the film as a starting point for discussion around food systems, sustainability and human rights.",
     },
     {
       title: "NGOs &amp; community groups",
@@ -115,7 +115,7 @@ const SCREENINGS_CONFIG = {
     },
     {
       title: "Film &amp; environmental societies",
-      body: "Programme the film for an audience that already comes for documentary and environmental storytelling.",
+      body: "Show the film for an audience interested in high quality environmental storytelling.",
     },
   ],
 

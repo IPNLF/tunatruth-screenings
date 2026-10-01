@@ -62,7 +62,10 @@ const TTS = (() => {
     return `<section class="tts-hero">
       <img class="tts-hero__photo-mobile" src="assets/img/hero-photo.jpg" alt="A still from The Tuna Truth" loading="eager">
       <div class="tt-container tts-hero__inner">
-        <p class="tts-hero__eyebrow">${wordmarkTunaTruth("xs")} <span>Screenings</span></p>
+        <!-- REVIEW 2026-10-01 — the eyebrow row (TunaTruth wordmark +
+             "Screenings") was removed to free vertical space. The same
+             wordmark already sits in the header directly above, so it
+             was a duplicate. -->
         <h1 class="tts-hero__title">Host a screening of ${cfg.filmName}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
         <p class="tts-hero__lede">Bring the film to your workplace, school, university or community — and use it to start a conversation about the hidden impacts behind the tuna we buy.</p>
@@ -70,7 +73,9 @@ const TTS = (() => {
           <a class="tts-btn tts-btn--primary" href="#request">Host a screening</a>
           <a class="tts-btn tts-btn--ghost" href="mailto:${cfg.fallbackEmail}?subject=${encodeURIComponent("Question about hosting a screening of " + cfg.filmName)}">Ask us a question</a>
         </div>
-        <p class="tts-hero__note">Companies, schools, universities, NGOs, community groups, seafood businesses, conferences and film societies are all welcome to ask.</p>
+        <!-- REVIEW 2026-10-01 — the "who is welcome to ask" line was
+             removed from the hero. "Who can host" immediately below
+             answers the same question in more useful detail. -->
       </div>
     </section>`;
   }
@@ -168,23 +173,25 @@ const TTS = (() => {
           <!-- HOLDING COPY — the screening pack does not exist yet; see
                README-screenings.md "Assets still needed". Do not publish
                this list until the materials it describes are real. -->
-          <p>You do not need to organise everything from scratch. We can provide a simple screening pack to help you plan and promote your event:</p>
+          <p>We can provide a simple screening pack to help you plan and promote your event:</p>
           <ul class="tts-checklist">${list}</ul>
-          <p class="tts-provide__caveat">Depending on the event and our team's availability, we may also be able to help with a speaker or additional content. Tell us what you have in mind and we'll be straight with you about what we can do.</p>
+          <p class="tts-provide__caveat">Depending on the event and our team's availability, we may also be able to help with a speaker or additional content.</p>
         </div>
-        <aside class="tts-provide__aside">
-          <h3>More than a screening</h3>
-          <!-- HOLDING COPY — requires IPNLF approval -->
-          <p>A screening works best as a starting point rather than an evening on its own. The discussion prompts are there so the conversation carries on after the credits.</p>
-          <p class="tts-provide__formats">Hosts commonly choose one of:</p>
-          <ul class="tts-formats">
-            <li>Screening only</li>
-            <li>Screening plus facilitated discussion</li>
-            <li>Screening plus a local panel</li>
-            <li>Screening as part of a team or classroom session</li>
-          </ul>
-          <p class="tts-provide__formats-note">None of these are required. A straightforward screening is a perfectly good screening.</p>
-        </aside>
+        <!-- IMAGE SLOT — AWAITING ASSET (review 2026-10-01).
+             The "More than a screening" aside that sat here was removed
+             at the user's request; an image from the starter pack goes
+             in its place once it is supplied. The column is deliberately
+             left blank until then rather than filled with a placeholder
+             box, which would read as broken.
+
+             NOTE: removing that aside also removed the only copy on the
+             page covering brief §12 — the "a screening is a starting
+             point" framing and the four optional event formats
+             (screening only / + facilitated discussion / + local panel /
+             + team or classroom session). That content now appears
+             nowhere. Worth a deliberate decision about whether it
+             returns elsewhere. -->
+        <aside class="tts-provide__aside tts-provide__aside--empty" aria-hidden="true"></aside>
       </div>
     </section>`;
   }
