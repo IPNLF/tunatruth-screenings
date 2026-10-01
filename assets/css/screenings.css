@@ -372,19 +372,6 @@ a { color: var(--text-link); }
 .tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
 .tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
 
-/* The permissions note — quiet, but set apart from the steps so it is
-   not skimmed past. It is the page's one legal-ish caveat. */
-.tts-note {
-  margin: 0;
-  padding: var(--space-4) var(--space-5);
-  border-left: 3px solid var(--ipnlf-orange);
-  background: var(--ipnlf-white);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: var(--fs-body-sm);
-  color: var(--text-muted);
-  max-width: 68ch;
-}
-.tts-note strong { color: var(--text-strong); }
 
 /* ---- about the film + award ---- */
 .tts-about { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }

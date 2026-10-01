@@ -178,6 +178,7 @@ Not blocking the prototype. All of these need answers before launch, and none sh
 
 **Rights and access**
 1. Who controls public-performance/screening rights for the film? If IPNLF does not, this page is soliciting requests it may not be able to fulfil.
+   **Changed at review (2026-10-01):** the standalone "A note on permissions" block was cut from "How it works". Step 2, "We'll advise on screening access and permissions for your type of event", is now the only place on the page that says permissions depend on the event. Brief §14 is explicit that the page must not imply anyone may simply show the film, so that step's wording should not be changed without putting the point back somewhere.
 2. Is screening access free, paid or discretionary? *This is the first question a decision-maker asks, and the page currently does not answer it — expect it to generate email until it does.*
 3. Are virtual screenings permitted?
 4. Can hosts charge ticket fees? Can screenings be used for fundraising?

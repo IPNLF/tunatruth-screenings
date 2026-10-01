@@ -242,14 +242,16 @@ const TTS = (() => {
       <div class="tt-container">
         <h2 class="tts-section__title">How it works</h2>
         <ol class="tts-steps">${items}</ol>
-        <!-- Brief §14 — deliberately does NOT say screenings are free or
-             that anyone may simply download and show the film. Screening
-             rights are an OPEN QUESTION (README-screenings.md): do not
-             soften this line without an answer to who controls them. -->
-        <p class="tts-note">
-          <strong>A note on permissions.</strong>
-          Screening access and permissions depend on the type of event. Tell us what you are planning and we'll confirm the appropriate arrangements.
-        </p>
+        <!-- REVIEW 2026-10-01 — the standalone "A note on permissions"
+             block that sat here was cut at the user's request.
+             IMPORTANT: step 2 above ("We'll advise on screening access
+             and permissions for your type of event") is now the ONLY
+             place on the page that tells a host permissions depend on
+             the event. Brief §14 is explicit that the page must not
+             imply anyone may simply show the film, and who controls
+             public-performance rights is still an open question in the
+             README. Do not reword step 2 without putting the point
+             back somewhere. -->
       </div>
     </section>`;
   }
