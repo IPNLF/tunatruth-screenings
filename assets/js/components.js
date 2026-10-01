@@ -206,7 +206,7 @@ const TTS = (() => {
       {
         n: "1",
         title: "Tell us about your screening",
-        body: "Complete the short form below — your organisation, country, rough audience size and when you are thinking of.",
+        body: "Complete the short form below with a rough plan of your screening.",
       },
       {
         n: "2",
@@ -221,7 +221,13 @@ const TTS = (() => {
       {
         n: "4",
         title: "Tell us how it went",
-        body: "Share rough attendance, photos or feedback if you are happy to. It helps us understand where the film is reaching.",
+        // REVIEW 2026-10-01 — "rough attendance" was cut from this line at
+        // the user's request. Note the consequence: the form collects an
+        // EXPECTED audience band at enquiry stage, but nothing now asks
+        // for ACTUAL attendance afterwards, so the brief's §18 measure
+        // "estimated audience reached" can no longer be reported from
+        // what this page gathers. Flagged, not reinstated.
+        body: "Share photos or feedback if you are happy to. It helps us understand where the film is reaching.",
       },
     ];
     const items = steps.map((s) => `
