@@ -176,7 +176,8 @@ Everything below is marked `<!-- HOLDING COPY -->` in the source.
 
 ## Assets still needed
 
-- ~~A Serena portrait or a strong still of her.~~ **Supplied 2026-10-01.** Resized from a 3024px / 7.5MB PNG to 1200px / 93KB JPEG; the original was far too heavy to serve. The box is 16:9 rather than the old 4:3, which would have cropped the sides off a wide two-shot. **Its alt text still needs confirming** — it describes the scene without naming anyone, because who appears in the frame has not been confirmed. A credit line may also be needed.
+- ~~A Serena portrait or a strong still of her.~~ **Supplied 2026-10-01.** A 4:5 portrait crop of Serena holding a platter of grilled tuna, from a 3840x2160 frame; flat sky trimmed off the top so she fills more of it. Portrait rather than 16:9 because a letterbox in that narrow column reads as a strip. **A credit line may still be needed.**
+- ~~A poster frame for the trailer.~~ **Added 2026-10-01**, a kitchen still. It replaced the title card that was used first: the card already carries the film's name in large type, so the play button and label landed on top of lettering and the section read as clutter.
 - **A hero still chosen for this page.** It currently reuses the donation page's `hero-photo.jpg`. Fine for a prototype, but the two pages will look like the same page if they sit side by side.
 - **An image for the "We'll help you get started" section.** Still outstanding. The right-hand column is held open and blank; see the `IMAGE SLOT — AWAITING ASSET` comment in `whatWeProvide()` and the `.tts-provide__aside--empty` rule in the CSS, and follow the `<figure>` pattern in `serena()` when one arrives.
 - **A dedicated Open Graph image** for share previews (currently reuses the donation page's).

@@ -275,11 +275,8 @@ const TTS = (() => {
         <span class="tts-trailer__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="30" height="30"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
         </span>
-        <span class="tts-trailer__label">Watch the trailer</span>
       </button>
-      <figcaption class="tts-trailer__caption">
-        <a href="https://www.youtube.com/watch?v=${t.youtubeId}" target="_blank" rel="noopener">Watch on YouTube</a>
-      </figcaption>
+      <figcaption class="tts-trailer__caption">Watch the trailer, or <a href="https://www.youtube.com/watch?v=${t.youtubeId}" target="_blank" rel="noopener">open it on YouTube</a>.</figcaption>
     </figure>`;
   }
 
@@ -294,10 +291,12 @@ const TTS = (() => {
   function aboutFilm() {
     const a = cfg.award;
     return `<section class="tts-section" id="about">
+      <div class="tt-container">
+        <h2 class="tts-section__title">About ${cfg.filmName}</h2>
+        ${trailer()}
+      </div>
       <div class="tt-container tts-about">
         <div class="tts-about__body">
-          <h2 class="tts-section__title">About ${cfg.filmName}</h2>
-          ${trailer()}
           <!-- REVIEW 2026-10-01 — these three paragraphs were supplied by
                the user and match the donation page's "Behind the film"
                copy, replacing the holding synopsis that was here before. -->
@@ -343,15 +342,17 @@ const TTS = (() => {
   function serena() {
     return `<section class="tts-section tts-section--dark" id="serena">
       <div class="tt-container tts-serena">
-        <!-- Still supplied by the user 2026-10-01, replacing the
-             og-image.jpg stand-in. Resized from a 3024px / 7.5MB PNG to
-             1200px / 93KB JPEG — the original is far too heavy to serve.
-             ALT TEXT NEEDS CONFIRMING: it describes the scene without
-             naming anyone, because who appears in the frame has not been
-             confirmed. Replace with a proper description (and a credit,
-             if one is required) before launch. -->
+        <!-- Still supplied by the user 2026-10-01, cropped to portrait
+             from a 3840x2160 frame. Chosen over a kitchen two-shot
+             because this section is about Serena specifically: she is
+             alone, looking to camera, and holding the catch, which is
+             the subject the film is about. Cropped 4:5 rather than left
+             at 16:9 — a letterbox in this narrow column reads as a
+             strip, and a portrait sits properly beside the text. Some
+             flat sky trimmed off the top so she fills more of the frame.
+             A CREDIT LINE may still be needed; check before launch. -->
         <figure class="tts-serena__media">
-          <img src="assets/img/serena-still.jpg" alt="A still from The Tuna Truth: people sharing a meal together at a table." loading="lazy" width="1200" height="673">
+          <img src="assets/img/serena-still.jpg" alt="Serena Appleby holding a platter of grilled tuna, from The Tuna Truth." loading="lazy" width="900" height="1125">
         </figure>
         <div class="tts-serena__body">
           <h2 class="tts-section__title">Serena's journey</h2>

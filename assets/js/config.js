@@ -93,7 +93,11 @@ const SCREENINGS_CONFIG = {
     youtubeId: "5piItxcGaAY",
     // Poster frame, from this repo. Deliberately not YouTube's own
     // thumbnail, which would be a third-party request before consent.
-    poster: "assets/img/og-image.jpg",
+    // A real film still, NOT the title card that was here first: the
+    // card already carries the film's name in large type, so a play
+    // button and a label landed on top of lettering and the whole thing
+    // read as clutter.
+    poster: "assets/img/trailer-poster.jpg",
   },
 
   // --- Award status -------------------------------------------------
