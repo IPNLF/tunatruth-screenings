@@ -129,33 +129,34 @@ The brief (§18) asks to track page visits, CTA clicks, completed enquiries, org
 
 ---
 
-## Deliberate deviations from the brief
+## Structure, and why it is not the brief order
 
-Flagged rather than done silently, per the working standard in §21.
+Five sections, restructured 2026-10-01 after a review. Changing the order means changing one array in `index.html`; nothing else depends on it.
 
-**1. "About the film" sits directly under the hero.** The brief's §15 order puts it at 7, after the form. At review on 2026-10-01 it was moved to position 2, which is where it does the most work: a decision-maker who has never heard of *The Tuna Truth* cannot commit to putting it in front of 200 colleagues on the strength of hosting logistics alone, so the film has to establish itself before the page asks anything. Its copy is now the donation page's "Behind the film" text, supplied at the same review. The hero CTA anchors straight to `#request`, so anyone already sold skips the lot, and the header carries a persistent "Request a screening" link. Serena stays low, as narrative depth for the undecided.
+1. **Host a screening** — the invitation and the primary action.
+2. **The film** — trailer, synopsis, Serena, award, credits.
+3. **Hosting a screening** — who it suits, what each side does, ways to run it.
+4. **How it works** — three steps, then the after-event note, then the action repeated.
+5. **Request a screening** — the Beacon form.
 
-Section order is the array in `index.html` and nothing else depends on it. One knock-on: "Who can host" moved to the soft-foam surface, because it now follows a white section and the alternating surfaces are what separate sections on this page.
+The reader's path is: understand the film, judge whether this is feasible for us, understand the process, enquire.
 
-**2. "We'll help you get started" and "More than a screening" were merged into one section — and the second half has since been cut.** The brief lists them separately (§5 and §12), but both answer the same question — *what do I actually get, and how much work is this for me?* Split across two sections each had to be padded, so the reader met the same reassurance twice. They became one section with a checklist and a sidebar.
+**What changed and why:**
 
-At review on 2026-10-01 that sidebar was removed, to be replaced by an image from the starter pack. **This means nothing on the page now covers brief §12**: the "a screening is a starting point, not an evening on its own" framing and the four optional event formats (screening only / plus facilitated discussion / plus a local panel / plus a team or classroom session) appear nowhere. That may well be the right call for the page's length, but it should be a deliberate decision rather than a side effect — the copy is preserved in the git history of `assets/js/components.js` if it needs to come back.
+- **The film moved to position 2** (the brief put it at 7, after the form). Someone who has never heard of *The Tuna Truth* cannot commit to putting it in front of 200 colleagues on the strength of hosting logistics alone. The hero CTA anchors to `#request`, so anyone already sold skips it.
+- **The synopsis leads that section; production credits sit in a collapsed `<details>`.** Previously the first thing a prospective host read about the film was a list of production companies and roles. Those credits matter, but they are not what helps someone decide.
+- **Serena folded into the film section.** She used to sit between "How it works" and the form, interrupting the run towards the enquiry.
+- **The "Why host" card grid was deleted.** It largely restated the audience examples, and one of its four points ("Take the film further") was a benefit to the campaign rather than a reason for the host to take part. Those reasons now live inside the audience lines in `config.js` `hostTypes`.
+- **"We provide" / "You organise" added.** A host's real question is how much work this is for them, and describing only our side never answered it. It also filled the dead space that was sitting in that section waiting for an image, so **that image is no longer needed**.
+- **The optional event formats are back** (brief §12), as pills under "Ways to run it". They were lost when the "More than a screening" aside was removed.
+- **"How it works" is three steps, not four.** "Tell us how it went" was never a step in arranging a screening; it is a line underneath.
+- **The primary action repeats** after "How it works", so a reader convinced halfway down does not have to scroll back.
 
-**3. The form is 9 fields, not 11.**
-- **"Proposed screening location" cut.** Country plus organisation is enough to reply usefully at first contact; the venue is a second-email question and it made the form look longer than it is.
-- **"Is the screening" reduced from four options to two.** Internal/educational/public/conference largely duplicated organisation type — a school's screening is educational by definition. What it uniquely carried was *private vs open to the public*, which is the distinction that actually drives the permissions answer, so that is what it now asks.
-- **Audience size is a band, not a number.** Hosts rarely know a figure at enquiry stage, and a band is all that is needed to qualify.
-- **Preferred date is free text, not a date picker.** "Some time in the spring term" is a valid and useful answer; a picker forces a false precision that then has to be unpicked over email.
+**Emphasis is deliberately uneven.** Sections 1, 2 and 5 carry the display type and generous spacing; 3 and 4 are quieter and tighter, with sentence-case subheadings in the body face. The previous version gave all eight sections the same weight and the same alternating-background treatment, so each read as a fresh chapter and the page felt stop-start.
 
-**4. The hero was trimmed at review (2026-10-01).** The eyebrow row (TunaTruth wordmark plus a "Screenings" label) and the "Companies, schools, universities… are all welcome to ask" line below the buttons were both removed, to free vertical space. The wordmark duplicated the one in the header directly above it, and "Who can host" answers the audience question in more useful detail immediately below. The hero is now 439px tall at 375px wide, so both buttons sit well clear of the fold.
+**Measured effect on mobile (375px):** the hosting section now begins at 2068px, where the old support section began at roughly 3700px. "What each side does" specifically sits at 3049px. The film section is still long — that is the cost of putting it second, which is deliberate.
 
-**5. Only one card grid on the page.** "Why host" is cards; "Who can host" is a plain list, "We'll help you" is a checklist, "How it works" is numbered steps. Three consecutive card grids reads as an information dump regardless of word count (brief §16). Section differentiation is done with alternating surfaces — white / cinematic dark / soft foam — not with per-section decoration.
-
-**6. No "coming soon" download tiles for the screening pack.** The materials do not exist yet, and a page with four greyed-out placeholders looks abandoned on day one. The pack is described in prose. Adding a downloads block later is additive.
-
-**7. The "Oscars of nature filmmaking" framing is not used here**, per brief §10, even though the donation page uses it.
-
----
+**Only one card-style grid remains.** Everything else is a list, a checklist, numbered steps or pills.
 
 ## Content requiring approval
 

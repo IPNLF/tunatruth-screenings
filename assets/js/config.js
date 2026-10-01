@@ -125,14 +125,17 @@ const SCREENINGS_CONFIG = {
   },
 
   // --- Who can host -------------------------------------------------
-  // Six categories per brief §4. Kept in config so the list can be
-  // trimmed or reordered without touching markup. One sentence each,
-  // deliberately.
+  // Six categories per brief §4. RESTRUCTURE 2026-10-01: the separate
+  // "Why host" card grid was removed because it largely restated these
+  // same ideas, so each line now carries its own reason to take part
+  // rather than leaving that to a second band further down.
+  // The schools and film-society lines are the user's own wording and
+  // should not be reworded without asking.
   // HOLDING COPY — requires IPNLF approval.
   hostTypes: [
     {
       title: "Companies &amp; workplaces",
-      body: "Run a screening for staff as part of a sustainability, wellbeing or lunch-and-learn programme.",
+      body: "A ready-made session for a sustainability, wellbeing or lunch-and-learn programme, and a shared starting point for talking about sourcing.",
     },
     {
       title: "Schools &amp; universities",
@@ -140,7 +143,7 @@ const SCREENINGS_CONFIG = {
     },
     {
       title: "NGOs &amp; community groups",
-      body: "Bring members and supporters together around ocean, food and human-rights themes.",
+      body: "Bring members and supporters together around ocean, food and human-rights themes, with something to talk about afterwards.",
     },
     {
       title: "Seafood &amp; hospitality",
@@ -154,6 +157,40 @@ const SCREENINGS_CONFIG = {
       title: "Film &amp; environmental societies",
       body: "Show the film for an audience interested in high quality environmental storytelling.",
     },
+  ],
+
+  // --- What we provide / what you organise --------------------------
+  // Added 2026-10-01. A prospective host's real question is "how much
+  // work is this for me?", and splitting it this way answers it far
+  // better than describing only our side. It also fills the dead space
+  // that was sitting in this section waiting for an image.
+  //
+  // Wording stays scoped (brief §5): nothing here promises a speaker,
+  // travel, AV support, filmmaker attendance, bespoke production, or
+  // that screenings are free.
+  // HOLDING COPY — the screening pack does not exist yet. Do not
+  // publish this list until the materials it describes are real.
+  weProvide: [
+    "Access to the film, and guidance on the permissions that apply to your type of event",
+    "A host checklist and a suggested running order",
+    "Discussion prompts and post-screening questions",
+    "Promotional assets and sample invitation copy",
+  ],
+  youOrganise: [
+    "A venue and a screen, with sound your audience can hear",
+    "Your invitations and guest list",
+    "Someone to introduce the film and keep the discussion going",
+    "The date, and anything you want to serve",
+  ],
+
+  // Brief §12. These were lost when the "More than a screening" aside
+  // was removed on 2026-10-01; restored here, where they answer the
+  // "what does a screening actually look like" question in context.
+  formats: [
+    "Screening only",
+    "Screening plus a facilitated discussion",
+    "Screening plus a local panel",
+    "Screening as part of a team or classroom session",
   ],
 
   // --- Organisation types offered in the form ------------------------

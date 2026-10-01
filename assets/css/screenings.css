@@ -187,7 +187,12 @@ a { color: var(--text-link); }
   .tts-hero__inner { padding-top: var(--space-5); padding-bottom: var(--space-5); }
   .tts-hero__title { font-size: clamp(2rem, 8.5vw, 2.5rem); margin-bottom: var(--space-3); }
   .tts-hero__lede { font-size: var(--fs-body); margin-bottom: var(--space-4); }
-  .tts-hero__actions { margin-bottom: var(--space-3); }
+  .tts-hero__note {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--text-on-dark-soft);
+}
+.tts-hero__actions { margin-bottom: var(--space-3); }
   .tts-btn { width: 100%; }
 }
 
@@ -238,131 +243,35 @@ a { color: var(--text-link); }
   color: var(--text-muted);
 }
 
-/* ---- who can host ----
-   A plain list, not cards: this section's only job is "yes, that's
-   me". Making it a card grid would put it in direct visual
-   competition with "Why host", which is the one grid on the page. */
-.tts-hostlist {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-5) var(--space-6);
-  grid-template-columns: 1fr;
-}
-@media (min-width: 620px) { .tts-hostlist { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 960px) { .tts-hostlist { grid-template-columns: repeat(3, 1fr); } }
-.tts-hostlist__item { border-top: 2px solid var(--ipnlf-foam); padding-top: var(--space-3); }
-/* REVIEW 2026-10-01 — these titles were near-black (--text-strong).
-   Moved to the IPNLF deep teal-navy already used for the step numbers
-   and the secondary button, so it reads as a softer, on-brand tone
-   rather than a new colour. Contrast on white is ~11:1, well clear of
-   AA, so nothing is lost in readability. */
-.tts-hostlist__item h3 {
-  margin: 0 0 var(--space-1);
+/* ---- section emphasis ----
+   RESTRUCTURE 2026-10-01. The page used to give all eight sections the
+   same weight and the same alternating-background treatment, so each
+   one read as a fresh chapter and the whole thing felt stop-start.
+   Now only the invitation, the film and the enquiry carry the display
+   type and generous spacing; the two reference sections between them
+   are quieter and tighter. The condensed capitals are used selectively
+   rather than on every heading. */
+.tts-film, .tts-section--form { padding: var(--space-8) 0; }
+.tts-hosting, .tts-how { padding: var(--space-7) 0; }
+.tts-hosting .tts-section__title,
+.tts-how .tts-section__title { font-size: clamp(1.5rem, 4vw, 1.75rem); }
+
+/* Quiet subheadings inside the reference sections — sentence case,
+   body face, not another run of condensed capitals. */
+.tts-sub {
+  margin: var(--space-6) 0 var(--space-3);
+  font-family: var(--font-text);
   font-size: var(--fs-body);
   font-weight: 700;
-  color: var(--ipnlf-deep);
+  color: var(--text-strong);
+  letter-spacing: 0;
 }
-.tts-hostlist__item p { margin: 0; color: var(--text-muted); font-size: var(--fs-body-sm); }
-
-/* ---- why host (the one card grid) ---- */
-.tts-why {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-4);
-  grid-template-columns: 1fr;
-}
-@media (min-width: 720px) { .tts-why { grid-template-columns: 1fr 1fr; } }
-.tts-why__card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-on-dark);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-}
-.tts-why__card h3 {
-  margin: 0 0 var(--space-2);
-  font-size: var(--fs-h3);
-  font-family: var(--font-display);
-  letter-spacing: var(--ls-display);
-  color: var(--tunatruth-teal);
-}
-.tts-why__card p { margin: 0; color: var(--text-on-dark-soft); font-size: var(--fs-body-sm); }
-
-/* ---- what we provide ---- */
-.tts-provide { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
-@media (min-width: 860px) { .tts-provide { grid-template-columns: 1.35fr 1fr; gap: var(--space-8); align-items: start; } }
-.tts-provide__main p { color: var(--text-muted); max-width: 56ch; }
-.tts-checklist { list-style: none; margin: var(--space-4) 0; padding: 0; }
-.tts-checklist li {
-  position: relative;
-  padding-left: var(--space-6);
-  margin-bottom: var(--space-3);
-  color: var(--text-body);
-}
-/* Tick drawn in CSS rather than an icon font or six inline SVGs —
-   this is the only icon-ish thing on the page, deliberately. */
-.tts-checklist li::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 0.45em;
-  width: 14px;
-  height: 7px;
-  border-left: 2.5px solid var(--ipnlf-teal-deep);
-  border-bottom: 2.5px solid var(--ipnlf-teal-deep);
-  transform: rotate(-45deg);
-}
-/* REVIEW 2026-10-01 — was --fs-body-sm; now inherits body size so it
-   matches the paragraph above the bullets and the two read as one
-   block. */
-.tts-provide__caveat {
-  margin: var(--space-4) 0 0;
-  color: var(--text-muted);
-}
-/* The right-hand column is held open but drawn as nothing until an
-   image is supplied. An empty tinted panel would read as a broken or
-   unfinished component; empty space reads as space. */
-.tts-provide__aside {
-  border-radius: var(--radius-md);
-}
-.tts-provide__aside--empty {
-  background: none;
-  padding: 0;
-  min-height: 0;
-}
-
-/* ---- how it works ---- */
-.tts-steps { list-style: none; margin: 0 0 var(--space-6); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
-@media (min-width: 760px) { .tts-steps { grid-template-columns: repeat(4, 1fr); gap: var(--space-5); } }
-.tts-step { display: flex; gap: var(--space-4); align-items: flex-start; }
-@media (min-width: 760px) { .tts-step { flex-direction: column; gap: var(--space-3); } }
-.tts-step__n {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--ipnlf-deep);
-  color: var(--ipnlf-white);
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  line-height: 1;
-  padding-top: 4px; /* Bebas sits high in its box */
-}
-.tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
-.tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
-
+.tts-sub:first-of-type { margin-top: var(--space-5); }
 
 /* ---- trailer ----
    The facade and the real player occupy the same 16:9 box, so nothing
-   shifts when one replaces the other. */
-/* Full width under the heading, capped so it does not dominate the
-   top of the page, and so the two columns below it stay balanced. */
+   shifts when one replaces the other. Capped rather than full width so
+   it does not swamp the top of the film section. */
 .tts-trailer { margin: 0 0 var(--space-6); max-width: 820px; }
 .tts-trailer__play {
   position: relative;
@@ -380,11 +289,11 @@ a { color: var(--text-link); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Dimmed so the play button and label stay legible over any frame. */
-  filter: brightness(0.72);
+  /* Dimmed so the play button stays legible over any frame. */
+  filter: brightness(0.78);
   transition: filter 0.2s, transform 0.3s;
 }
-.tts-trailer__play:hover img { filter: brightness(0.6); transform: scale(1.02); }
+.tts-trailer__play:hover img { filter: brightness(0.62); transform: scale(1.02); }
 .tts-trailer__icon {
   position: absolute;
   top: 50%;
@@ -407,6 +316,7 @@ a { color: var(--text-link); }
 .tts-trailer__frame {
   display: block;
   width: 100%;
+  max-width: 820px;
   aspect-ratio: 16 / 9;
   border: 0;
   border-radius: var(--radius-md);
@@ -414,51 +324,185 @@ a { color: var(--text-link); }
 }
 .tts-trailer__caption { margin-top: var(--space-2); font-size: var(--fs-body-sm); color: var(--text-muted); }
 
-/* ---- about the film + award ---- */
-.tts-about { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
-.tts-about__body > p:first-child { margin-top: 0; }
-@media (min-width: 860px) { .tts-about { grid-template-columns: 1.4fr 1fr; gap: var(--space-8); align-items: start; } }
-.tts-about__body p { color: var(--text-muted); max-width: 60ch; }
+/* ---- 2. the film ---- */
+.tts-film__grid { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+@media (min-width: 860px) {
+  .tts-film__grid { grid-template-columns: 1.3fr 1fr; gap: var(--space-8); align-items: start; }
+}
+.tts-film__synopsis p { color: var(--text-muted); max-width: 58ch; }
+/* The synopsis leads the section, so it is set a step up from the
+   paragraph under it. */
+.tts-lede-para { font-size: var(--fs-body-lg); color: var(--text-body) !important; }
 
-.tts-award {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-}
-.tts-award__badge {
+/* Award: one compact line with the mark, not a panel competing with
+   the synopsis for attention. */
+.tts-award-line {
   display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin: 0 0 var(--space-3) !important;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-5) 0 !important;
+  padding: var(--space-4);
+  border-left: 3px solid var(--ipnlf-gold);
+  background: var(--surface-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--fs-body-sm);
+  max-width: none !important;
 }
-.tts-award__badge img { height: 22px; width: auto; border-radius: 3px; }
-.tts-award__badge span {
-  font-size: var(--fs-caption);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: var(--ls-overline);
-  color: var(--ipnlf-teal-deep);
+.tts-award-line img { height: 26px; width: auto; border-radius: 3px; flex-shrink: 0; }
+.tts-award-line strong { color: var(--text-strong); }
+
+/* Credits, available but out of the way. */
+.tts-credits { margin-top: var(--space-5); }
+.tts-credits summary {
+  cursor: pointer;
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--text-link);
 }
-.tts-award h3 {
+.tts-credits summary:hover { text-decoration: underline; }
+.tts-credits p { margin: var(--space-3) 0 0; font-size: var(--fs-body-sm); }
+
+/* Serena, now an aside inside the film section rather than her own
+   full-width dark band. */
+.tts-serena { margin: 0; }
+.tts-serena__media { margin: 0 0 var(--space-4); }
+.tts-serena__media img {
+  width: 100%;
+  /* height:auto is load-bearing: the width/height attributes map to
+     presentational hints, and without this the explicit height wins
+     over aspect-ratio and the portrait renders at full natural size. */
+  height: auto;
+  border-radius: var(--radius-md);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+/* On a phone the 4:5 portrait is ~469px tall, which is the single
+   biggest block delaying the feasibility answer below. A 3:2 crop
+   keeps her face (object-position holds the top third) and gives back
+   roughly 220px without losing the picture. */
+@media (max-width: 619px) {
+  .tts-serena__media img { aspect-ratio: 3 / 2; object-position: 50% 22%; }
+}
+.tts-serena h3 {
   margin: 0 0 var(--space-2);
   font-family: var(--font-display);
   font-size: var(--fs-h2);
   letter-spacing: var(--ls-display);
   color: var(--text-strong);
 }
-.tts-award p { margin: 0 0 var(--space-3); font-size: var(--fs-body-sm); color: var(--text-muted); }
-.tts-award p:last-child { margin-bottom: 0; }
+.tts-serena p { margin: 0 0 var(--space-3); color: var(--text-muted); font-size: var(--fs-body-sm); }
+.tts-serena__bio { font-size: var(--fs-caption) !important; }
 
-/* ---- Serena ---- */
-.tts-serena { display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 860px) { .tts-serena { grid-template-columns: 1fr 1.2fr; gap: var(--space-8); } }
-.tts-serena__media { margin: 0; }
-/* 4:5 portrait. The image is already cropped to this ratio, so
-   object-fit has nothing to do at the default column width — it is
-   there only as a guard if the column proportions ever change. */
-.tts-serena__media img { width: 100%; height: auto; border-radius: var(--radius-md); aspect-ratio: 4 / 5; object-fit: cover; }
-.tts-serena__body p { color: var(--text-on-dark-soft); max-width: 56ch; }
-.tts-serena__bio { font-size: var(--fs-body-sm); }
+/* ---- 3. hosting ---- */
+/* A plain list, not cards: this is scanned, and a card grid here would
+   compete with the film section above it. */
+.tts-audience {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4) var(--space-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) { .tts-audience { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .tts-audience { grid-template-columns: repeat(3, 1fr); } }
+.tts-audience li { border-top: 2px solid var(--ipnlf-mist); padding-top: var(--space-2); }
+.tts-audience h4 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  color: var(--ipnlf-deep);
+}
+.tts-audience p { margin: 0; color: var(--text-muted); font-size: var(--fs-body-sm); }
+
+/* "We provide" / "You organise" — the pairing that answers how much
+   work this is for the host. */
+.tts-split { display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+@media (min-width: 760px) { .tts-split { grid-template-columns: 1fr 1fr; gap: var(--space-7); } }
+.tts-split__col h4 {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-display);
+  color: var(--text-strong);
+}
+.tts-split__note { margin: var(--space-3) 0 0; font-size: var(--fs-caption); color: var(--text-muted); }
+
+.tts-checklist { list-style: none; margin: 0; padding: 0; }
+.tts-checklist li {
+  position: relative;
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-3);
+  color: var(--text-body);
+  font-size: var(--fs-body-sm);
+}
+/* Tick drawn in CSS rather than an icon font or a run of inline SVGs. */
+.tts-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.4em;
+  width: 13px;
+  height: 6px;
+  border-left: 2.5px solid var(--ipnlf-teal-deep);
+  border-bottom: 2.5px solid var(--ipnlf-teal-deep);
+  transform: rotate(-45deg);
+}
+/* The host's own column is marked differently from ours, so the two
+   lists are not mistaken for one continuous set of promises. */
+.tts-checklist--alt li::before {
+  border: 0;
+  top: 0.55em;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ipnlf-orange);
+  transform: none;
+}
+
+.tts-formats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.tts-formats li {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--ipnlf-white);
+  font-size: var(--fs-body-sm);
+  color: var(--text-body);
+}
+.tts-formats__note { margin: var(--space-3) 0 0; font-size: var(--fs-caption); color: var(--text-muted); font-style: italic; }
+
+/* ---- 4. how it works ---- */
+.tts-steps { list-style: none; margin: 0 0 var(--space-5); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+@media (min-width: 760px) { .tts-steps { grid-template-columns: repeat(3, 1fr); } }
+.tts-step { display: flex; gap: var(--space-4); align-items: flex-start; }
+@media (min-width: 760px) { .tts-step { flex-direction: column; gap: var(--space-3); } }
+.tts-step__n {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--ipnlf-deep);
+  color: var(--ipnlf-white);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding-top: 4px; /* Bebas sits high in its box */
+}
+.tts-step h3 { margin: 0 0 var(--space-1); font-size: var(--fs-body); font-weight: 700; color: var(--text-strong); }
+.tts-step p { margin: 0; font-size: var(--fs-body-sm); color: var(--text-muted); }
+.tts-after { margin: 0 0 var(--space-6); font-size: var(--fs-body-sm); color: var(--text-muted); max-width: 60ch; }
+.tts-how__cta { margin: 0; }
 
 /* ---- form ---- */
 .tts-form-wrap { max-width: 760px; }
