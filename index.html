@@ -62,21 +62,23 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/components.js"></script>
 <script>
-  // Section order is a deliberate change from the brief's §15 list:
-  // "About the film", the award and Serena sit BEFORE the form, not
-  // after it. A decision-maker who has never heard of the film cannot
-  // commit to putting it in front of their colleagues on the strength
-  // of the hosting logistics alone. The hero CTA anchors straight to
-  // #request, so anyone already sold skips all of it.
-  // Reasoning and the alternative are written up in README-screenings.md.
+  // Section order. "About the film" and its award panel sit directly
+  // under the hero (moved there at review, 2026-10-01), so the film
+  // establishes itself before the page asks anything: a decision-maker
+  // who has never heard of it cannot commit to putting it in front of
+  // their colleagues on the strength of hosting logistics alone. The
+  // hero CTA anchors straight to #request, so anyone already sold skips
+  // the lot. Serena stays lower, as narrative depth for the undecided.
+  // Changing the order is changing this array — nothing else depends
+  // on it. See README.md.
   document.getElementById('app-header').innerHTML = TTS.header();
   document.getElementById('app-main').innerHTML = [
     TTS.hero(),
+    TTS.aboutFilm(),
     TTS.whoCanHost(),
     TTS.whyHost(),
     TTS.whatWeProvide(),
     TTS.howItWorks(),
-    TTS.aboutFilm(),
     TTS.serena(),
     TTS.requestForm(),
   ].join('');

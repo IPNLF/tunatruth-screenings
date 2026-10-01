@@ -124,7 +124,9 @@ The brief (§18) asks to track page visits, CTA clicks, completed enquiries, org
 
 Flagged rather than done silently, per the working standard in §21.
 
-**1. The film section moved above the form.** The brief's §15 order puts the form at 6 and "About the film" at 7. A sustainability manager who has never heard of *The Tuna Truth* cannot decide to put it in front of 200 colleagues on the strength of the hosting logistics alone — credibility has to land before the ask. The hero CTA anchors straight to `#request`, so anyone already sold skips all of it, and the header carries a persistent "Request a screening" link. If you disagree, moving `TTS.requestForm()` up the array in `index.html` is a one-line change.
+**1. "About the film" sits directly under the hero.** The brief's §15 order puts it at 7, after the form. At review on 2026-10-01 it was moved to position 2, which is where it does the most work: a decision-maker who has never heard of *The Tuna Truth* cannot commit to putting it in front of 200 colleagues on the strength of hosting logistics alone, so the film has to establish itself before the page asks anything. Its copy is now the donation page's "Behind the film" text, supplied at the same review. The hero CTA anchors straight to `#request`, so anyone already sold skips the lot, and the header carries a persistent "Request a screening" link. Serena stays low, as narrative depth for the undecided.
+
+Section order is the array in `index.html` and nothing else depends on it. One knock-on: "Who can host" moved to the soft-foam surface, because it now follows a white section and the alternating surfaces are what separate sections on this page.
 
 **2. "We'll help you get started" and "More than a screening" were merged into one section — and the second half has since been cut.** The brief lists them separately (§5 and §12), but both answer the same question — *what do I actually get, and how much work is this for me?* Split across two sections each had to be padded, so the reader met the same reassurance twice. They became one section with a checklist and a sidebar.
 
@@ -167,7 +169,7 @@ Everything below is marked `<!-- HOLDING COPY -->` in the source.
 
 - **A Serena portrait or a strong still of her.** The section currently reuses `og-image.jpg` and describes it honestly as "a still from The Tuna Truth". Brief §9 asks for a portrait. Swapping it is a `src` change in `serena()`.
 - **A hero still chosen for this page.** It currently reuses the donation page's `hero-photo.jpg`. Fine for a prototype, but the two pages will look like the same page if they sit side by side.
-- **An image for the "We'll help you get started" section.** The right-hand column is deliberately held open and blank, awaiting an image from the starter pack. See the `IMAGE SLOT — AWAITING ASSET` comment in `whatWeProvide()` and the `.tts-provide__aside--empty` rule in the CSS; both are to be deleted when the image goes in.
+- ~~An image for the "We'll help you get started" section.~~ **Supplied 2026-10-01.** Resized from a 3024px / 7.5MB PNG to 1200px / 93KB JPEG; the original was far too heavy to serve. **Its alt text still needs confirming** — it describes the scene without naming anyone, because who appears in the frame has not been confirmed. A credit line may also be needed.
 - **A dedicated Open Graph image** for share previews (currently reuses the donation page's).
 - **The screening pack itself** — host guide, checklist, discussion guide, promo assets, social tiles, invitation copy.
 - Confirmation of whether the film has a trailer that could be embedded or linked.

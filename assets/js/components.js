@@ -91,7 +91,12 @@ const TTS = (() => {
         <h3>${t.title}</h3>
         <p>${t.body}</p>
       </li>`).join("");
-    return `<section class="tts-section" id="who">
+    // Soft-foam surface (review 2026-10-01): with "About the film"
+    // promoted to sit directly under the hero, this section follows a
+    // white one. Two consecutive white sections lose the separation the
+    // page relies on, since the alternating surfaces ARE the section
+    // differentiation here.
+    return `<section class="tts-section tts-section--soft" id="who">
       <div class="tt-container">
         <h2 class="tts-section__title">Who can host</h2>
         <p class="tts-section__lede">A screening can be ten people in a meeting room or two hundred in a lecture theatre. If you can gather an audience, you can host one.</p>
@@ -177,21 +182,22 @@ const TTS = (() => {
           <ul class="tts-checklist">${list}</ul>
           <p class="tts-provide__caveat">Depending on the event and our team's availability, we may also be able to help with a speaker or additional content.</p>
         </div>
-        <!-- IMAGE SLOT — AWAITING ASSET (review 2026-10-01).
-             The "More than a screening" aside that sat here was removed
-             at the user's request; an image from the starter pack goes
-             in its place once it is supplied. The column is deliberately
-             left blank until then rather than filled with a placeholder
-             box, which would read as broken.
+        <!-- Still supplied by the user 2026-10-01, filling the slot left
+             when the "More than a screening" aside was removed.
+             Resized from a 3024px / 7.5MB PNG to 1200px / 93KB JPEG —
+             the original is far too heavy to serve.
+             ALT TEXT NEEDS CONFIRMING: it describes the scene without
+             naming anyone, because who appears in the frame has not been
+             confirmed. Replace with a proper description (and a credit,
+             if one is required) before launch.
 
              NOTE: removing that aside also removed the only copy on the
              page covering brief §12 — the "a screening is a starting
-             point" framing and the four optional event formats
-             (screening only / + facilitated discussion / + local panel /
-             + team or classroom session). That content now appears
-             nowhere. Worth a deliberate decision about whether it
-             returns elsewhere. -->
-        <aside class="tts-provide__aside tts-provide__aside--empty" aria-hidden="true"></aside>
+             point" framing and the four optional event formats. That
+             content still appears nowhere. -->
+        <figure class="tts-provide__media">
+          <img src="assets/img/support-screening.jpg" alt="A still from The Tuna Truth: people sharing a meal together at a table." loading="lazy" width="1200" height="673">
+        </figure>
       </div>
     </section>`;
   }
@@ -270,12 +276,21 @@ const TTS = (() => {
       <div class="tt-container tts-about">
         <div class="tts-about__body">
           <h2 class="tts-section__title">About ${cfg.filmName}</h2>
-          <!-- HOLDING COPY — requires production/IPNLF approval -->
-          <p>${cfg.filmName} follows chef and presenter Serena Appleby as she investigates what sits behind one of the world's most familiar foods. Through conversations with fishers, scientists, campaigners and seafood experts, the film explores the environmental and human impacts of tuna fishing — and what more responsible choices can look like.</p>
+          <!-- REVIEW 2026-10-01 — these three paragraphs were supplied by
+               the user and match the donation page's "Behind the film"
+               copy, replacing the holding synopsis that was here before. -->
 
           <!-- CONFIRMED factual credit — sourced from the official poster
                asset, carried over unchanged from the donation page. -->
-          <p class="tts-about__credit">A Sunline Films production, commissioned and executive produced by IPNLF, presented by Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
+          <p>${cfg.filmName} is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
+
+          <!-- HOLDING COPY — requires production/IPNLF approval. Also
+               unapproved on the donation page, where it came from, so
+               approving it there settles it for both. -->
+          <p>Filmed in the Azores, Portugal, ${cfg.filmName} shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.</p>
+
+          <!-- HOLDING COPY — requires IPNLF approval. Same provenance. -->
+          <p>IPNLF supports the film as part of its work to promote thriving coastal communities and environmentally and socially responsible tuna fisheries.</p>
         </div>
 
         <!-- Award block. ALL wording comes from the config.js award

@@ -322,32 +322,17 @@ a { color: var(--text-link); }
   margin: var(--space-4) 0 0;
   color: var(--text-muted);
 }
-.tts-provide__aside {
-  background: var(--surface-soft);
+/* The still that now occupies the right-hand column. Same radius as
+   the other media on the page; aspect-ratio pins the box so the layout
+   does not shift while the image loads. */
+.tts-provide__media { margin: 0; }
+.tts-provide__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: var(--radius-md);
-  padding: var(--space-5);
 }
-/* REVIEW 2026-10-01 — the column is held open but drawn as nothing
-   until the starter-pack image arrives. An empty tinted panel would
-   read as a broken or unfinished component; empty space reads as
-   space. Delete this rule when the image goes in. */
-.tts-provide__aside--empty {
-  background: none;
-  padding: 0;
-  min-height: 0;
-}
-.tts-provide__aside h3 {
-  margin: 0 0 var(--space-2);
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  letter-spacing: var(--ls-display);
-  color: var(--text-strong);
-}
-.tts-provide__aside p { margin: 0 0 var(--space-3); color: var(--text-muted); font-size: var(--fs-body-sm); }
-.tts-provide__formats { margin-bottom: var(--space-2) !important; font-weight: 600; color: var(--text-body) !important; }
-.tts-formats { margin: 0 0 var(--space-3); padding-left: var(--space-5); color: var(--text-muted); font-size: var(--fs-body-sm); }
-.tts-formats li { margin-bottom: var(--space-1); }
-.tts-provide__formats-note { margin: 0 !important; font-style: italic; }
 
 /* ---- how it works ---- */
 .tts-steps { list-style: none; margin: 0 0 var(--space-6); padding: 0; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
@@ -377,7 +362,6 @@ a { color: var(--text-link); }
 .tts-about { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
 @media (min-width: 860px) { .tts-about { grid-template-columns: 1.4fr 1fr; gap: var(--space-8); align-items: start; } }
 .tts-about__body p { color: var(--text-muted); max-width: 60ch; }
-.tts-about__credit { font-size: var(--fs-body-sm); }
 
 .tts-award {
   border: 1px solid var(--border-subtle);
