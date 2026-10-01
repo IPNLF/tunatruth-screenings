@@ -231,18 +231,18 @@ const TTS = (() => {
     const steps = [
       {
         n: "1",
-        title: "Enquire",
-        body: "Let us know more about your plans for a screening.",
+        title: "Tell us about your plans",
+        body: "Share a few details about your screening and audience.",
       },
       {
         n: "2",
-        title: "We confirm the arrangements",
-        body: "We check film access for your event and send the host pack.",
+        title: "Confirm the arrangements",
+        body: "We'll agree film access for your event and send you the digital host pack.",
       },
       {
         n: "3",
-        title: "Host the event",
-        body: "Screen the film, and use the prompts if you want a discussion.",
+        title: "Host your screening",
+        body: "Show the film and use the discussion prompts to start a conversation afterwards.",
       },
     ];
     const items = steps.map((s) => `
