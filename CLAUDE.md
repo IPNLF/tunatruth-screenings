@@ -30,6 +30,8 @@ The result was shipping a trailer poster that was the film's own title card, wit
 - Heading-level inflation, or a new heading where existing copy would do
 - Whether a layout device still scales at the new content volume
 - Text that is clipped, overflowing, or set beyond a comfortable reading measure
+- A standalone line wrapping with two or three words orphaned on a second line — give it room or tighten the copy, never `white-space: nowrap`
+- Parallel lists or columns of visibly unequal length; check the rendered heights, do not assume
 - Whether the page still answers the visitor's questions in order
 
 ## Design judgment
