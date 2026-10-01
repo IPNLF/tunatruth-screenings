@@ -182,22 +182,18 @@ const TTS = (() => {
           <ul class="tts-checklist">${list}</ul>
           <p class="tts-provide__caveat">Depending on the event and our team's availability, we may also be able to help with a speaker or additional content.</p>
         </div>
-        <!-- Still supplied by the user 2026-10-01, filling the slot left
-             when the "More than a screening" aside was removed.
-             Resized from a 3024px / 7.5MB PNG to 1200px / 93KB JPEG —
-             the original is far too heavy to serve.
-             ALT TEXT NEEDS CONFIRMING: it describes the scene without
-             naming anyone, because who appears in the frame has not been
-             confirmed. Replace with a proper description (and a credit,
-             if one is required) before launch.
+        <!-- IMAGE SLOT — AWAITING ASSET.
+             Held open and drawn as nothing until an image is supplied,
+             rather than filled with a placeholder box, which would read
+             as broken. Delete the --empty class and swap in a <figure>
+             (see serena() for the pattern) when one arrives.
 
-             NOTE: removing that aside also removed the only copy on the
-             page covering brief §12 — the "a screening is a starting
-             point" framing and the four optional event formats. That
-             content still appears nowhere. -->
-        <figure class="tts-provide__media">
-          <img src="assets/img/support-screening.jpg" alt="A still from The Tuna Truth: people sharing a meal together at a table." loading="lazy" width="1200" height="673">
-        </figure>
+             NOTE: removing the "More than a screening" aside that used
+             to sit here also removed the only copy on the page covering
+             brief §12 — the "a screening is a starting point" framing
+             and the four optional event formats. That content still
+             appears nowhere. -->
+        <aside class="tts-provide__aside tts-provide__aside--empty" aria-hidden="true"></aside>
       </div>
     </section>`;
   }
@@ -321,9 +317,15 @@ const TTS = (() => {
   function serena() {
     return `<section class="tts-section tts-section--dark" id="serena">
       <div class="tt-container tts-serena">
+        <!-- Still supplied by the user 2026-10-01, replacing the
+             og-image.jpg stand-in. Resized from a 3024px / 7.5MB PNG to
+             1200px / 93KB JPEG — the original is far too heavy to serve.
+             ALT TEXT NEEDS CONFIRMING: it describes the scene without
+             naming anyone, because who appears in the frame has not been
+             confirmed. Replace with a proper description (and a credit,
+             if one is required) before launch. -->
         <figure class="tts-serena__media">
-          <img src="assets/img/og-image.jpg" alt="A still from The Tuna Truth" loading="lazy">
-          <!-- ASSET PLACEHOLDER — replace with a Serena portrait/still -->
+          <img src="assets/img/serena-still.jpg" alt="A still from The Tuna Truth: people sharing a meal together at a table." loading="lazy" width="1200" height="673">
         </figure>
         <div class="tts-serena__body">
           <h2 class="tts-section__title">Serena's journey</h2>

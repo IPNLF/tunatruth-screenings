@@ -322,16 +322,16 @@ a { color: var(--text-link); }
   margin: var(--space-4) 0 0;
   color: var(--text-muted);
 }
-/* The still that now occupies the right-hand column. Same radius as
-   the other media on the page; aspect-ratio pins the box so the layout
-   does not shift while the image loads. */
-.tts-provide__media { margin: 0; }
-.tts-provide__media img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+/* The right-hand column is held open but drawn as nothing until an
+   image is supplied. An empty tinted panel would read as a broken or
+   unfinished component; empty space reads as space. */
+.tts-provide__aside {
   border-radius: var(--radius-md);
+}
+.tts-provide__aside--empty {
+  background: none;
+  padding: 0;
+  min-height: 0;
 }
 
 /* ---- how it works ---- */
@@ -396,7 +396,7 @@ a { color: var(--text-link); }
 .tts-serena { display: grid; gap: var(--space-6); grid-template-columns: 1fr; align-items: center; }
 @media (min-width: 860px) { .tts-serena { grid-template-columns: 1fr 1.2fr; gap: var(--space-8); } }
 .tts-serena__media { margin: 0; }
-.tts-serena__media img { width: 100%; border-radius: var(--radius-md); aspect-ratio: 4 / 3; object-fit: cover; }
+.tts-serena__media img { width: 100%; border-radius: var(--radius-md); aspect-ratio: 16 / 9; object-fit: cover; }
 .tts-serena__body p { color: var(--text-on-dark-soft); max-width: 56ch; }
 .tts-serena__bio { font-size: var(--fs-body-sm); }
 

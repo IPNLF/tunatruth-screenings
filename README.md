@@ -167,9 +167,9 @@ Everything below is marked `<!-- HOLDING COPY -->` in the source.
 
 ## Assets still needed
 
-- **A Serena portrait or a strong still of her.** The section currently reuses `og-image.jpg` and describes it honestly as "a still from The Tuna Truth". Brief §9 asks for a portrait. Swapping it is a `src` change in `serena()`.
+- ~~A Serena portrait or a strong still of her.~~ **Supplied 2026-10-01.** Resized from a 3024px / 7.5MB PNG to 1200px / 93KB JPEG; the original was far too heavy to serve. The box is 16:9 rather than the old 4:3, which would have cropped the sides off a wide two-shot. **Its alt text still needs confirming** — it describes the scene without naming anyone, because who appears in the frame has not been confirmed. A credit line may also be needed.
 - **A hero still chosen for this page.** It currently reuses the donation page's `hero-photo.jpg`. Fine for a prototype, but the two pages will look like the same page if they sit side by side.
-- ~~An image for the "We'll help you get started" section.~~ **Supplied 2026-10-01.** Resized from a 3024px / 7.5MB PNG to 1200px / 93KB JPEG; the original was far too heavy to serve. **Its alt text still needs confirming** — it describes the scene without naming anyone, because who appears in the frame has not been confirmed. A credit line may also be needed.
+- **An image for the "We'll help you get started" section.** Still outstanding. The right-hand column is held open and blank; see the `IMAGE SLOT — AWAITING ASSET` comment in `whatWeProvide()` and the `.tts-provide__aside--empty` rule in the CSS, and follow the `<figure>` pattern in `serena()` when one arrives.
 - **A dedicated Open Graph image** for share previews (currently reuses the donation page's).
 - **The screening pack itself** — host guide, checklist, discussion guide, promo assets, social tiles, invitation copy.
 - Confirmation of whether the film has a trailer that could be embedded or linked.
