@@ -183,19 +183,24 @@ const SCREENINGS_CONFIG = {
   // Submitting an enquiry does not grant permission to screen, and
   // nothing on the page should imply that it does.
   weProvide: [
-    "Film access, confirmed for your specific event",
-    "The host pack above, to plan and promote it",
-    "Someone to answer questions while you are arranging it",
+    "Film access and permissions agreed for your event",
+    "A digital host pack with a checklist, discussion prompts, editable PowerPoint promotional templates and sample invitations",
+    "Help with questions about film access and using the pack",
   ],
   youOrganise: [
-    "Your venue and equipment",
-    "Promoting the event and inviting your audience",
-    "Running the event on the day",
+    "A suitable venue, screen and sound equipment",
+    "Inviting your audience and promoting the screening",
+    "Introducing the film and running the event",
   ],
 
   // Scoped hard (brief §5). Anything beyond the standard model is a
   // separate conversation, not an expectation set by this page.
-  extraSupportNote: "Anything beyond this — a speaker, or additional content — needs a separate agreement and depends on our team's availability.",
+  extraSupportNote: "Speakers and additional content may be available by separate arrangement, depending on our team's capacity.",
+
+  // The public section names the audiences once, without six repeated
+  // benefit descriptions. The original hostTypes copy remains above
+  // as reference wording rather than adding another long reading task.
+  hostAudience: "Companies and workplaces, schools and universities, NGOs and community groups, seafood and hospitality teams, conferences, and film or environmental societies are all welcome to enquire.",
 
   // Brief §12. Rendered as a plain sentence and list, not as pills:
   // pills look like selectable controls, and these are not clickable.

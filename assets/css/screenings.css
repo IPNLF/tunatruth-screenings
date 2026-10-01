@@ -435,6 +435,12 @@ a { color: var(--text-link); }
   color: var(--text-muted);
 }
 .tts-audience strong { color: var(--ipnlf-deep); }
+.tts-audience-copy {
+  margin: 0;
+  max-width: 78ch;
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+}
 
 .tts-formats-line {
   margin: var(--space-6) 0 0;

@@ -192,11 +192,6 @@ const TTS = (() => {
   function hostingSection() {
     const provide = cfg.weProvide.map((i) => `<li>${i}</li>`).join("");
     const organise = cfg.youOrganise.map((i) => `<li>${i}</li>`).join("");
-    const pack = cfg.packContents.join(", ").replace(/, ([^,]*)$/, " and $1");
-    // Compact: the title carries the category, the sentence carries the
-    // reason. Approved wording (schools, film societies) is unchanged.
-    const audience = cfg.hostTypes.map((t) => `
-      <li><strong>${t.title}</strong> ${t.body}</li>`).join("");
     const formats = cfg.formats.join(", ").replace(/, ([^,]*)$/, " or $1");
 
     return `<section class="tts-section tts-section--soft tts-hosting" id="hosting">
@@ -205,13 +200,12 @@ const TTS = (() => {
 
         <div class="tts-split">
           <div class="tts-split__col">
-            <h3 class="tts-sub">What IPNLF provides</h3>
+            <h3 class="tts-sub">Support from IPNLF</h3>
             <ul class="tts-checklist">${provide}</ul>
             <!-- PACK STATUS: draft materials exist but are not offered
                  as downloads here — see config.js packContents. Do not
                  add download links until they are approved for public
                  release. -->
-            <p class="tts-pack">The ${cfg.packName} includes ${pack}.</p>
           </div>
           <div class="tts-split__col">
             <h3 class="tts-sub">What you organise</h3>
@@ -220,11 +214,10 @@ const TTS = (() => {
           </div>
         </div>
 
-        <h3 class="tts-sub tts-sub--spaced">Who hosts screenings</h3>
-        <!-- HOLDING COPY — category descriptions require IPNLF approval -->
-        <ul class="tts-audience">${audience}</ul>
+        <h3 class="tts-sub tts-sub--spaced">Who can host?</h3>
+        <p class="tts-audience-copy">${cfg.hostAudience}</p>
 
-        <p class="tts-formats-line">A screening on its own is a perfectly good event. If you want more, hosts often add ${formats}.</p>
+        <p class="tts-formats-line">Keep it simple with a screening, or add ${formats}.</p>
       </div>
     </section>`;
   }
@@ -287,8 +280,8 @@ const TTS = (() => {
     if (!b || !b.account || !b.formId) return "";
     return `<section class="tts-section tts-section--form" id="request">
       <div class="tt-container">
-        <h2 class="tts-section__title">Enquire</h2>
-        <p class="tts-section__lede">Let us know your requirements. We will then get in touch to assist.</p>
+        <h2 class="tts-section__title">Tell us about your screening</h2>
+        <p class="tts-section__lede">Tell us about your plans, even if you're still exploring the idea. We'll get in touch to discuss film access and how we can support your screening.</p>
 
         <div class="tts-form-wrap">
           <!-- Beacon renders into this div. Do not add children: the
