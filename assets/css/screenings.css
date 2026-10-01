@@ -265,6 +265,9 @@ a { color: var(--text-link); }
   width: 100%;
   padding: 0;
   border: 0;
+  /* It is an <a>, not a <button>, so that it still works with no
+     JavaScript and when the embed is blocked. */
+  text-decoration: none;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--surface-dark);

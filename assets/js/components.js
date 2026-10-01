@@ -84,27 +84,33 @@ const TTS = (() => {
   }
 
   // ---- trailer -------------------------------------------------
-  // Click-to-play facade: a still and a play button, with the iframe
-  // created only on click. Nothing from YouTube is requested until the
-  // viewer asks for it — see config.js trailer for why that matters.
+  // Progressive enhancement, in three layers:
+  //   1. The poster is a real link to the video on YouTube. With no
+  //      JavaScript, or if this script fails, it still works.
+  //   2. With JavaScript, the click is intercepted and the embed is
+  //      swapped in, so the trailer plays in place.
+  //   3. If the embed does not load (corporate networks, school
+  //      filters, and previews that block iframes all do this), the
+  //      poster is restored and reverts to being a plain link, so the
+  //      trailer never fails silently.
+  //
+  // Nothing from YouTube is requested until someone clicks — see
+  // config.js trailer for why that matters.
   //
   // The poster is a film still, NOT the title card: the card carries
   // the film's name in large type, so the play button landed on top of
   // lettering and the block read as clutter.
-  //
-  // "Open it on YouTube" is the fallback for any context where the
-  // iframe cannot load (a strict corporate network, a preview that
-  // blocks iframes). It always works.
   function trailer() {
     const t = cfg.trailer;
     if (!t || !t.enabled || !t.youtubeId) return "";
+    const watchUrl = `https://www.youtube.com/watch?v=${t.youtubeId}`;
     return `<figure class="tts-trailer">
-      <button type="button" class="tts-trailer__play" data-role="trailer-play" data-youtube-id="${t.youtubeId}" aria-label="Play the trailer for ${cfg.filmName}">
+      <a class="tts-trailer__play" href="${watchUrl}" target="_blank" rel="noopener" data-role="trailer-play" data-youtube-id="${t.youtubeId}" aria-label="Play the trailer for ${cfg.filmName}">
         <img src="${t.poster}" alt="" loading="lazy" width="1600" height="899">
         <span class="tts-trailer__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
         </span>
-      </button>
+      </a>
     </figure>`;
   }
 
@@ -342,13 +348,18 @@ const TTS = (() => {
   // ---- behaviour --------------------------------------------------
 
   function initInteractions() {
-    // Trailer: swap the facade for the real player on click. Nothing is
-    // requested from YouTube before this runs.
-    const trailerBtn = document.querySelector('[data-role="trailer-play"]');
-    if (!trailerBtn) return;
-    trailerBtn.addEventListener("click", () => {
-      const id = trailerBtn.dataset.youtubeId;
+    const play = document.querySelector('[data-role="trailer-play"]');
+    if (!play) return;
+
+    play.addEventListener("click", (e) => {
+      // Once the embed has been shown not to load, stop intercepting:
+      // the click follows the href to YouTube like any other link.
+      if (play.dataset.embedBlocked === "true") return;
+
+      const id = play.dataset.youtubeId;
       if (!id) return;
+      e.preventDefault();
+
       const frame = document.createElement("iframe");
       // youtube-nocookie + autoplay (the click IS the gesture that
       // permits it) + rel=0 so the end screen does not fill with
@@ -358,8 +369,23 @@ const TTS = (() => {
       frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       frame.allowFullscreen = true;
       frame.className = "tts-trailer__frame";
-      trailerBtn.replaceWith(frame);
+
+      let loaded = false;
+      frame.addEventListener("load", () => { loaded = true; });
+
+      play.replaceWith(frame);
       frame.focus();
+
+      // A blocked frame usually never fires "load" at all, so a timeout
+      // is the only reliable signal available cross-origin. If nothing
+      // has loaded by now, put the poster back and let it behave as the
+      // link it started as.
+      setTimeout(() => {
+        if (loaded || !frame.isConnected) return;
+        play.dataset.embedBlocked = "true";
+        frame.replaceWith(play);
+        play.focus();
+      }, 4000);
     });
   }
 
