@@ -359,7 +359,6 @@ const TTS = (() => {
     return `<section class="tts-section tts-section--form" id="request">
       <div class="tt-container tts-form-wrap">
         <h2 class="tts-section__title">Request a screening</h2>
-        <p class="tts-section__lede">A short form, not an application. Nothing here commits you to anything — it just gives us enough to reply usefully.</p>
         ${previewNotice}
 
         <form class="tts-form" novalidate ${isLive ? `action="${cfg.formEndpoint}" method="POST"` : ""}>

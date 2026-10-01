@@ -69,7 +69,7 @@ Setting `formEndpoint` to a real URL turns all of that off in one edit: the form
 ### To make it real, someone at IPNLF must decide
 
 1. **Which mechanism.** Recommended: a third-party form endpoint (Formspree, Basin, Getform) behind the page's own styled form — it keeps the page on-brand, accessible and mobile-correct. Fallback: an embedded Google or Microsoft form, whichever suite IPNLF actually runs — free and unlimited, but it cannot be styled and will look like a Google product dropped into the page.
-2. **A destination mailbox — a shared alias, not an individual's inbox.** `screenings@ipnlf.org` is used throughout as a placeholder; **do not assume it exists.**
+2. ~~A destination mailbox.~~ **Confirmed 2026-10-01: `info@ipnlf.org`.** A shared alias rather than an individual's inbox, which was the point. It is also the address everything else arrives at, so screening enquiries will sit in general traffic — worth a dedicated alias if volume ever justifies one.
 3. **Who owns that inbox, and what response time we are willing to state.** An enquiry form with no named owner is worse than no form.
 4. If a paid tier: who holds the account. Formspree's free tier is ~50 submissions/month *account-wide* and keeps submissions for only 30 days — over the cap, submissions stop silently.
 5. **Privacy.** Name + email + organisation + country is personal data. The page links IPNLF's existing privacy policy at the point of collection, but someone must confirm that policy covers enquiries processed by a third-party (likely US-based) processor, and agree a retention period. If addresses would later be added to any mailing list, that needs its own separate, unticked consent — not this form.

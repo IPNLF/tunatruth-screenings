@@ -58,10 +58,13 @@ const SCREENINGS_CONFIG = {
   // users will not use a web form at all, on policy or habit — and
   // while formEndpoint is null this is the only thing on the page
   // that actually reaches anyone.
-  // PLACEHOLDER ADDRESS — a shared alias (not an individual's inbox)
-  // needs creating and confirming before this page goes anywhere near
-  // production. Do not assume screenings@ipnlf.org exists.
-  fallbackEmail: "screenings@ipnlf.org",
+  // Confirmed by the user 2026-10-01: info@ipnlf.org, IPNLF's own
+  // general address. A shared alias, not an individual's inbox, which
+  // was the thing that mattered — but it is also the address everything
+  // else comes to, so screening enquiries will land in general traffic.
+  // Worth revisiting if volume justifies a dedicated alias.
+  // NOTE: duplicated by hand in the <noscript> block in index.html.
+  fallbackEmail: "info@ipnlf.org",
 
   // --- Award status -------------------------------------------------
   // The 2026 Jackson Wild Media Awards are close (brief §10), so this
