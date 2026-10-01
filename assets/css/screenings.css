@@ -533,7 +533,7 @@ select:focus-visible, textarea:focus-visible {
    columns sit together beneath it, the poster preview holds the right
    rail at desktop, and the formats line closes. The areas map is the
    only thing that sets the order — the markup is not reshuffled. */
-.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "audience" "support" "preview" "organise" "formats"; }
+.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "formats" "audience" "support" "preview" "organise"; }
 .tts-hosting-support { grid-area: support; }
 .tts-hosting-organise { grid-area: organise; }
 .tts-hosting-audience { grid-area: audience; }
@@ -551,7 +551,11 @@ select:focus-visible, textarea:focus-visible {
    at desktop width while forcing horizontal overflow at tablet width.
    Letting it wrap naturally means it is one line wherever there is
    room and still readable where there is not. */
-.tts-hosting .tts-formats-line { margin-top: 16px; max-width: none; }
+/* Sits under the heading as a one-line standfirst where there is room
+   (one line from ~790px up; the text needs 741px). Below that it wraps,
+   so text-wrap: pretty keeps a single word off the last line. NOT
+   white-space: nowrap — see the note on that approach in CLAUDE.md. */
+.tts-hosting .tts-formats-line { margin-top: 0; max-width: none; text-wrap: pretty; }
 .tts-template-preview { grid-area: preview; margin: 0; display: flex; align-items: center; gap: 20px; }
 .tts-template-preview > a { flex: 0 0 130px; text-decoration: none; }
 .tts-template-preview img { width: 100%; height: auto; box-shadow: 0 6px 18px rgba(6,14,16,.14); }
@@ -561,10 +565,10 @@ select:focus-visible, textarea:focus-visible {
 
 .tts-template-preview a:focus-visible { outline: 3px solid var(--ipnlf-teal-deep); outline-offset: 6px; }
 @media (min-width: 760px) {
-  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "audience preview" "support organise" "formats formats"; gap: 32px 40px; }
+  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "formats formats" "audience preview" "support organise"; gap: 32px 40px; }
 }
 @media (min-width: 1100px) {
-  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "audience audience preview" "support organise preview" "formats formats formats"; gap: 28px 36px; }
+  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "formats formats formats" "audience audience preview" "support organise preview"; gap: 28px 36px; }
   .tts-template-preview { display: block; }
   .tts-template-preview > a { display: block; }
   .tts-template-preview figcaption { margin-top: 16px; }

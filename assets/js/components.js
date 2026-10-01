@@ -196,6 +196,20 @@ const TTS = (() => {
       <div class="tt-container">
         <h2 class="tts-section__title">Hosting a screening</h2>
         <div class="tts-hosting-grid">
+          <!-- Opens the section as a one-line standfirst under the
+               heading. It has its own grid area, and it is also FIRST in
+               the markup so the order a screen reader announces matches
+               the order on screen. -->
+          <p class="tts-formats-line">Show the film on its own, or follow it with a discussion, classroom activity or locally organised panel.</p>
+          <!-- "Who can host?" opens the section: a one-line qualifier,
+               so the two practical columns below it read as a matched
+               pair. It used to sit underneath them, where it left a
+               wide empty column to its right and broke the section's
+               structure halfway down. -->
+          <div class="tts-hosting-audience">
+            <h3 class="tts-sub">Who can host?</h3>
+            <p class="tts-audience-copy">${cfg.hostAudience}</p>
+          </div>
           <div class="tts-hosting-support">
             <h3 class="tts-sub">Support from IPNLF</h3>
             <ul class="tts-checklist">${provide}</ul>
@@ -212,19 +226,6 @@ const TTS = (() => {
             <h3 class="tts-sub">What you organise</h3>
             <ul class="tts-checklist tts-checklist--alt">${organise}</ul>
           </div>
-          <!-- "Who can host?" opens the section: a one-line qualifier,
-               so the two practical columns below it read as a matched
-               pair. It used to sit underneath them, where it left a
-               wide empty column to its right and broke the section's
-               structure halfway down. -->
-          <div class="tts-hosting-audience">
-            <h3 class="tts-sub">Who can host?</h3>
-            <p class="tts-audience-copy">${cfg.hostAudience}</p>
-          </div>
-          <!-- Its own grid area, so it can close the section after the
-               reader knows what is involved, rather than travelling to
-               the top with the audience line. -->
-          <p class="tts-formats-line">Show the film on its own, or follow it with a discussion, classroom activity or locally organised panel.</p>
         </div>
       </div>
     </section>`;
