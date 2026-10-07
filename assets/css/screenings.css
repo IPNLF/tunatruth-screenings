@@ -146,8 +146,8 @@ a { color: var(--text-link); }
   .tts-hero__inner { padding-top: var(--space-8); padding-bottom: var(--space-8); max-width: 1120px; }
   .tts-hero__title { max-width: 20ch; }
   /* No reading-measure cap on the hero line: it is one short sentence,
-     not running copy, and the cap forced it over two lines at every
-     desktop width. It wraps naturally below ~620px, where text-wrap:
+     not running copy, so the 46ch cap only ever risked breaking it in
+     two. It wraps naturally on the narrowest phones, where text-wrap:
      balance evens the lines out. NOT white-space: nowrap. */
   .tts-hero__lede { max-width: none; }
 }
