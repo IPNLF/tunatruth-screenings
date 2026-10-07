@@ -171,13 +171,18 @@ const TTS = (() => {
           <img class="tts-presenter__photo" src="assets/img/serena-presenter.jpg" alt="Serena Appleby holding a platter of grilled tuna, from ${cfg.filmName}." loading="lazy" width="600" height="450">
           <div class="tts-presenter__text">
             <h3>Presented by Serena Appleby</h3>
-            <!-- HOLDING COPY — requires factual/production approval -->
-            <p>Serena begins the film as a seafood lover asking a simple question: how much do we really know about the tuna we eat? Her journey takes her from kitchens and supermarkets to fishing communities and fisheries experts.</p>
-            <details class="tts-disclosure">
-              <summary>More about Serena</summary>
-              <!-- Public biographical facts, from tunatruth.com/about-1 -->
-              <p>Serena is a Filipino-British chef and presenter, known from BBC Three's <em>Hungry For It</em> and ITV's <em>Ainsley Harriott's National Trust Cook Off</em>, and the creator of the Kring Kringz pop-up.</p>
-            </details>
+            <!-- Credentials moved up from the "More about Serena"
+                 disclosure (2026-10-07) so they are visible rather than
+                 hidden behind a click: they are what establishes her to
+                 a host who does not know the film. The ITV credit was
+                 cut at the user's request, which left the disclosure
+                 holding one clause, so it was folded in here and
+                 removed rather than left as a component containing a
+                 single sentence.
+                 Public biographical facts, from tunatruth.com/about-1.
+                 HOLDING COPY — the journey sentence still requires
+                 factual/production approval. -->
+            <p>Serena is a Filipino-British chef and presenter, known from BBC Three's <em>Hungry For It</em> and creator of the Kring Kringz pop-up. She begins the film as a seafood lover asking a simple question: how much do we really know about the tuna we eat? Her journey takes her from kitchens and supermarkets to fishing communities and fisheries experts.</p>
           </div>
         </div>
       </div>
@@ -216,8 +221,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="assets/img/screening-poster-preview.png?v=20261001-dark" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
-              <img src="assets/img/screening-poster-preview.png?v=20261001-dark" alt="Sample screening poster with The Tuna Truth and IPNLF logos, Serena Appleby, and editable host, date, time, venue and booking details" width="842" height="1191">
+            <a href="assets/img/screening-poster-preview.png?v=20261007-filled" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
+              <img src="assets/img/screening-poster-preview.png?v=20261007-filled" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
               <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
             </a>
             <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>

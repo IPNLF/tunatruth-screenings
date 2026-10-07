@@ -90,7 +90,12 @@ const SCREENINGS_CONFIG = {
   // secret: embedding puts the ID in the page source.
   trailer: {
     enabled: true,
-    youtubeId: "5piItxcGaAY",
+    // Replaced 2026-10-07. Was 5piItxcGaAY on a personal channel
+    // (@naturevideos96), which showed the uploader's name in the player
+    // and was a continuity risk. This is the official trailer on
+    // Sunline Films' channel (@SunlineFilms) — the production company
+    // credited on the poster. Verified embeddable.
+    youtubeId: "KVdUoFiMHRA",
     // Poster frame, from this repo. Deliberately not YouTube's own
     // thumbnail, which would be a third-party request before consent.
     // A real film still, NOT the title card that was here first: the
