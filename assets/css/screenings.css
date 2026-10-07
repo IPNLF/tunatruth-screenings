@@ -145,7 +145,11 @@ a { color: var(--text-link); }
 @media (min-width: 860px) {
   .tts-hero__inner { padding-top: var(--space-8); padding-bottom: var(--space-8); max-width: 1120px; }
   .tts-hero__title { max-width: 20ch; }
-  .tts-hero__lede { max-width: 46ch; }
+  /* No reading-measure cap on the hero line: it is one short sentence,
+     not running copy, and the cap forced it over two lines at every
+     desktop width. It wraps naturally below ~620px, where text-wrap:
+     balance evens the lines out. NOT white-space: nowrap. */
+  .tts-hero__lede { max-width: none; }
 }
 
 /* The donation page needs a separate visible photo banner on mobile,

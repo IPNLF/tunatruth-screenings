@@ -75,7 +75,7 @@ const TTS = (() => {
       <div class="tt-container tts-hero__inner">
         <h1 class="tts-hero__title"><span class="tts-hero__title-lead">Host a screening</span> of ${cfg.filmName}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
-        <p class="tts-hero__lede">Explore where your seafood comes from.</p>
+        <p class="tts-hero__lede">Show the film and use the discussion prompts to start a conversation.</p>
         <div class="tts-hero__actions">
           <a class="tts-btn tts-btn--primary" href="#request" aria-label="More Info about hosting a screening">More Info</a>
         </div>
@@ -255,7 +255,7 @@ const TTS = (() => {
       {
         n: "3",
         title: "Host your screening",
-        body: "Show the film and use the discussion prompts to start a conversation afterwards.",
+        body: "Introduce the film, then open the floor using the prompts in the host pack.",
       },
     ];
     const items = steps.map((s) => `
