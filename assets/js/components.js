@@ -255,7 +255,7 @@ const TTS = (() => {
       {
         n: "3",
         title: "Host your screening",
-        body: "Introduce the film, then open the floor using the prompts in the host pack.",
+        body: "Show the film and use the discussion prompts to start a conversation.",
       },
     ];
     const items = steps.map((s) => `
