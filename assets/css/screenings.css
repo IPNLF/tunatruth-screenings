@@ -219,6 +219,9 @@ a { color: var(--text-link); }
   margin: 0 0 var(--space-5);
   font-size: var(--fs-body-lg);
   color: var(--text-on-dark-soft);
+  /* One line from ~460px up. Below that it must wrap, and balance
+     splits it evenly rather than stranding "from." on its own. */
+  text-wrap: balance;
 }
 .tts-hero__actions {
   display: flex;

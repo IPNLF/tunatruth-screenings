@@ -16,8 +16,8 @@
      5 Enquire             how do I express interest?
 
    ONE PRIMARY ACTION, worded the same in the header and the hero:
-   "Enquire about a screening", anchored to #request. Nothing else on
-   the page competes with it.
+   "More Info", anchored to #request. Nothing else on the page
+   competes with it.
    ============================================================ */
 const TTS = (() => {
 
@@ -61,7 +61,7 @@ const TTS = (() => {
     return `<header class="tt-header">
       <div class="tt-container tt-header__inner">
         ${brandLockup()}
-        <a class="tt-header__link" href="#request">Enquire about a screening</a>
+        <a class="tt-header__link" href="#request" aria-label="More Info about hosting a screening">More Info</a>
       </div>
     </header>`;
   }
@@ -75,9 +75,9 @@ const TTS = (() => {
       <div class="tt-container tts-hero__inner">
         <h1 class="tts-hero__title"><span class="tts-hero__title-lead">Host a screening</span> of ${cfg.filmName}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
-        <p class="tts-hero__lede">Bring your workplace, school, university or community together to explore where tuna really comes from.</p>
+        <p class="tts-hero__lede">Explore where your seafood comes from.</p>
         <div class="tts-hero__actions">
-          <a class="tts-btn tts-btn--primary" href="#request">Enquire about a screening</a>
+          <a class="tts-btn tts-btn--primary" href="#request" aria-label="More Info about hosting a screening">More Info</a>
         </div>
       </div>
     </section>`;
