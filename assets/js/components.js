@@ -293,8 +293,8 @@ const TTS = (() => {
     if (!b || !b.account || !b.formId) return "";
     return `<section class="tts-section tts-section--form" id="request">
       <div class="tt-container">
-        <h2 class="tts-section__title">Tell us about your screening</h2>
-        <p class="tts-section__lede">Tell us about your plans, even if you're still exploring the idea. We'll get in touch to discuss film access and how we can support your screening.</p>
+        <h2 class="tts-section__title">Enquire</h2>
+        <p class="tts-section__lede">Let us know your requirements. We will then get in touch to assist.</p>
 
         <div class="tts-form-wrap">
           <!-- Beacon renders into this div. Do not add children: the

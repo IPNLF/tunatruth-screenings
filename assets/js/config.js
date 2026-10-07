@@ -62,7 +62,7 @@ const SCREENINGS_CONFIG = {
   // a click precisely to avoid this.
   beacon: {
     account: "ipnlf",
-    formId: "f5c48138",
+    formId: "cc02962e",
     sdkUrl: "https://static.beaconproducts.co.uk/js-sdk/production/beaconcrm.min.js",
   },
 
