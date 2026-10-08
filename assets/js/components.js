@@ -137,7 +137,7 @@ const TTS = (() => {
             <!-- HOLDING COPY — requires production/IPNLF approval. Also
                  unapproved on the donation page, where it came from, so
                  approving it there settles both. -->
-            <p class="tts-lede-para">Filmed in the Azores, Portugal, ${cfg.filmName} shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.</p>
+            <p class="tts-lede-para">Filmed in Bristol, Cornwall, and the Azores (Portugal), ${cfg.filmName} shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.</p>
             <!-- HOLDING COPY — requires IPNLF approval. Same provenance. -->
             <p>IPNLF supports the film as part of its work to promote thriving coastal communities and environmentally and socially responsible tuna fisheries.</p>
 

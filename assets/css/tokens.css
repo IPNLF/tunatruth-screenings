@@ -24,9 +24,24 @@
      Kept separate so it stays an exact match to the wordmark. */
   --tunatruth-teal: #10CBB2;
 
+  /* ---- TUNA TRUTH brand palette (supplied by IPNLF, 2026-10-08) ----
+     SCREENINGS: the film's own palette. Cool blue-greys with one warm
+     accent and a cream page tone. There is no gold or orange in it, so
+     the page's warm notes now come from coral alone, and it stays the
+     single action colour. Mid grey is deliberately NOT used for body
+     text: at 2.83:1 on cream it fails WCAG AA. */
+  --tt-cream:      #F7F7F0;
+  --tt-grey-light: #BAC7CB;
+  --tt-grey-mid:   #7C98A6;
+  --tt-grey-dark:  #3F6880;
+  --tt-blue-deep:  #01385B;
+  --tt-coral:      #D96C4A;
+
   /* ---- Cinematic surface (TunaTruth-specific, campaign feel) ---- */
-  --cinema-black:   #0A1416;
-  --cinema-panel:   #102226;
+  /* SCREENINGS: tinted towards --tt-blue-deep rather than neutral
+     black, so the dark sections read as the same family as the rest. */
+  --cinema-black:   #061D29;
+  --cinema-panel:   #0D2B3C;
   --cinema-line:    rgba(255,255,255,0.12);
 
   /* ---- Neutrals ---- */
@@ -37,31 +52,36 @@
   --ipnlf-white:   #FFFFFF;
 
   /* ---- Semantic text ---- */
-  --text-strong:       var(--ipnlf-ink);
-  --text-body:         #1E2A2E;
-  --text-muted:        var(--ipnlf-slate);
+  /* SCREENINGS: headings are deep blue rather than near-black, and the
+     muted tone is the palette's dark grey (5.57:1 on cream, AA pass). */
+  --text-strong:       var(--tt-blue-deep);
+  --text-body:         #1C3340;
+  --text-muted:        var(--tt-grey-dark);
   --text-on-dark:      var(--ipnlf-white);
-  --text-on-dark-soft: #B9CBCE;
-  --text-link:         var(--ipnlf-teal-deep);
+  --text-on-dark-soft: var(--tt-grey-light);
+  --text-link:         var(--tt-blue-deep);
 
   /* ---- Semantic surfaces ---- */
   --surface-page:  var(--ipnlf-white);
-  --surface-soft:  var(--ipnlf-foam);
+  --surface-soft:  var(--tt-cream);
   --surface-dark:  var(--cinema-black);
   --surface-panel: var(--cinema-panel);
 
   /* ---- Borders ---- */
-  --border-subtle:  var(--ipnlf-mist);
+  --border-subtle:  var(--tt-grey-light);
   --border-on-dark: var(--cinema-line);
 
   /* ---- Brand actions ----
      The donate CTA deliberately uses the warm gold/orange pair, not the
      teal used for informational links elsewhere, so it reads as the one
      actionable thing on the screen rather than blending with nav/body links. */
-  --brand-primary:   var(--ipnlf-deep);
-  --brand-secondary: var(--ipnlf-teal);
-  --cta-bg:          var(--ipnlf-gold);
-  --cta-bg-hover:    #ffbf49;
+  --brand-primary:   var(--tt-blue-deep);
+  --brand-secondary: var(--tt-grey-dark);
+  /* SCREENINGS: coral replaces the gold CTA. The label stays a deep
+     warm near-black: white on coral is only 3.39:1 and would fail AA
+     at this size, whereas #241300 gives 5.30:1. */
+  --cta-bg:          var(--tt-coral);
+  --cta-bg-hover:    #E8805F;
   --cta-text:        #241300;
 
   /* ---- Type ---- */
@@ -106,7 +126,7 @@
   /* ---- Shadows ---- */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.12);
   --shadow-md: 0 10px 30px rgba(0,0,0,0.22);
-  --shadow-cta: 0 8px 24px rgba(246,174,45,0.35);
+  --shadow-cta: 0 8px 24px rgba(217,108,74,0.38);
 
   /* ---- Layout ---- */
   --container-max: 1120px;

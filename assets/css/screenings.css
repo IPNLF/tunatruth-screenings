@@ -81,7 +81,7 @@ a { color: var(--text-link); }
 }
 .tt-lockup { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
 .tt-header__link {
-  color: var(--ipnlf-deep);
+  color: var(--brand-primary);
   font-size: var(--fs-body-sm);
   font-weight: 600;
   text-decoration: none;
@@ -115,7 +115,7 @@ a { color: var(--text-link); }
 .tts-btn--primary:hover { background: var(--cta-bg-hover); }
 .tts-btn--primary:active { transform: translateY(1px); }
 .tts-btn--primary:disabled {
-  background: var(--ipnlf-mist);
+  background: var(--border-subtle);
   color: var(--text-muted);
   box-shadow: none;
   cursor: not-allowed;
@@ -135,7 +135,7 @@ a { color: var(--text-link); }
 .tts-hero {
   background-color: var(--surface-dark);
   background-image:
-    linear-gradient(105deg, rgba(6,14,16,0.94) 0%, rgba(6,14,16,0.86) 38%, rgba(6,14,16,0.55) 70%, rgba(6,14,16,0.35) 100%),
+    linear-gradient(105deg, rgba(6,29,41,0.94) 0%, rgba(6,29,41,0.86) 38%, rgba(6,29,41,0.55) 70%, rgba(6,29,41,0.35) 100%),
     url("../img/hero-photo.jpg");
   background-size: cover;
   background-position: center 32%;
@@ -167,7 +167,7 @@ a { color: var(--text-link); }
      full frame rather than sitting in the darkened left third. */
   .tts-hero {
     background-image:
-      linear-gradient(180deg, rgba(6,14,16,0.86) 0%, rgba(6,14,16,0.90) 60%, rgba(6,14,16,0.94) 100%),
+      linear-gradient(180deg, rgba(6,29,41,0.86) 0%, rgba(6,29,41,0.90) 60%, rgba(6,29,41,0.94) 100%),
       url("../img/hero-photo.jpg");
     background-position: center 30%;
   }
@@ -203,20 +203,18 @@ a { color: var(--text-link); }
   color: var(--ipnlf-white);
   text-wrap: balance;
 }
-/* The first line takes the film's own title colour. --ipnlf-orange is
-   #E88C33; the orange baked into the wordmark is #E88C00, so this is
-   within a couple of percent of the poster's title treatment rather
-   than a new decision.
-   It is deliberately NOT --ipnlf-gold: gold stays exclusive to the
-   primary action, so the headline and the button do not become the
-   same colour ~100px apart. If this ever changes, re-check that the
-   button is still the one unmistakable warm element in the hero.
+/* The first line takes the brand's warm accent. Coral is the ONLY warm
+   tone in the Tuna Truth palette, so unlike the previous orange/gold
+   pair the headline and the button are now necessarily the same hue.
+   They are separated by weight and form instead: 3rem display type
+   against a filled pill. If a second warm is ever added to the
+   palette, give one of the two its own tone.
    display:block makes the line break deliberate rather than leaving it
    to text-wrap, so the colour always covers exactly "Host a screening"
    and never half of the next phrase. */
 .tts-hero__title-lead {
   display: block;
-  color: var(--ipnlf-orange);
+  color: var(--tt-coral);
 }
 
 .tts-hero__lede {
@@ -422,8 +420,8 @@ a { color: var(--text-link); }
   top: 0.4em;
   width: 13px;
   height: 6px;
-  border-left: 2.5px solid var(--ipnlf-teal-deep);
-  border-bottom: 2.5px solid var(--ipnlf-teal-deep);
+  border-left: 2.5px solid var(--brand-primary);
+  border-bottom: 2.5px solid var(--brand-primary);
   transform: rotate(-45deg);
 }
 /* The host's column is marked differently from ours, so the two lists
@@ -435,7 +433,9 @@ a { color: var(--text-link); }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--ipnlf-orange);
+  /* Mid grey, not coral: the dot is decoration, and coral stays the
+     action colour. Shape and tone still separate the two lists. */
+  background: var(--tt-grey-mid);
   transform: none;
 }
 .tts-pack {
@@ -457,7 +457,7 @@ a { color: var(--text-link); }
   font-size: var(--fs-body-sm);
   color: var(--text-muted);
 }
-.tts-audience strong { color: var(--ipnlf-deep); }
+.tts-audience strong { color: var(--brand-primary); }
 .tts-audience-copy {
   margin: 0;
   max-width: 78ch;
@@ -484,7 +484,7 @@ a { color: var(--text-link); }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: var(--ipnlf-deep);
+  background: var(--brand-primary);
   color: var(--ipnlf-white);
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -522,17 +522,15 @@ a { color: var(--text-link); }
 /* ---- focus visibility ---- */
 a:focus-visible, button:focus-visible, input:focus-visible,
 select:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--ipnlf-gold);
+  outline: 3px solid var(--tt-coral);
   outline-offset: 2px;
 }
-/* On the dark sections gold-on-near-black is the visible pair; on
-   light sections it needs the darker ring to stay distinguishable. */
-/* Gold reads on the hero's near-black; on the light sections the
-   darker ring is the visible pair. */
+/* Coral reads on the hero's near-black (5.1:1); on the light sections
+   the deep blue ring is the visible pair. */
 .tts-section a:focus-visible,
 .tts-section button:focus-visible,
 .tts-section summary:focus-visible {
-  outline-color: var(--ipnlf-deep);
+  outline-color: var(--brand-primary);
 }
 
 /* Hosting: readable responsibilities with one tangible pack preview. */
@@ -545,10 +543,10 @@ select:focus-visible, textarea:focus-visible {
 .tts-hosting-organise { grid-area: organise; }
 .tts-hosting-audience { grid-area: audience; }
 .tts-hosting .tts-formats-line { grid-area: formats; }
-.tts-hosting .tts-sub { font-size: 20px; color: var(--ipnlf-deep); margin-top: 0; margin-bottom: 16px; }
+.tts-hosting .tts-sub { font-size: 20px; color: var(--brand-primary); margin-top: 0; margin-bottom: 16px; }
 .tts-hosting .tts-checklist li, .tts-hosting .tts-audience-copy, .tts-hosting .tts-formats-line, .tts-hosting .tts-split__note { font-size: 16px; color: var(--text-body); line-height: 1.6; }
 .tts-hosting .tts-checklist li { margin-bottom: 12px; }
-.tts-hosting .tts-split__note { max-width: 48ch; margin-top: 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--ipnlf-teal-deep); }
+.tts-hosting .tts-split__note { max-width: 48ch; margin-top: 20px; padding: 2px 0 2px 16px; border-left: 2px solid var(--tt-grey-mid); }
 .tts-hosting .tts-audience-copy { max-width: 68ch; }
 /* The closing line is meant to sit on a single horizontal line, so it
    opts out of the 68ch reading measure that would otherwise break it
@@ -565,12 +563,12 @@ select:focus-visible, textarea:focus-visible {
 .tts-hosting .tts-formats-line { margin-top: 0; max-width: none; text-wrap: pretty; }
 .tts-template-preview { grid-area: preview; margin: 0; display: flex; align-items: center; gap: 20px; }
 .tts-template-preview > a { flex: 0 0 130px; text-decoration: none; }
-.tts-template-preview img { width: 100%; height: auto; box-shadow: 0 6px 18px rgba(6,14,16,.14); }
+.tts-template-preview img { width: 100%; height: auto; box-shadow: 0 6px 18px rgba(6,29,41,.14); }
 .tts-template-preview__link { display: block; margin-top: 10px; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 .tts-template-preview figcaption { font-size: 14px; line-height: 1.5; color: var(--text-body); max-width: 26ch; }
-.tts-template-preview strong { display: block; color: var(--ipnlf-deep); font-size: 17px; margin-bottom: 6px; }
+.tts-template-preview strong { display: block; color: var(--brand-primary); font-size: 17px; margin-bottom: 6px; }
 
-.tts-template-preview a:focus-visible { outline: 3px solid var(--ipnlf-teal-deep); outline-offset: 6px; }
+.tts-template-preview a:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 6px; }
 @media (min-width: 760px) {
   .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "formats formats" "audience preview" "support organise"; gap: 32px 40px; }
 }
@@ -583,4 +581,4 @@ select:focus-visible, textarea:focus-visible {
 /* Keep practical and presenter copy at the same readable body size. */
 .tts-presenter__text > p, .tts-step p { font-size: var(--fs-body); }
 /* Keyboard focus stays visible for every link and disclosure. */
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--ipnlf-teal); outline-offset: 4px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 4px; }
