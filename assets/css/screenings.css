@@ -203,18 +203,12 @@ a { color: var(--text-link); }
   color: var(--ipnlf-white);
   text-wrap: balance;
 }
-/* The first line takes the brand's warm accent. Coral is the ONLY warm
-   tone in the Tuna Truth palette, so unlike the previous orange/gold
-   pair the headline and the button are now necessarily the same hue.
-   They are separated by weight and form instead: 3rem display type
-   against a filled pill. If a second warm is ever added to the
-   palette, give one of the two its own tone.
-   display:block makes the line break deliberate rather than leaving it
-   to text-wrap, so the colour always covers exactly "Host a screening"
-   and never half of the next phrase. */
+/* Both lines of the headline are the same colour. The lead span is
+   kept only for the line break: display:block makes it deliberate
+   rather than leaving it to text-wrap, so "Host a screening" always
+   sits on its own line and never takes half of the next phrase. */
 .tts-hero__title-lead {
   display: block;
-  color: var(--tt-coral);
 }
 
 .tts-hero__lede {

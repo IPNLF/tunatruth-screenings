@@ -137,7 +137,7 @@ const TTS = (() => {
             <!-- HOLDING COPY — requires production/IPNLF approval. Also
                  unapproved on the donation page, where it came from, so
                  approving it there settles both. -->
-            <p class="tts-lede-para">Filmed in Bristol, Cornwall, and the Azores (Portugal), ${cfg.filmName} shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.</p>
+            <p class="tts-lede-para">Filmed in Bristol, Cornwall, and the Azores (Portugal), <em>${cfg.filmName}</em> shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.</p>
             <!-- HOLDING COPY — requires IPNLF approval. Same provenance. -->
             <p>IPNLF supports the film as part of its work to promote thriving coastal communities and environmentally and socially responsible tuna fisheries.</p>
 
@@ -158,7 +158,7 @@ const TTS = (() => {
               <summary>Film credits</summary>
               <!-- CONFIRMED factual credit — from the official poster
                    asset, carried over unchanged from the donation page. -->
-              <p>${cfg.filmName} is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
+              <p><em>${cfg.filmName}</em> is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
             </details>
           </div>
         </div>
@@ -221,8 +221,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="assets/img/screening-poster-preview.png?v=20261008-palette" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
-              <img src="assets/img/screening-poster-preview.png?v=20261008-palette" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
+            <a href="assets/img/screening-poster-preview.png?v=20261008-orange" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
+              <img src="assets/img/screening-poster-preview.png?v=20261008-orange" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
               <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
             </a>
             <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>

@@ -36,6 +36,11 @@
   --tt-grey-dark:  #3F6880;
   --tt-blue-deep:  #01385B;
   --tt-coral:      #D96C4A;
+  /* The orange baked into the film's own wordmark. Not part of the six
+     supplied colours, but it is already on every page in the logo, so
+     using it for the action ties the two together rather than adding a
+     seventh colour from nowhere. */
+  --tt-logo-orange: #E88C00;
 
   /* ---- Cinematic surface (TunaTruth-specific, campaign feel) ---- */
   /* SCREENINGS: tinted towards --tt-blue-deep rather than neutral
@@ -77,16 +82,14 @@
      actionable thing on the screen rather than blending with nav/body links. */
   --brand-primary:   var(--tt-blue-deep);
   --brand-secondary: var(--tt-grey-dark);
-  /* SCREENINGS: the action is a cream pill with a deep blue label.
-     Coral was tried here first and is the wrong tool for a button: the
-     pill separated from the hero ground by only 3.61:1, and because
-     white on coral is 3.39:1 the label was forced to near-black. Cream
-     puts both figures at 11.36:1 and makes the action the brightest
-     object in the hero, which is what it should be. Coral stays on the
-     headline, where display type carries it comfortably. */
-  --cta-bg:          var(--tt-cream);
-  --cta-bg-hover:    var(--ipnlf-white);
-  --cta-text:        var(--tt-blue-deep);
+  /* SCREENINGS: the action is the logo's own orange with a deep warm
+     near-black label — 6.73:1 against the hero ground and 7.00:1 for
+     the label, so it is both the warmest and one of the highest
+     contrast things on the page. It also matches the wordmark sitting
+     directly above it, which coral never did. */
+  --cta-bg:          var(--tt-logo-orange);
+  --cta-bg-hover:    #FFA01F;
+  --cta-text:        #241300;
 
   /* ---- Type ---- */
   --font-display: "Bebas Neue", "Anton", "Oswald", sans-serif;
@@ -130,8 +133,7 @@
   /* ---- Shadows ---- */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.12);
   --shadow-md: 0 10px 30px rgba(0,0,0,0.22);
-  /* A light pill needs a neutral drop, not a coloured glow. */
-  --shadow-cta: 0 8px 24px rgba(0,0,0,0.38);
+  --shadow-cta: 0 8px 24px rgba(232,140,0,0.35);
 
   /* ---- Layout ---- */
   --container-max: 1120px;
