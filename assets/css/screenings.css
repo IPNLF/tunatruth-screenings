@@ -309,8 +309,12 @@ a { color: var(--text-link); }
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--cta-bg);
-  color: var(--cta-text);
+  /* Deliberately NOT --cta-bg. Two reasons: orange is reserved for the
+     one primary action, and against this particular still (which
+     averages a mid grey-brown) cream measures 4.98:1 where orange is
+     only 2.09:1. If the poster image ever changes, re-measure. */
+  background: var(--tt-cream);
+  color: var(--tt-blue-deep);
   /* Optical centring: the triangle's visual mass sits left of centre. */
   padding-left: 4px;
   box-shadow: var(--shadow-md);

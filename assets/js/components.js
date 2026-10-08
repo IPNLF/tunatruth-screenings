@@ -221,8 +221,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="assets/img/screening-poster-preview.png?v=20261008-orange" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
-              <img src="assets/img/screening-poster-preview.png?v=20261008-orange" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
+            <a href="assets/img/screening-poster-preview.png?v=20261008-panel" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
+              <img src="assets/img/screening-poster-preview.png?v=20261008-panel" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
               <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
             </a>
             <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>
