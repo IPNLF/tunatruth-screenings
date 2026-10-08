@@ -104,9 +104,9 @@ a { color: var(--text-link); }
   border: 1px solid transparent;
   transition: background 0.15s, color 0.15s, transform 0.1s;
 }
-/* Gold is reserved for the ONE primary action on this page (the hero
-   CTA and the form's submit are the same action, stated twice) — the
-   same discipline the donation page uses for Donate. */
+/* The cream pill is reserved for the ONE primary action on this page
+   (the hero CTA and the form's submit are the same action, stated
+   twice) — the same discipline the donation page uses for Donate. */
 .tts-btn--primary {
   background: var(--cta-bg);
   color: var(--cta-text);
