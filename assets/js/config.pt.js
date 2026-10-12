@@ -43,7 +43,10 @@ const SCREENINGS_CONFIG = {
     heroTitleLead: "Organize uma sessão",
     heroTitleTail: "de The Tuna Truth",
     // HOLDING COPY — requires IPNLF/production approval
-    heroLede: "Descubra de onde vem o seu pescado",
+    // LENGTH: 680px against the English 681px, so both hold one
+    // line down to 768px. "finalista", not "premiado": the film is
+    // shortlisted, not a winner.
+    heroLede: "Documentário finalista sobre o pescado, quem está por trás e as nossas escolhas",
     heroPhotoAlt: "Um fotograma de The Tuna Truth",
     trailerAria: "Reproduzir o trailer de The Tuna Truth",
     trailerFrameTitle: "Trailer de The Tuna Truth",
