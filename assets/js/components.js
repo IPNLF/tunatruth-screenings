@@ -116,12 +116,14 @@ const TTS = (() => {
   // the film's name in large type, so the play button landed on top of
   // lettering and the block read as clutter.
   function trailer() {
-    const t = cfg.trailer;
-    if (!t || !t.enabled || !t.youtubeId) return "";
-    const watchUrl = `https://www.youtube.com/watch?v=${t.youtubeId}`;
+    // NOT named t: that is the copy object in this module's scope, and
+    // shadowing it here silently emptied the aria-label.
+    const tr = cfg.trailer;
+    if (!tr || !tr.enabled || !tr.youtubeId) return "";
+    const watchUrl = `https://www.youtube.com/watch?v=${tr.youtubeId}`;
     return `<figure class="tts-trailer">
-      <a class="tts-trailer__play" href="${watchUrl}" target="_blank" rel="noopener" data-role="trailer-play" data-youtube-id="${t.youtubeId}" aria-label="${t.trailerAria}">
-        <img src="${t.poster}" alt="" loading="lazy" width="1600" height="899">
+      <a class="tts-trailer__play" href="${watchUrl}" target="_blank" rel="noopener" data-role="trailer-play" data-youtube-id="${tr.youtubeId}" aria-label="${t.trailerAria}">
+        <img src="${asset(tr.poster)}" alt="" loading="lazy" width="1600" height="899">
         <span class="tts-trailer__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
         </span>
@@ -236,8 +238,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="${asset("assets/img/screening-poster-preview.png?v=20261012-pt2")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
-              <img src="${asset("assets/img/screening-poster-preview.png?v=20261012-pt2")}" alt="${t.posterAlt}" width="842" height="1191">
+            <a href="${asset("assets/img/screening-poster-preview.png?v=20261012-pt3")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
+              <img src="${asset("assets/img/screening-poster-preview.png?v=20261012-pt3")}" alt="${t.posterAlt}" width="842" height="1191">
               <span class="tts-template-preview__link">${t.posterEnlarge}</span>
             </a>
             <figcaption><strong>${t.posterCaptionLead}</strong>${t.posterCaption}</figcaption>
