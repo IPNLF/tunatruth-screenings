@@ -230,3 +230,36 @@ Not blocking the prototype. All of these need answers before launch, and none sh
 - No JavaScript errors. (Locally the Cloudflare beacon logs a CORS error — that is localhost-only and does not occur on a real domain.)
 
 **Not verified:** real assistive-technology testing, cross-browser testing beyond Chromium, and anything about the form once it is connected.
+
+## Portuguese version (`/pt/`)
+
+European Portuguese (pt-PT), at `/pt/`. **Draft machine-assisted
+translation. NOT yet reviewed by a native speaker — do not link to it
+publicly until it has been.**
+
+There is one `components.js`, shared by both languages. It contains no
+English of its own: every user-facing string is read from the config.
+So a translation is a copy of the config with the strings replaced, and
+a reviewer edits one data file instead of hunting through markup.
+
+- `assets/js/config.js` — English copy
+- `assets/js/config.pt.js` — Portuguese copy, plus `assetBase: "../"`
+  so the shared `/assets` folder resolves from inside `/pt/`
+
+**The layout is fixed, so string length is part of the translation.**
+Portuguese generally runs longer than English, and five strings were
+tightened because a literal rendering added a line and changed the
+composition. Each is marked `LENGTH` in `config.pt.js`. Verified at
+1280px: every measured block (hero, synopsis, presenter bio, the
+standfirst, the audience paragraph, the support note, the three steps,
+the enquiry lede, the poster caption) renders on the same number of
+lines as the English, and the two hosting columns balance at 275px
+each, as they do in English. **Re-measure after editing the copy.**
+
+Not translated, deliberately: the film's title, organisation names, and
+the Jackson Wild award category, which is an official category name.
+
+**The enquiry form is still in English.** It is Beacon's, and its
+fields and labels are configured in Beacon rather than in this repo, so
+a Portuguese form means a second form there, with the cost that
+implies. Worth a decision before this page goes to anyone.

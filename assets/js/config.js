@@ -33,6 +33,71 @@ const SCREENINGS_CONFIG = {
   // which mark takes top billing, without touching layout markup.
   // TunaTruth leads here (per brief §17 — the user journey is about
   // the film; IPNLF provides institutional credibility).
+  // --- All user-facing copy -----------------------------------------
+  // components.js contains no language of its own; it reads everything
+  // from here. A translation is therefore a copy of THIS file with the
+  // strings replaced (see config.pt.js), not a second components.js.
+  // Where a string is interpolated, the placeholder is in braces.
+  copy: {
+    cta: "More Info",
+    ctaAria: "More Info about hosting a screening",
+
+    ipnlfLinkAria: "IPNLF \u2014 for one-by-one fishers (opens ipnlf.org)",
+    ipnlfLogoAlt: "IPNLF \u2014 for one-by-one fishers",
+    filmLinkAria: "The Tuna Truth (opens tunatruth.com)",
+    filmLogoAlt: "The Tuna Truth, with Serena Appleby",
+
+    heroTitleLead: "Host a screening",
+    heroTitleTail: "of The Tuna Truth",
+    // HOLDING COPY \u2014 requires IPNLF/production approval
+    heroLede: "Explore where your seafood comes from",
+    heroPhotoAlt: "A still from The Tuna Truth",
+    trailerAria: "Play the trailer for The Tuna Truth",
+    trailerFrameTitle: "Trailer for The Tuna Truth",
+
+    filmTitle: "The film",
+    // HOLDING COPY \u2014 requires production/IPNLF approval
+    synopsis: "Filmed in Bristol, Cornwall, and the Azores (Portugal), <em>The Tuna Truth</em> shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.",
+    // HOLDING COPY \u2014 requires IPNLF approval
+    ipnlfRole: "IPNLF supports the film as part of its work to promote thriving coastal communities and environmentally and socially responsible tuna fisheries.",
+    awardLine: "Jackson Wild Media Awards 2026 {status} \u2014 Onscreen Personality.",
+    creditsSummary: "Film credits",
+    // CONFIRMED factual credit \u2014 from the official poster asset.
+    credits: "<em>The Tuna Truth</em> is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.",
+    presenterPhotoAlt: "Serena Appleby holding a platter of grilled tuna, from The Tuna Truth.",
+    presenterHeading: "Presented by Serena Appleby",
+    // HOLDING COPY \u2014 the journey sentence requires approval.
+    presenterBio: "Serena is a Filipino-British chef and presenter, known from BBC Three's <em>Hungry For It</em> and creator of the Kring Kringz pop-up. She begins the film as a seafood lover asking a simple question: how much do we really know about the tuna we eat? Her journey takes her from kitchens and supermarkets to fishing communities and fisheries experts.",
+
+    hostingTitle: "Hosting a screening",
+    formatsLine: "Show the film on its own, or follow it with a discussion, classroom activity or locally organised panel.",
+    whoCanHost: "Who can host?",
+    supportHeading: "Support from IPNLF",
+    organiseHeading: "What you organise",
+    posterAria: "Enlarge the sample screening poster (opens in a new tab)",
+    posterAlt: "Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event \u2014 hosted by Harbour Point University, Monday 8 June, 6.30pm",
+    posterEnlarge: "Enlarge sample poster \u2197",
+    posterCaptionLead: "Make it your event",
+    posterCaption: "Editable promotional templates included.",
+
+    howTitle: "How it works",
+    steps: [
+      { title: "Tell us about your plans", body: "Share a few details about your screening and audience." },
+      { title: "Confirm the arrangements", body: "We'll agree film access for your event and send you the digital host pack." },
+      { title: "Host your screening", body: "Show the film and use the discussion prompts to start a conversation." },
+    ],
+
+    requestTitle: "Enquire",
+    requestLede: "Let us know your requirements. We will then get in touch to assist.",
+    emailFallbackBefore: "Prefer email? Write to ",
+    emailFallbackAfter: ".",
+
+    footerNavAria: "Related links",
+    privacyUrl: "https://ipnlf.org/privacy-policy/",
+    privacyLabel: "Privacy policy",
+    supportFilmLabel: "Support the film",
+  },
+
   brandOrder: {
     primary: "tunatruth",
     secondary: "ipnlf",

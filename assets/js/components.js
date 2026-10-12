@@ -24,18 +24,25 @@ const TTS = (() => {
   const cfg = SCREENINGS_CONFIG;
   const isTunaTruthPrimary = cfg.brandOrder.primary === "tunatruth";
 
+  // All user-facing copy lives in the config, so a translation is a
+  // data file and never a second copy of this file. See config.pt.js.
+  const t = cfg.copy;
+  // A page served from a subfolder (/pt/) sets assetBase to "../" so the
+  // one shared /assets folder resolves from both locations.
+  const asset = (path) => (cfg.assetBase || "") + path;
+
   // ---- small building blocks ----------------------------------
 
   function wordmarkIpnlf(size, onDark = false) {
-    return `<a href="https://ipnlf.org" target="_blank" rel="noopener" aria-label="IPNLF — for one-by-one fishers (opens ipnlf.org)">
-      <img class="tt-logo tt-logo--ipnlf tt-logo--${size}" src="assets/img/${onDark ? "ipnlf-logo-white.png" : "ipnlf-logo.png"}" alt="IPNLF — for one-by-one fishers">
+    return `<a href="https://ipnlf.org" target="_blank" rel="noopener" aria-label="${t.ipnlfLinkAria}">
+      <img class="tt-logo tt-logo--ipnlf tt-logo--${size}" src="${asset("assets/img/" + (onDark ? "ipnlf-logo-white.png" : "ipnlf-logo.png"))}" alt="${t.ipnlfLogoAlt}">
     </a>`;
   }
 
   function wordmarkTunaTruth(size, linked = false) {
-    const img = `<img class="tt-logo tt-logo--tunatruth tt-logo--${size}" src="assets/img/tunatruth-logo.png" alt="The Tuna Truth, with Serena Appleby">`;
+    const img = `<img class="tt-logo tt-logo--tunatruth tt-logo--${size}" src="${asset("assets/img/tunatruth-logo.png")}" alt="${t.filmLogoAlt}">`;
     if (!linked) return img;
-    return `<a href="https://www.tunatruth.com/" target="_blank" rel="noopener" aria-label="The Tuna Truth (opens tunatruth.com)">${img}</a>`;
+    return `<a href="https://www.tunatruth.com/" target="_blank" rel="noopener" aria-label="${t.filmLinkAria}">${img}</a>`;
   }
 
   // The joiner used to read "presented by", which was wrong: Serena
@@ -69,7 +76,7 @@ const TTS = (() => {
     return `<header class="tt-header">
       <div class="tt-container tt-header__inner">
         ${brandLockup()}
-        <a class="tt-header__link" href="#request" aria-label="More Info about hosting a screening">More Info</a>
+        <a class="tt-header__link" href="#request" aria-label="${t.ctaAria}">${t.cta}</a>
       </div>
     </header>`;
   }
@@ -79,13 +86,13 @@ const TTS = (() => {
   // so someone who already knows the film skips straight to it.
   function hero() {
     return `<section class="tts-hero">
-      <img class="tts-hero__photo-mobile" src="assets/img/hero-photo.jpg" alt="A still from The Tuna Truth" loading="eager">
+      <img class="tts-hero__photo-mobile" src="${asset("assets/img/hero-photo.jpg")}" alt="${t.heroPhotoAlt}" loading="eager">
       <div class="tt-container tts-hero__inner">
-        <h1 class="tts-hero__title"><span class="tts-hero__title-lead">Host a screening</span> of ${cfg.filmName}</h1>
+        <h1 class="tts-hero__title"><span class="tts-hero__title-lead">${t.heroTitleLead}</span> ${t.heroTitleTail}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
-        <p class="tts-hero__lede">Explore where your seafood comes from</p>
+        <p class="tts-hero__lede">${t.heroLede}</p>
         <div class="tts-hero__actions">
-          <a class="tts-btn tts-btn--primary" href="#request" aria-label="More Info about hosting a screening">More Info</a>
+          <a class="tts-btn tts-btn--primary" href="#request" aria-label="${t.ctaAria}">${t.cta}</a>
         </div>
       </div>
     </section>`;
@@ -113,7 +120,7 @@ const TTS = (() => {
     if (!t || !t.enabled || !t.youtubeId) return "";
     const watchUrl = `https://www.youtube.com/watch?v=${t.youtubeId}`;
     return `<figure class="tts-trailer">
-      <a class="tts-trailer__play" href="${watchUrl}" target="_blank" rel="noopener" data-role="trailer-play" data-youtube-id="${t.youtubeId}" aria-label="Play the trailer for ${cfg.filmName}">
+      <a class="tts-trailer__play" href="${watchUrl}" target="_blank" rel="noopener" data-role="trailer-play" data-youtube-id="${t.youtubeId}" aria-label="${t.trailerAria}">
         <img src="${t.poster}" alt="" loading="lazy" width="1600" height="899">
         <span class="tts-trailer__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
@@ -137,7 +144,7 @@ const TTS = (() => {
     const a = cfg.award;
     return `<section class="tts-section tts-film" id="film">
       <div class="tt-container">
-        <h2 class="tts-section__title">The film</h2>
+        <h2 class="tts-section__title">${t.filmTitle}</h2>
 
         <div class="tts-film__top">
           ${trailer()}
@@ -145,9 +152,9 @@ const TTS = (() => {
             <!-- HOLDING COPY — requires production/IPNLF approval. Also
                  unapproved on the donation page, where it came from, so
                  approving it there settles both. -->
-            <p class="tts-lede-para">Filmed in Bristol, Cornwall, and the Azores (Portugal), <em>${cfg.filmName}</em> shines a light on troubling aspects of the seafood industry and invites viewers on a journey towards more sustainable, responsible choices.</p>
+            <p class="tts-lede-para">${t.synopsis}</p>
             <!-- HOLDING COPY — requires IPNLF approval. Same provenance. -->
-            <p>IPNLF supports the film as part of its work to promote thriving coastal communities and environmentally and socially responsible tuna fisheries.</p>
+            <p>${t.ipnlfRole}</p>
 
             <!-- Restrained credibility detail, not a second reading
                  task. Status VERIFIED 2026-10-01 against the official
@@ -155,18 +162,18 @@ const TTS = (() => {
                  All wording comes from config.js award, so finalist ->
                  winner stays a one-object edit (brief §10). -->
             <p class="tts-award-line">
-              <img src="assets/img/jackson-wild-logo.png" alt="Jackson Wild" loading="lazy">
-              <span>Jackson Wild Media Awards 2026 ${a.status} — Onscreen Personality.</span>
+              <img src="${asset("assets/img/jackson-wild-logo.png")}" alt="Jackson Wild" loading="lazy">
+              <span>${t.awardLine.replace("{status}", a.status)}</span>
             </p>
 
             <!-- Film credits sit here, with the film, rather than
                  nested under Serena's biography: they describe the
                  production, not the presenter. -->
             <details class="tts-disclosure">
-              <summary>Film credits</summary>
+              <summary>${t.creditsSummary}</summary>
               <!-- CONFIRMED factual credit — from the official poster
                    asset, carried over unchanged from the donation page. -->
-              <p><em>${cfg.filmName}</em> is a Sunline Films production, commissioned and executive produced by IPNLF, presented by chef Serena Appleby and produced and directed by Sara Pipernos, with support from Human Rights at Sea, Blue Marine Foundation and Sustainable Communities and Fisheries Trust.</p>
+              <p>${t.credits}</p>
             </details>
           </div>
         </div>
@@ -176,9 +183,9 @@ const TTS = (() => {
              landscape still forced into a tall portrait to fill a
              column, which is what it was before. -->
         <div class="tts-presenter">
-          <img class="tts-presenter__photo" src="assets/img/serena-presenter.jpg" alt="Serena Appleby holding a platter of grilled tuna, from ${cfg.filmName}." loading="lazy" width="600" height="450">
+          <img class="tts-presenter__photo" src="${asset("assets/img/serena-presenter.jpg")}" alt="${t.presenterPhotoAlt}" loading="lazy" width="600" height="450">
           <div class="tts-presenter__text">
-            <h3>Presented by Serena Appleby</h3>
+            <h3>${t.presenterHeading}</h3>
             <!-- Credentials moved up from the "More about Serena"
                  disclosure (2026-10-07) so they are visible rather than
                  hidden behind a click: they are what establishes her to
@@ -190,7 +197,7 @@ const TTS = (() => {
                  Public biographical facts, from tunatruth.com/about-1.
                  HOLDING COPY — the journey sentence still requires
                  factual/production approval. -->
-            <p>Serena is a Filipino-British chef and presenter, known from BBC Three's <em>Hungry For It</em> and creator of the Kring Kringz pop-up. She begins the film as a seafood lover asking a simple question: how much do we really know about the tuna we eat? Her journey takes her from kitchens and supermarkets to fishing communities and fisheries experts.</p>
+            <p>${t.presenterBio}</p>
           </div>
         </div>
       </div>
@@ -207,36 +214,36 @@ const TTS = (() => {
     const organise = cfg.youOrganise.map((i) => `<li>${i}</li>`).join("");
     return `<section class="tts-section tts-section--soft tts-hosting" id="hosting">
       <div class="tt-container">
-        <h2 class="tts-section__title">Hosting a screening</h2>
+        <h2 class="tts-section__title">${t.hostingTitle}</h2>
         <div class="tts-hosting-grid">
           <!-- Opens the section as a one-line standfirst under the
                heading. It has its own grid area, and it is also FIRST in
                the markup so the order a screen reader announces matches
                the order on screen. -->
-          <p class="tts-formats-line">Show the film on its own, or follow it with a discussion, classroom activity or locally organised panel.</p>
+          <p class="tts-formats-line">${t.formatsLine}</p>
           <!-- "Who can host?" opens the section: a one-line qualifier,
                so the two practical columns below it read as a matched
                pair. It used to sit underneath them, where it left a
                wide empty column to its right and broke the section's
                structure halfway down. -->
           <div class="tts-hosting-audience">
-            <h3 class="tts-sub">Who can host?</h3>
+            <h3 class="tts-sub">${t.whoCanHost}</h3>
             <p class="tts-audience-copy">${cfg.hostAudience}</p>
           </div>
           <div class="tts-hosting-support">
-            <h3 class="tts-sub">Support from IPNLF</h3>
+            <h3 class="tts-sub">${t.supportHeading}</h3>
             <ul class="tts-checklist">${provide}</ul>
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="assets/img/screening-poster-preview.png?v=20261012-logos" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
-              <img src="assets/img/screening-poster-preview.png?v=20261012-logos" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
-              <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
+            <a href="${asset("assets/img/screening-poster-preview.png?v=20261012-pt2")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
+              <img src="${asset("assets/img/screening-poster-preview.png?v=20261012-pt2")}" alt="${t.posterAlt}" width="842" height="1191">
+              <span class="tts-template-preview__link">${t.posterEnlarge}</span>
             </a>
-            <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>
+            <figcaption><strong>${t.posterCaptionLead}</strong>${t.posterCaption}</figcaption>
           </figure>
           <div class="tts-hosting-organise">
-            <h3 class="tts-sub">What you organise</h3>
+            <h3 class="tts-sub">${t.organiseHeading}</h3>
             <ul class="tts-checklist tts-checklist--alt">${organise}</ul>
           </div>
         </div>
@@ -249,26 +256,11 @@ const TTS = (() => {
   // hundred pixels later, so a button here only moved people a short
   // distance down the same page.
   function howItWorks() {
-    const steps = [
-      {
-        n: "1",
-        title: "Tell us about your plans",
-        body: "Share a few details about your screening and audience.",
-      },
-      {
-        n: "2",
-        title: "Confirm the arrangements",
-        body: "We'll agree film access for your event and send you the digital host pack.",
-      },
-      {
-        n: "3",
-        title: "Host your screening",
-        body: "Show the film and use the discussion prompts to start a conversation.",
-      },
-    ];
-    const items = steps.map((s) => `
+    const steps = t.steps;
+
+    const items = steps.map((s, i) => `
       <li class="tts-step">
-        <span class="tts-step__n" aria-hidden="true">${s.n}</span>
+        <span class="tts-step__n" aria-hidden="true">${i + 1}</span>
         <div>
           <h3>${s.title}</h3>
           <p>${s.body}</p>
@@ -277,7 +269,7 @@ const TTS = (() => {
 
     return `<section class="tts-section tts-how" id="how">
       <div class="tt-container">
-        <h2 class="tts-section__title">How it works</h2>
+        <h2 class="tts-section__title">${t.howTitle}</h2>
         <ol class="tts-steps">${items}</ol>
       </div>
     </section>`;
@@ -301,8 +293,8 @@ const TTS = (() => {
     if (!b || !b.account || !b.formId) return "";
     return `<section class="tts-section tts-section--form" id="request">
       <div class="tt-container">
-        <h2 class="tts-section__title">Enquire</h2>
-        <p class="tts-section__lede">Let us know your requirements. We will then get in touch to assist.</p>
+        <h2 class="tts-section__title">${t.requestTitle}</h2>
+        <p class="tts-section__lede">${t.requestLede}</p>
 
         <div class="tts-form-wrap">
           <!-- Beacon renders into this div. Do not add children: the
@@ -313,7 +305,7 @@ const TTS = (() => {
                failure: if the SDK is blocked by a privacy extension
                (Beacon's own guidance warns this happens) the container
                stays empty and silent, so this line is all that is left. -->
-          <p class="tts-form__alt">Prefer email? Write to <a href="mailto:${cfg.fallbackEmail}">${cfg.fallbackEmail}</a>.</p>
+          <p class="tts-form__alt">${t.emailFallbackBefore}<a href="mailto:${cfg.fallbackEmail}">${cfg.fallbackEmail}</a>${t.emailFallbackAfter}</p>
         </div>
       </div>
     </section>`;
@@ -345,14 +337,14 @@ const TTS = (() => {
           <span class="tt-footer__x">×</span>
           ${wordmarkTunaTruth("xs", true)}
         </div>
-        <nav class="tt-footer__links" aria-label="Related links">
+        <nav class="tt-footer__links" aria-label="${t.footerNavAria}">
           <a href="https://www.tunatruth.com/" target="_blank" rel="noopener">tunatruth.com</a>
           <a href="https://ipnlf.org" target="_blank" rel="noopener">ipnlf.org</a>
-          <a href="https://ipnlf.org/privacy-policy/" target="_blank" rel="noopener">Privacy policy</a>
+          <a href="${t.privacyUrl}" target="_blank" rel="noopener">${t.privacyLabel}</a>
           <!-- One quiet link to the donation page, in the footer only. A
                fundraising ask anywhere higher would compete with the
                single action this page exists for. -->
-          <a href="https://donate.tunatruth.com/" target="_blank" rel="noopener">Support the film</a>
+          <a href="https://donate.tunatruth.com/" target="_blank" rel="noopener">${t.supportFilmLabel}</a>
         </nav>
         <p class="tt-footer__copy">© ${year} IPNLF.</p>
       </div>
@@ -379,7 +371,7 @@ const TTS = (() => {
       // permits it) + rel=0 so the end screen does not fill with
       // unrelated channels' videos.
       frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
-      frame.title = `Trailer for ${cfg.filmName}`;
+      frame.title = t.trailerFrameTitle;
       frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       frame.allowFullscreen = true;
       frame.className = "tts-trailer__frame";
