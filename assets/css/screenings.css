@@ -145,11 +145,8 @@ a { color: var(--text-link); }
 @media (min-width: 860px) {
   .tts-hero__inner { padding-top: var(--space-8); padding-bottom: var(--space-8); max-width: 1120px; }
   .tts-hero__title { max-width: 20ch; }
-  /* No reading-measure cap on the hero line: it is one short sentence,
-     not running copy, so the 46ch cap only ever risked breaking it in
-     two. It wraps naturally on the narrowest phones, where text-wrap:
-     balance evens the lines out. NOT white-space: nowrap. */
-  .tts-hero__lede { max-width: none; }
+  /* The hero line keeps its 400px cap at every width: see the base
+     rule for why it is two lines rather than one. */
 }
 
 /* The donation page needs a separate visible photo banner on mobile,
@@ -215,8 +212,20 @@ a { color: var(--text-link); }
   margin: 0 0 var(--space-5);
   font-size: var(--fs-body-lg);
   color: var(--text-on-dark-soft);
-  /* One line from ~460px up. Below that it must wrap, and balance
-     splits it evenly rather than stranding "from." on its own. */
+  /* Deliberately TWO lines, not one. Unconstrained, this sentence runs
+     681px: 265px past the headline above it and 535px past the button
+     below, so the hero read as a narrow column with one long line
+     shooting across the photo. 78 characters is also past the 45-75
+     that reads comfortably at this size.
+     400px breaks it near the comma into two lines of roughly 40
+     characters that sit inside the headline's width. text-wrap:
+     balance does the splitting, so there is no hard <br> to strand a
+     break on a phone, where the cap is wider than the column and
+     therefore inert. NOT white-space: nowrap.
+     The English (681px) and the Portuguese (680px) are within 1px of
+     each other, so one cap serves both. RE-MEASURE if either
+     changes. */
+  max-width: 400px;
   text-wrap: balance;
 }
 .tts-hero__actions {
