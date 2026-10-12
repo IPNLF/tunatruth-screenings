@@ -51,9 +51,17 @@ const TTS = (() => {
     // the relationship is stated accurately in the film credits
     // instead, which avoids compressing "commissioned and executive
     // produced by" into a two-word label that was previously wrong.
+    //
+    // ORDER vs HIERARCHY, changed 2026-10-12. The supporting mark sits
+    // on the LEFT and the lead mark on the right, matching the printed
+    // poster (IPNLF left, the film's wordmark right). brandOrder still
+    // decides which mark leads and therefore which is larger; it does
+    // not decide left-to-right position. Flipping brandOrder alone
+    // would have made IPNLF both first AND the bigger mark, which is
+    // a different decision from the one the poster makes.
     return `<div class="tt-lockup">
-      ${primary}
       ${secondary}
+      ${primary}
     </div>`;
   }
 
@@ -221,8 +229,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="assets/img/screening-poster-preview.png?v=20261008-panel" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
-              <img src="assets/img/screening-poster-preview.png?v=20261008-panel" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
+            <a href="assets/img/screening-poster-preview.png?v=20261012-logos" target="_blank" rel="noopener" aria-label="Enlarge the sample screening poster (opens in a new tab)">
+              <img src="assets/img/screening-poster-preview.png?v=20261012-logos" alt="Sample screening poster: IPNLF and The Tuna Truth logos, Serena Appleby, and an example event — hosted by Harbour Point University, Monday 8 June, 6.30pm" width="842" height="1191">
               <span class="tts-template-preview__link">Enlarge sample poster ↗</span>
             </a>
             <figcaption><strong>Make it your event</strong>Editable promotional templates included.</figcaption>
@@ -333,9 +341,9 @@ const TTS = (() => {
         <!-- Both marks stay together wherever either is used as
              branding. -->
         <div class="tt-footer__brands">
-          ${wordmarkTunaTruth("xs", true)}
-          <span class="tt-footer__x">×</span>
           ${wordmarkIpnlf("xs", true)}
+          <span class="tt-footer__x">×</span>
+          ${wordmarkTunaTruth("xs", true)}
         </div>
         <nav class="tt-footer__links" aria-label="Related links">
           <a href="https://www.tunatruth.com/" target="_blank" rel="noopener">tunatruth.com</a>
