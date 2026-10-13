@@ -296,10 +296,10 @@ renders.
    been lifted off a website. Each person or their press office
    supplies an image and confirms it may be used; drop the file into
    `assets/img/contributors/` and set the filename in the config.
-   Running time and language/caption details remain `[CONFIRM]`, as
-   they are everywhere else in this project.
+   Running time remains `[CONFIRM]`, as it is everywhere else in
+   this project.
 
-There are **4 `[CONFIRM]` markers** on the page, styled in coral and
+There are **3 `[CONFIRM]` markers** on the page, styled in coral and
 italics so they read as unfinished rather than as design.
 
 Note also that "filmmaker Sarah" was supplied, but the official credit

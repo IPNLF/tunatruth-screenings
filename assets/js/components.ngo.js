@@ -26,7 +26,6 @@ const TTSN = (() => {
     return `<section class="tts-section tts-section--soft" id="goal">
       <div class="tt-container">
         <h2 class="tts-section__title">${n.goalTitle}</h2>
-        <p class="tts-section__lede ngo-lede">${n.goalLede}</p>
         <ul class="ngo-goals">${cards}</ul>
       </div>
     </section>`;

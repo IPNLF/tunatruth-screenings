@@ -6,10 +6,6 @@
    here builds on the existing tokens; no new colours are introduced.
    ============================================================ */
 
-/* A lede under a section title, at a readable measure rather than the
-   full container width. */
-.ngo-lede { max-width: 62ch; }
-
 /* ---- 1. What the film sets out to do ---------------------------- */
 /* Three equal columns: the three subjects carry equal weight, and an
    uneven grid would imply a priority the film does not claim. */

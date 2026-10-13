@@ -81,12 +81,10 @@ const SCREENINGS_CONFIG = {
   ngo: {
     // 1. What the film is for
     goalTitle: "What the film sets out to do",
-    // HOLDING COPY — requires IPNLF/production approval.
-    goalLede: "<em>The Tuna Truth</em> is made for people who buy and eat seafood, not for people who already work on it. It uses one familiar product to open up three subjects that are usually argued about separately.",
     goals: [
       {
         heading: "Food systems",
-        body: "Tuna is cheap, convenient and everywhere. The film follows it back from the shelf to the water, and asks what that price does not cover.",
+        body: "Tuna is cheap, convenient and readily available. The film follows it back from the ocean to the shelf, and asks what the true price is.",
       },
       {
         heading: "Biodiversity",
@@ -94,10 +92,9 @@ const SCREENINGS_CONFIG = {
       },
       {
         heading: "Human rights",
-        body: "The conditions of the people who catch and process seafood, and why this sector is harder to see into than work that happens on land.",
+        body: "The conditions of the people who catch and process seafood, and why those working in this sector are in need of protection.",
       },
     ],
-
     // 2. The film itself
     filmTitle: "The film",
     factsHeading: "At a glance",
@@ -109,7 +106,6 @@ const SCREENINGS_CONFIG = {
       { label: "Filmed in", value: "Bristol, Cornwall and the Azores (Portugal)" },
       { label: "Presented by", value: "Serena Appleby" },
       { label: "Directed by", value: "Sara Pipernos" },
-      { label: "Languages and captions", value: "[CONFIRM]" },
       { label: "Recognition", value: "Jackson Wild Media Awards 2026 finalist" },
     ],
 
