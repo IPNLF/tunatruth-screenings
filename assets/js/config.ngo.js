@@ -26,12 +26,16 @@ const SCREENINGS_CONFIG = {
 
   brandOrder: { primary: "tunatruth", secondary: "ipnlf" },
 
-  // Same Beacon form as the main page. If NGO enquiries need to be
-  // told apart from host enquiries in the CRM, that is a second form
-  // on Beacon's side, with whatever that costs under the field limits.
+  // The partner-side form, NOT the host form the main page uses.
+  // "Expression of interest": name, email, organisation, consent. It
+  // deliberately has no free-text field, so NGO enquiries arrive in
+  // Beacon already separated from screening requests.
+  //
+  // d330ed74 is the PUBLIC form hash from Beacon's share link. The id
+  // in the admin URL (100572) is internal and 404s on beaconforms.com.
   beacon: {
     account: "ipnlf",
-    formId: "cc02962e",
+    formId: "d330ed74",
     sdkUrl: "https://static.beaconproducts.co.uk/js-sdk/production/beaconcrm.min.js",
   },
 
