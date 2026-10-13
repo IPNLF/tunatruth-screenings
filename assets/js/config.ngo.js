@@ -84,7 +84,7 @@ const SCREENINGS_CONFIG = {
     goals: [
       {
         heading: "Food systems",
-        body: "Tuna is cheap, convenient and readily available. The film follows it back from the ocean to the shelf, and asks what the true price is.",
+        body: "The film follows the journey tuna takes from the ocean to the shelf, and asks what the true price is – on ecosystems and people.",
       },
       {
         heading: "Biodiversity",
