@@ -45,7 +45,11 @@ const TTSN = (() => {
     // A missing headshot renders as a visibly unfinished tile with the
     // person's initials, NOT as a generic avatar: a neutral silhouette
     // would look like a decision, and this is a gap.
+    // Honorifics are skipped, or "Professor Callum Roberts" initials
+    // as PC rather than CR.
+    const TITLES = /^(prof(essor)?|dr|mr|mrs|ms|mx|sir|dame)\.?$/i;
     const initials = (name) => name.split(/\s+/).filter(Boolean)
+      .filter((w) => !TITLES.test(w))
       .slice(0, 2).map((w) => w[0]).join("").toUpperCase();
 
     const people = n.contributors.map((c) => {

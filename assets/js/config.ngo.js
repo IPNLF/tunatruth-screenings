@@ -135,16 +135,18 @@ const SCREENINGS_CONFIG = {
     // may be used. Drop the file in and set the filename here.
     contributors: [
       {
-        name: "Callum Roberts",
-        role: "Marine conservation biologist",
+        name: "Professor Callum Roberts",
+        role: "Marine conservation biologist, University of Exeter",
         photo: null,
-        note: "[CONFIRM affiliation and how he is credited]",
       },
       {
+        // "The Outlaw Ocean Project", not "The Ocean Outlaw Project":
+        // the non-profit Urbina founded in 2019, named after his book
+        // The Outlaw Ocean. Checked, because the words transpose
+        // easily and this page goes to people who would notice.
         name: "Ian Urbina",
         role: "Investigative journalist, The Outlaw Ocean Project",
         photo: null,
-        note: "[CONFIRM how he is credited]",
       },
       {
         name: "Jess Rattle",
