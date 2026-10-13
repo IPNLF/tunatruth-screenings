@@ -151,10 +151,14 @@
   color: var(--tt-grey-dark);
 }
 .ngo-person__missing {
-  font-size: 7.5px;
+  /* Was 7.5px in --tt-coral, which measured 3.15:1 on cream and failed
+     AA. Darkened to 4.57:1 and nudged up a little: it still has to read
+     as an unfinished slot, but a reviewer should not have to squint at
+     it. Not the shared --tt-coral token, which is correct elsewhere. */
+  font-size: 8.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--tt-coral);
+  color: #B0573C;
 }
 /* BY-SA attribution. Small, but it has to be visible and the link has
    to work: that is the whole consideration for using these two photos
