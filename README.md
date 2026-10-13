@@ -289,14 +289,17 @@ renders.
    rights or confirm an approved licensing policy". The page carries a
    visible DRAFT OFFER flag so it cannot be mistaken for a settled
    offer, and that flag comes out only when the policy exists.
-2. **Two contributors are first-name-only.** Supplied as "Jess from
-   Blue Marine" and "Amelia". Both are `[CONFIRM]` placeholders.
-   Nothing has been invented to fill them: an unverified affiliation
-   attached to a real person is a correction waiting to happen. The
-   running time and language/caption details are `[CONFIRM]` for the
-   same reason, and are unconfirmed everywhere else in this project too.
+2. **No contributor has a headshot.** Every `photo` in
+   `config.ngo.js` is `null`, and each card renders a dashed tile with
+   the person's initials and "PHOTO TO SOURCE". These are photographs
+   of real people and almost all belong to third parties, so none has
+   been lifted off a website. Each person or their press office
+   supplies an image and confirms it may be used; drop the file into
+   `assets/img/contributors/` and set the filename in the config.
+   Running time and language/caption details remain `[CONFIRM]`, as
+   they are everywhere else in this project.
 
-There are **7 `[CONFIRM]` markers** on the page, styled in coral and
+There are **4 `[CONFIRM]` markers** on the page, styled in coral and
 italics so they read as unfinished rather than as design.
 
 Note also that "filmmaker Sarah" was supplied, but the official credit

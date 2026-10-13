@@ -43,12 +43,29 @@ const TTSN = (() => {
         <dd>${f.value}</dd>
       </div>`).join("");
 
-    const people = n.contributors.map((c) => `
+    // A missing headshot renders as a visibly unfinished tile with the
+    // person's initials, NOT as a generic avatar: a neutral silhouette
+    // would look like a decision, and this is a gap.
+    const initials = (name) => name.split(/\s+/).filter(Boolean)
+      .slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+
+    const people = n.contributors.map((c) => {
+      const portrait = c.photo
+        ? `<img class="ngo-person__photo" src="${asset("assets/img/contributors/" + c.photo)}" alt="${c.name}" loading="lazy">`
+        : `<span class="ngo-person__photo ngo-person__photo--missing" role="img" aria-label="No photograph of ${c.name} yet">
+             <span class="ngo-person__initials" aria-hidden="true">${initials(c.name)}</span>
+             <span class="ngo-person__missing" aria-hidden="true">Photo to source</span>
+           </span>`;
+      return `
       <li class="ngo-person">
-        <p class="ngo-person__name">${c.name}</p>
-        <p class="ngo-person__role">${c.role}</p>
-        ${c.note ? `<p class="ngo-person__note">${c.note}</p>` : ""}
-      </li>`).join("");
+        ${portrait}
+        <div class="ngo-person__text">
+          <p class="ngo-person__name">${c.name}</p>
+          <p class="ngo-person__role">${c.role}</p>
+          ${c.note ? `<p class="ngo-person__note">${c.note}</p>` : ""}
+        </div>
+      </li>`;
+    }).join("");
 
     return `<section class="tts-section" id="film">
       <div class="tt-container">
@@ -99,7 +116,6 @@ const TTSN = (() => {
     return `<section class="tts-section tts-section--soft" id="collaborate">
       <div class="tt-container">
         <h2 class="tts-section__title">${n.collabTitle}</h2>
-        <p class="tts-section__lede ngo-lede">${n.collabLede}</p>
         <ol class="tts-steps ngo-collabs">${items}</ol>
       </div>
     </section>`;

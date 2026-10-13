@@ -123,38 +123,47 @@ const SCREENINGS_CONFIG = {
     // each contributor is publicly known for; none has been checked
     // against the finished film. Two are first-name-only and must be
     // completed before this page goes anywhere.
-    contributorsNote: "Contributors are listed for IPNLF review and have not yet been checked against the final cut.",
+    contributorsNote: "Listed for IPNLF review and not yet checked against the final cut. Headshots still to be sourced.",
+    // photo: a file in assets/img/contributors/, or null.
+    //
+    // ALL FIVE ARE null. No headshot has been sourced, deliberately:
+    // these are photographs of real people and almost all of them
+    // belong to third parties. Lifting one off an organisation's
+    // website onto an IPNLF page is a rights problem, not a shortcut,
+    // and a partner page is exactly where it would be noticed. Each
+    // person (or their press office) supplies a headshot and says it
+    // may be used. Drop the file in and set the filename here.
     contributors: [
       {
         name: "Callum Roberts",
         role: "Marine conservation biologist",
+        photo: null,
         note: "[CONFIRM affiliation and how he is credited]",
       },
       {
         name: "Ian Urbina",
         role: "Investigative journalist, The Outlaw Ocean Project",
+        photo: null,
         note: "[CONFIRM how he is credited]",
       },
       {
-        name: "[CONFIRM FULL NAME]",
-        role: "Blue Marine Foundation",
-        note: "Supplied as “Jess from Blue Marine”. Full name and job title needed.",
+        name: "Jess Rattle",
+        role: "Head of Investigations, Blue Marine Foundation",
+        photo: null,
       },
       {
-        name: "[CONFIRM FULL NAME]",
-        role: "[CONFIRM ORGANISATION AND ROLE]",
-        note: "Supplied as “Amelia”. Nothing further is known, so nothing has been assumed.",
+        name: "Emilia Dyer",
+        role: "Advocacy and Engagement Lead, IPNLF",
+        photo: null,
       },
       {
         name: "Sara Pipernos",
         role: "Director",
-        note: "Supplied as “filmmaker Sarah”. Spelled Sara Pipernos on the official credit block, which is what is used here.",
+        photo: null,
       },
     ],
-
     // 3. Ways to work together
     collabTitle: "Ways to work together",
-    collabLede: "Three routes, in rough order of how much work they take. None of them needs the others.",
     collaborations: [
       {
         n: "Campaigns",

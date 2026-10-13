@@ -238,8 +238,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="${asset("assets/img/screening-poster-preview.png?v=20261013-hero4")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
-              <img src="${asset("assets/img/screening-poster-preview.png?v=20261013-hero4")}" alt="${t.posterAlt}" width="842" height="1191">
+            <a href="${asset("assets/img/screening-poster-preview.png?v=20261013-offer2")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
+              <img src="${asset("assets/img/screening-poster-preview.png?v=20261013-offer2")}" alt="${t.posterAlt}" width="842" height="1191">
               <span class="tts-template-preview__link">${t.posterEnlarge}</span>
             </a>
             <figcaption><strong>${t.posterCaptionLead}</strong>${t.posterCaption}</figcaption>
@@ -248,6 +248,16 @@ const TTS = (() => {
             <h3 class="tts-sub">${t.organiseHeading}</h3>
             <ul class="tts-checklist tts-checklist--alt">${organise}</ul>
           </div>
+          <!-- Section-level action, rendered ONLY if the config supplies
+               hostingCta. The main page deliberately has none: its one
+               action lives in the header and hero, and the enquiry form
+               is a short scroll away. The offer page adds it because
+               this section is where a host decides it is feasible,
+               which is the moment intent peaks. -->
+          ${t.hostingCta ? `<div class="tts-hosting-cta">
+            <p>${t.hostingCta}</p>
+            <a class="tts-btn tts-btn--primary" href="#request" aria-label="${t.ctaAria}">${t.cta}</a>
+          </div>` : ""}
         </div>
       </div>
     </section>`;
