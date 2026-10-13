@@ -85,15 +85,27 @@ const TTS = (() => {
   // One invitation, one action. The primary CTA anchors to the form,
   // so someone who already knows the film skips straight to it.
   function hero() {
-    return `<section class="tts-hero">
-      <img class="tts-hero__photo-mobile" src="${asset("assets/img/hero-photo.jpg")}" alt="${t.heroPhotoAlt}" loading="eager">
-      <div class="tt-container tts-hero__inner">
-        <h1 class="tts-hero__title"><span class="tts-hero__title-lead">${t.heroTitleLead}</span> ${t.heroTitleTail}</h1>
+    const main = `<h1 class="tts-hero__title"><span class="tts-hero__title-lead">${t.heroTitleLead}</span> ${t.heroTitleTail}</h1>
         <!-- HOLDING COPY — requires IPNLF/production approval -->
         <p class="tts-hero__lede">${t.heroLede}</p>
         <div class="tts-hero__actions">
           <a class="tts-btn tts-btn--primary" href="#request" aria-label="${t.ctaAria}">${t.cta}</a>
-        </div>
+        </div>`;
+    // Offer panel, rendered ONLY when the config supplies it. When it is
+    // absent the markup below is exactly what it has always been: no
+    // wrapper div, no modifier class, so the main and Portuguese pages
+    // are untouched by this.
+    const offer = t.heroOffer
+      ? `<aside class="tts-hero__offer" aria-label="${t.heroOffer}">
+          <h2>${t.heroOffer}</h2>
+          <p>${t.heroOfferBody}</p>
+        </aside>`
+      : "";
+    return `<section class="tts-hero">
+      <img class="tts-hero__photo-mobile" src="${asset("assets/img/hero-photo.jpg")}" alt="${t.heroPhotoAlt}" loading="eager">
+      <div class="tt-container tts-hero__inner${t.heroOffer ? " tts-hero__inner--split" : ""}">
+        ${t.heroOffer ? `<div class="tts-hero__main">${main}</div>` : main}
+        ${offer}
       </div>
     </section>`;
   }
@@ -238,8 +250,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="${asset("assets/img/screening-poster-preview.png?v=20261013-offer2")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
-              <img src="${asset("assets/img/screening-poster-preview.png?v=20261013-offer2")}" alt="${t.posterAlt}" width="842" height="1191">
+            <a href="${asset("assets/img/screening-poster-preview.png?v=20261013-offerD")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
+              <img src="${asset("assets/img/screening-poster-preview.png?v=20261013-offerD")}" alt="${t.posterAlt}" width="842" height="1191">
               <span class="tts-template-preview__link">${t.posterEnlarge}</span>
             </a>
             <figcaption><strong>${t.posterCaptionLead}</strong>${t.posterCaption}</figcaption>

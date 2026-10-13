@@ -618,3 +618,47 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--brand-primary)
   .tts-hosting-cta { gap: var(--space-4); }
   .tts-hosting-cta .tts-btn { width: 100%; }
 }
+
+/* ---- hero offer panel (free-offer variant only) ------------------
+   components.js renders this solely when the config supplies the copy,
+   and only then does .tts-hero__inner gain --split. The main and
+   Portuguese heroes keep their original single-column markup.
+
+   Deliberately translucent rather than a solid card: an opaque panel
+   here would cover the right of the still, which is the whole reason
+   this page carries no panel of the kind the donation page needs.
+
+   It states the offer and does NOT list what is included. Those three
+   items already have their own column further down ("Free from
+   IPNLF"); repeating them here would make the page argue its case
+   twice, weakening both. */
+.tts-hero__offer {
+  margin-top: var(--space-5);
+  padding: 22px 24px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-md);
+  background: rgba(6, 29, 41, 0.55);
+  backdrop-filter: blur(2px);
+}
+.tts-hero__offer h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: var(--ls-display);
+  color: var(--ipnlf-white);
+}
+.tts-hero__offer p {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  color: var(--text-on-dark-soft);
+}
+@media (min-width: 860px) {
+  .tts-hero__inner--split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .tts-hero__inner--split .tts-hero__offer { margin-top: 0; }
+}

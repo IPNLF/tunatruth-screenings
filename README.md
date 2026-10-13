@@ -305,3 +305,35 @@ italics so they read as unfinished rather than as design.
 
 Note also that "filmmaker Sarah" was supplied, but the official credit
 block reads **Sara Pipernos**, which is what the page uses.
+
+## Free screening offer variant (`/screening-offer/`)
+
+A clone of the English page that states screenings are free. **MOCKUP.
+Every "free" on it is an unconfirmed commercial claim** — IPNLF has not
+set a licensing policy, the pack's permissions note says it "does not
+grant rights or confirm an approved licensing policy", and the student
+pack carries the same open question. Do not publish until someone can
+stand behind it.
+
+`assets/js/config.offer.js` is GENERATED, not hand-written. Re-run
+`make_offer.py` rather than editing it, so it cannot drift from
+`config.js`. The script holds the full list of "free" substitutions in
+one place, which is the point: they are all commercial claims and
+should be reviewable as a set.
+
+Two components exist only for this page, and `components.js` renders
+each solely when the config supplies its copy — so the English and
+Portuguese pages keep their original markup, verified by checking the
+elements are absent from both:
+
+- `heroOffer` / `heroOfferBody` — the hero panel. Translucent, not a
+  solid card: an opaque panel would cover the still, which is the very
+  thing this page's hero was designed to avoid.
+- `hostingCta` — a section-level button at the end of the hosting grid.
+  The main page deliberately has none; this is a considered exception
+  because an offer page converts at the point feasibility is settled.
+
+**Measured.** Hero is 422px in all three pages at 1440. On a 375x667
+phone the primary button ends at 367px on both the offer page and the
+live page: the hero panel stacks below it, so the brief's "do not bury
+the CTA" requirement is unaffected. Re-measure if the hero changes.
