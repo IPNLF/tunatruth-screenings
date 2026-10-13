@@ -1,8 +1,10 @@
 /* ============================================================
    TUNATRUTH SCREENINGS — EUROPEAN PORTUGUESE (pt-PT)
 
-   DRAFT MACHINE-ASSISTED TRANSLATION. NOT REVIEWED BY A NATIVE
-   SPEAKER. Do not publish or link to this page until it has been.
+   MACHINE-ASSISTED TRANSLATION, FIRST REVIEW APPLIED. Nine
+   reviewer corrections were made on 13 Oct 2026 (e.g. "pesca" for
+   "pescado", "Organizador", "Torne-o no seu evento"). The copy marked
+   HOLDING COPY still needs approval before this page is linked.
 
    This file is a translation of config.js and nothing else. All copy
    on the page comes from here, so a reviewer reads and edits one data
@@ -53,9 +55,9 @@ const SCREENINGS_CONFIG = {
 
     filmTitle: "O filme",
     // HOLDING COPY — requires production/IPNLF approval
-    synopsis: "Rodado em Bristol, na Cornualha e nos Açores (Portugal), <em>The Tuna Truth</em> expõe aspetos preocupantes da indústria do pescado e convida a uma viagem rumo a escolhas mais sustentáveis.",
+    synopsis: "Rodado em Bristol, na Cornualha e nos Açores, <em>The Tuna Truth</em> expõe aspetos preocupantes da indústria da pesca e convida a uma viagem rumo a escolhas mais sustentáveis.",
     // HOLDING COPY — requires IPNLF approval
-    ipnlfRole: "A IPNLF apoia o filme no âmbito do seu trabalho de promoção de comunidades costeiras prósperas e de pescarias de atum ambiental e socialmente responsáveis.",
+    ipnlfRole: "A IPNLF apoia o filme no âmbito do seu trabalho de promoção de comunidades costeiras prósperas e de pesca de atum ambiental e socialmente responsáveis.",
     // The category name is left in English: it is the official name of
     // the Jackson Wild category, not a description.
     awardLine: "Jackson Wild Media Awards 2026: {status} — categoria Onscreen Personality.",
@@ -65,21 +67,21 @@ const SCREENINGS_CONFIG = {
     presenterPhotoAlt: "Serena Appleby com uma travessa de atum grelhado, em The Tuna Truth.",
     presenterHeading: "Apresentado por Serena Appleby",
     // HOLDING COPY — the journey sentence requires approval.
-    presenterBio: "Serena é chef e apresentadora filipino-britânica, conhecida do programa <em>Hungry For It</em> da BBC Three e criadora do pop-up Kring Kringz. Começa o filme como apreciadora de pescado com uma pergunta simples: o que sabemos sobre o atum que comemos? A sua viagem leva-a das cozinhas e supermercados às comunidades piscatórias e a especialistas.",
+    presenterBio: "Serena é chef e apresentadora filipino-britânica, conhecida do programa <em>Hungry For It</em> da BBC Three e criadora do pop-up Kring Kringz. Começa o filme como apreciadora de peixe com uma pergunta simples: o que sabemos sobre o atum que comemos? A sua viagem leva-a das cozinhas e supermercados às comunidades piscatórias e a especialistas.",
 
     hostingTitle: "Organizar uma sessão",
     // LENGTH: this is a one-line standfirst. A literal translation ran
     // past the width and wrapped, so it is tightened here.
-    formatsLine: "Exiba o filme só por si, ou seguido de um debate, de uma atividade letiva ou de um painel local.",
+    formatsLine: "Exiba o filme por si só, ou seguido de um debate, de uma atividade letiva ou de um painel local.",
     whoCanHost: "Quem pode organizar?",
     supportHeading: "Apoio da IPNLF",
-    organiseHeading: "O que organiza",
+    organiseHeading: "Organizador",
     posterAria: "Ampliar o cartaz de exemplo (abre num novo separador)",
     posterAlt: "Cartaz de sessão de exemplo: logótipos da IPNLF e de The Tuna Truth, Serena Appleby e um evento de exemplo — organizado pela Harbour Point University, segunda-feira, 8 de junho, 18h30",
     posterEnlarge: "Ampliar cartaz de exemplo ↗",
     // LENGTH: "Faça dele o seu evento" wrapped to two lines in the
     // 190px caption column where the English sits on one.
-    posterCaptionLead: "Torne-o seu evento",
+    posterCaptionLead: "Torne-o no seu evento",
     posterCaption: "Modelos promocionais editáveis.",
 
     howTitle: "Como funciona",
@@ -129,6 +131,11 @@ const SCREENINGS_CONFIG = {
     poster: "assets/img/trailer-poster.jpg",
   },
 
+  // pt-PT version of the filled sample poster, built from the A3 SVG
+  // template in the screening pack. The other pages fall back to the
+  // English one in components.js.
+  samplePoster: "assets/img/screening-poster-preview-pt.png",
+
   weProvide: [
     "Acesso ao filme e autorização para o seu evento",
     "Um kit digital com questões de debate, cartazes promocionais editáveis e convites",
@@ -143,7 +150,7 @@ const SCREENINGS_CONFIG = {
 
   extraSupportNote: "Interessado num orador ou em conteúdos adicionais? Diga-nos ao contactar. A disponibilidade depende da capacidade da equipa.",
 
-  hostAudience: "Qualquer pessoa. Empresas e locais de trabalho, escolas e universidades, ONG e grupos comunitários, equipas do setor do pescado e da hotelaria, conferências e associações de cinema ou de ambiente podem contactar-nos.",
+  hostAudience: "Qualquer pessoa. Empresas e locais de trabalho, escolas e universidades, ONGs e grupos comunitários, equipas do setor do pescado e da hotelaria, conferências e associações de cinema ou ambientalistas podem contactar-nos.",
 
   formats: [
     "um debate moderado",

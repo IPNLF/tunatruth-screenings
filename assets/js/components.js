@@ -254,8 +254,8 @@ const TTS = (() => {
             <p class="tts-split__note">${cfg.extraSupportNote}</p>
           </div>
           <figure class="tts-template-preview">
-            <a href="${asset("assets/img/screening-poster-preview.png?v=20261013-offerD")}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
-              <img src="${asset("assets/img/screening-poster-preview.png?v=20261013-offerD")}" alt="${t.posterAlt}" width="842" height="1191">
+            <a href="${asset(`${cfg.samplePoster || "assets/img/screening-poster-preview.png"}?v=20261013-ptrev`)}" target="_blank" rel="noopener" aria-label="${t.posterAria}">
+              <img src="${asset(`${cfg.samplePoster || "assets/img/screening-poster-preview.png"}?v=20261013-ptrev`)}" alt="${t.posterAlt}" width="842" height="1191">
               <span class="tts-template-preview__link">${t.posterEnlarge}</span>
             </a>
             <figcaption><strong>${t.posterCaptionLead}</strong>${t.posterCaption}</figcaption>
