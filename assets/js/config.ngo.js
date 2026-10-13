@@ -57,8 +57,8 @@ const SCREENINGS_CONFIG = {
     filmLinkAria: "The Tuna Truth (opens tunatruth.com)",
     filmLogoAlt: "The Tuna Truth, with Serena Appleby",
 
-    heroTitleLead: "Work with us",
-    heroTitleTail: "on The Tuna Truth",
+    heroTitleLead: "Help us spread",
+    heroTitleTail: "The Tuna Truth",
     // HOLDING COPY — requires IPNLF approval
     // Same line as the main page, deliberately: a partner arriving
     // here should meet the film described the way everyone else meets
