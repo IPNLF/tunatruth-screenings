@@ -164,24 +164,23 @@ const SCREENINGS_CONFIG = {
     ],
     // 3. Ways to work together
     collabTitle: "Ways to work together",
+    // The "n" key the earlier draft carried is gone: the component
+    // numbers these from their position, so a second source of
+    // numbering was dead data waiting to disagree with the markup.
     collaborations: [
       {
-        n: "Campaigns",
         heading: "Campaign together",
-        body: "Line the film up behind a moment you are already working towards, so it adds weight to your campaign rather than competing with it for attention.",
+        body: "Line the film up behind a project you are already working towards, to add weight to your campaign.",
       },
       {
-        n: "Messaging",
         heading: "Share the messaging",
-        body: "Agreed lines, clips and assets your communications team can use directly, so the film and your own materials say compatible things.",
+        body: "Agreed assets your team can use directly, so we can both promote the film's goals.",
       },
       {
-        n: "Events",
         heading: "Appear together live",
-        body: "Panels, premieres and conference sessions. Speaker availability depends on our team's capacity and is agreed case by case.",
+        body: "Share the stage with us to promote the film's message as well as our own individual work.",
       },
     ],
-
     // 4. The offer
     offerTitle: "Free screenings for your members",
     // UNCONFIRMED COMMERCIAL COMMITMENT. See the header of this file.
