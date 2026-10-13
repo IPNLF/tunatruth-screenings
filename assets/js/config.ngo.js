@@ -98,11 +98,11 @@ const SCREENINGS_CONFIG = {
     // 2. The film itself
     filmTitle: "The film",
     factsHeading: "At a glance",
-    // Running time is NOT confirmed anywhere in this project. Do not
-    // guess it: a wrong runtime on a partner page becomes a wrong
-    // runtime in somebody else's event listing.
+    // Running time confirmed by IPNLF, 13 October 2026. The same fact
+    // is still [CONFIRM] in the main screening pack and the student
+    // pack, which have not been updated.
     facts: [
-      { label: "Running time", value: "[CONFIRM]" },
+      { label: "Running time", value: "One hour" },
       { label: "Filmed in", value: "Bristol, Cornwall and the Azores (Portugal)" },
       { label: "Presented by", value: "Serena Appleby" },
       { label: "Directed by", value: "Sara Pipernos" },
