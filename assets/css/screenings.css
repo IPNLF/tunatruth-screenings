@@ -548,7 +548,11 @@ select:focus-visible, textarea:focus-visible {
    columns sit together beneath it, the poster preview holds the right
    rail at desktop, and the formats line closes. The areas map is the
    only thing that sets the order — the markup is not reshuffled. */
-.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "formats" "audience" "support" "preview" "organise" "cta"; }
+.tts-hosting-grid { display: grid; gap: 28px; grid-template-areas: "formats" "audience" "support" "preview" "organise"; }
+/* Offer variant: the section button takes a slot directly above the
+   poster. A modifier, so the main and Portuguese pages (no button)
+   keep the formats line spanning all three columns at desktop. */
+.tts-hosting-grid--cta { grid-template-areas: "formats" "audience" "support" "cta" "preview" "organise"; }
 .tts-hosting-support { grid-area: support; }
 .tts-hosting-organise { grid-area: organise; }
 .tts-hosting-audience { grid-area: audience; }
@@ -580,10 +584,12 @@ select:focus-visible, textarea:focus-visible {
 
 .tts-template-preview a:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 6px; }
 @media (min-width: 760px) {
-  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "formats formats" "audience preview" "support organise" "cta cta"; gap: 32px 40px; }
+  .tts-hosting-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "formats formats" "audience preview" "support organise"; gap: 32px 40px; }
+  .tts-hosting-grid--cta { grid-template-areas: "formats formats" "audience cta" "audience preview" "support organise"; }
 }
 @media (min-width: 1100px) {
-  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "formats formats formats" "audience audience preview" "support organise preview" "cta cta ."; gap: 28px 36px; }
+  .tts-hosting-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) 190px; grid-template-areas: "formats formats formats" "audience audience preview" "support organise preview"; gap: 28px 36px; }
+  .tts-hosting-grid--cta { grid-template-areas: "formats formats cta" "audience audience preview" "support organise preview"; }
   .tts-template-preview { display: block; }
   .tts-template-preview > a { display: block; }
   .tts-template-preview figcaption { margin-top: 16px; }
@@ -594,29 +600,15 @@ select:focus-visible, textarea:focus-visible {
 a:focus-visible, summary:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 4px; }
 
 /* Section-level call to action, used by the free-offer variant only
-   (components.js renders it only when the config supplies the copy).
-   It sits in its own row spanning the two text columns, NOT under the
-   poster: that column is 190px at 1440 and a button there would wrap.
-   On mobile it falls last in the section, which is where it belongs. */
-.tts-hosting-cta {
-  grid-area: cta;
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
-  flex-wrap: wrap;
-  margin-top: var(--space-5);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--border-subtle);
-}
-.tts-hosting-cta p {
-  margin: 0;
-  font-size: var(--fs-body-lg);
-  color: var(--text-strong);
-  font-weight: 700;
-}
-@media (max-width: 480px) {
-  .tts-hosting-cta { gap: var(--space-4); }
-  .tts-hosting-cta .tts-btn { width: 100%; }
+   (components.js renders it only when the config sets hostingCta).
+   Button only, sitting directly above the poster in the right rail
+   from 760px up; on mobile it comes just before the poster. The rail
+   is 190px at desktop and the button at its normal padding needs
+   ~192px, so the horizontal padding is trimmed here to keep it on one
+   line rather than letting it wrap. */
+.tts-hosting-cta { grid-area: cta; align-self: end; }
+@media (min-width: 1100px) {
+  .tts-hosting-cta .tts-btn { width: 100%; padding-left: var(--space-4); padding-right: var(--space-4); }
 }
 
 /* ---- hero offer panel (free-offer variant only) ------------------

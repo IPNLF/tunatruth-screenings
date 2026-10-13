@@ -229,7 +229,7 @@ const TTS = (() => {
     return `<section class="tts-section tts-section--soft tts-hosting" id="hosting">
       <div class="tt-container">
         <h2 class="tts-section__title">${t.hostingTitle}</h2>
-        <div class="tts-hosting-grid">
+        <div class="tts-hosting-grid${t.hostingCta ? " tts-hosting-grid--cta" : ""}">
           <!-- Opens the section as a one-line standfirst under the
                heading. It has its own grid area, and it is also FIRST in
                the markup so the order a screen reader announces matches
@@ -260,14 +260,15 @@ const TTS = (() => {
             <h3 class="tts-sub">${t.organiseHeading}</h3>
             <ul class="tts-checklist tts-checklist--alt">${organise}</ul>
           </div>
-          <!-- Section-level action, rendered ONLY if the config supplies
+          <!-- Section-level action, rendered ONLY if the config sets
                hostingCta. The main page deliberately has none: its one
                action lives in the header and hero, and the enquiry form
                is a short scroll away. The offer page adds it because
                this section is where a host decides it is feasible,
-               which is the moment intent peaks. -->
+               which is the moment intent peaks. Button only, no
+               supporting line (2026-10-13, at the user's request); it
+               sits above the poster in the right rail. -->
           ${t.hostingCta ? `<div class="tts-hosting-cta">
-            <p>${t.hostingCta}</p>
             <a class="tts-btn tts-btn--primary" href="#request" aria-label="${t.ctaAria}">${t.cta}</a>
           </div>` : ""}
         </div>

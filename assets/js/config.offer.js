@@ -107,7 +107,8 @@ const SCREENINGS_CONFIG = {
       { title: "Host your screening", body: "Show the film and use the discussion prompts to start a conversation." },
     ],
 
-    hostingCta: "Everything above is free.",
+    // Flag only: renders the section button above the poster.
+    hostingCta: true,
     requestTitle: "Request free access",
     requestLede: "Tell us about your screening. We will then set up your free access.",
     emailFallbackBefore: "Prefer email? Write to ",
