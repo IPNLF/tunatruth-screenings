@@ -90,7 +90,8 @@ const SCREENINGS_CONFIG = {
     presenterBio: "Serena is a Filipino-British chef and presenter, known from BBC Three's <em>Hungry For It</em> and creator of the Kring Kringz pop-up. She begins the film as a seafood lover asking a simple question: how much do we really know about the tuna we eat? Her journey takes her from kitchens and supermarkets to fishing communities and fisheries experts.",
 
     hostingTitle: "Hosting a free screening",
-    formatsLine: "Show the film on its own, or follow it with a discussion, classroom activity or locally organised panel.",
+    // No formatsLine here: removed from the offer page 2026-10-13 at the
+    // user's request, so the button sits level with the heading.
     whoCanHost: "Who can host?",
     supportHeading: "Free from IPNLF",
     organiseHeading: "What you organise",

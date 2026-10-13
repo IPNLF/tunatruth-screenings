@@ -228,13 +228,17 @@ const TTS = (() => {
     const organise = cfg.youOrganise.map((i) => `<li>${i}</li>`).join("");
     return `<section class="tts-section tts-section--soft tts-hosting" id="hosting">
       <div class="tt-container">
-        <h2 class="tts-section__title">${t.hostingTitle}</h2>
+        <!-- With hostingCta (offer page) the heading moves INSIDE the
+             grid so the button can share its row, aligned with it in
+             the poster column. Otherwise it stays above the grid. -->
+        ${t.hostingCta ? "" : `<h2 class="tts-section__title">${t.hostingTitle}</h2>`}
         <div class="tts-hosting-grid${t.hostingCta ? " tts-hosting-grid--cta" : ""}">
+          ${t.hostingCta ? `<h2 class="tts-section__title tts-hosting-title">${t.hostingTitle}</h2>` : ""}
           <!-- Opens the section as a one-line standfirst under the
                heading. It has its own grid area, and it is also FIRST in
                the markup so the order a screen reader announces matches
                the order on screen. -->
-          <p class="tts-formats-line">${t.formatsLine}</p>
+          ${t.formatsLine ? `<p class="tts-formats-line">${t.formatsLine}</p>` : ""}
           <!-- "Who can host?" opens the section: a one-line qualifier,
                so the two practical columns below it read as a matched
                pair. It used to sit underneath them, where it left a
