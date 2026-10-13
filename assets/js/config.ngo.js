@@ -91,7 +91,7 @@ const SCREENINGS_CONFIG = {
     // same three subjects are still named, inside one argument rather
     // than as three parallel claims.
     goalTitle: "What the film sets out to do",
-    goalBody: "We cannot protect oceans and coastal communities without addressing the food system. <em>The Tuna Truth</em> aims to engage consumers in meaningful, educational conversations about where their food comes from, while informing them honestly about biodiversity loss, human rights abuses and related issues. It does this through an engaging presenter, chef Serena Appleby.",
+    goalBody: "We cannot protect oceans and coastal communities without addressing the food system. <em>The Tuna Truth</em> aims to engage consumers in meaningful, educational conversations about where their food comes from, while informing them honestly about biodiversity loss, human rights abuses and related issues.",
     // 2. The film itself
     filmTitle: "The film",
     factsHeading: "At a glance",
