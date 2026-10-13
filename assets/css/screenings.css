@@ -222,10 +222,13 @@ a { color: var(--text-link); }
      balance does the splitting, so there is no hard <br> to strand a
      break on a phone, where the cap is wider than the column and
      therefore inert. NOT white-space: nowrap.
-     The English (681px) and the Portuguese (680px) are within 1px of
-     each other, so one cap serves both. RE-MEASURE if either
-     changes. */
-  max-width: 400px;
+     THE CAP IS TUNED TO BOTH LANGUAGES AT ONCE. At 400px the English
+     fell to four lines while the Portuguese held three, leaving the
+     two heroes 29px apart in height. 420px puts both on three, with
+     the longest line 407px (en) and 389px (pt), so each still ends
+     inside the headline's right edge. RE-MEASURE both languages if
+     either string changes; the usable window here is narrow. */
+  max-width: 420px;
   text-wrap: balance;
 }
 .tts-hero__actions {

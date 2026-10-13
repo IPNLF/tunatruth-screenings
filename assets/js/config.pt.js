@@ -46,7 +46,7 @@ const SCREENINGS_CONFIG = {
     // LENGTH: 680px against the English 681px, so both hold one
     // line down to 768px. "finalista", not "premiado": the film is
     // shortlisted, not a winner.
-    heroLede: "Documentário finalista sobre o pescado, quem está por trás e as nossas escolhas",
+    heroLede: "Documentário finalista que revela os segredos do pescado sustentável, quem está por trás e como as nossas escolhas afetam o oceano.",
     heroPhotoAlt: "Um fotograma de The Tuna Truth",
     trailerAria: "Reproduzir o trailer de The Tuna Truth",
     trailerFrameTitle: "Trailer de The Tuna Truth",

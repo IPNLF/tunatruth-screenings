@@ -50,7 +50,7 @@ const SCREENINGS_CONFIG = {
     heroTitleLead: "Host a screening",
     heroTitleTail: "of The Tuna Truth",
     // HOLDING COPY \u2014 requires IPNLF/production approval
-    heroLede: "Award-shortlisted documentary on seafood, the people behind it and our choices",
+    heroLede: "Award-shortlisted documentary that unearths secrets of sustainable seafood, the people behind it and how our choices impact the ocean.",
     heroPhotoAlt: "A still from The Tuna Truth",
     trailerAria: "Play the trailer for The Tuna Truth",
     trailerFrameTitle: "Trailer for The Tuna Truth",
