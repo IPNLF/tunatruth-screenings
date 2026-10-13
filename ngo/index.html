@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work with us on The Tuna Truth | IPNLF</title>
+<meta name="description" content="For NGOs and campaign partners: what The Tuna Truth sets out to do, ways to work together, and free screenings for your members.">
+
+<!-- PROTOTYPE GUARD (2026-10-01) — this site is publicly readable but
+     deliberately kept out of search results, because the copy on it has
+     not been approved by IPNLF and the enquiry journey has not been
+     verified end to end. There is a matching robots.txt at
+     the repo root.
+     REMOVE BOTH — this tag and robots.txt — as part of going live. -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph / social sharing.
+     These point at the GitHub Pages URL the prototype currently lives
+     on. When a custom subdomain is set up (see README-screenings.md),
+     change these two and canonicalUrl in config.js — they are the only
+     self-referencing absolute URLs on the page; everything else is
+     relative, so the folder works unchanged at a domain root or in a
+     subfolder. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work with us on The Tuna Truth">
+<meta property="og:description" content="A documentary on food systems, biodiversity and the people behind our seafood — and an open invitation to campaign alongside it.">
+<meta property="og:image" content="https://ipnlf.github.io/tunatruth-screenings/assets/img/og-image.jpg">
+<meta property="og:url" content="https://screenings.tunatruth.com/ngo/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/screenings.css?v=20261013-ngo2">
+<link rel="stylesheet" href="../assets/css/ngo.css?v=20261013-ngo2">
+</head>
+<body>
+
+<!-- Three separate mount points, not one flat #app div, so <header>
+     and <footer> stay TOP-LEVEL siblings of <main> — nesting them
+     inside <main> would silently strip their implicit banner /
+     contentinfo landmark roles. Same fix the donation page carries. -->
+
+<noscript>
+  <!-- The page is rendered by JS, so with JS off there would otherwise
+       be nothing here at all. This is the irreducible minimum: what the
+       page is, and a route that actually reaches a human.
+       NOTE: the address below is duplicated by hand from
+       config.js fallbackEmail — if that changes, change it here too. -->
+  <div style="max-width:640px;margin:40px auto;padding:0 24px;font-family:Arial,sans-serif;color:#1C3340;line-height:1.6;">
+    <h1>Work with us on The Tuna Truth</h1>
+    <p>A documentary on food systems, biodiversity and the people behind our seafood. We are looking for NGO partners to campaign alongside it, and we will waive the screening licence for community screenings run by your members.</p>
+    <p>This page works best with JavaScript enabled. To talk to us about working together, email
+      <a href="mailto:info@ipnlf.org">info@ipnlf.org</a> with your organisation and what you have in mind.</p>
+    <p><a href="https://www.tunatruth.com/">More about the film</a> · <a href="https://ipnlf.org">IPNLF</a></p>
+  </div>
+</noscript>
+
+<div id="app-header"></div>
+<main id="app-main"></main>
+<div id="app-footer"></div>
+
+<script src="../assets/js/config.ngo.js?v=20261013-ngo2"></script>
+<script src="../assets/js/components.js?v=20261013-ngo2"></script>
+<script src="../assets/js/components.ngo.js?v=20261013-ngo2"></script>
+<script>
+  // Shared chrome from components.js; the four middle sections are
+  // specific to this page and live in components.ngo.js.
+  document.getElementById('app-header').innerHTML = TTS.header();
+  document.getElementById('app-main').innerHTML = [
+    TTS.hero(),
+    TTSN.goalSection(),
+    TTSN.filmSection(),
+    TTSN.collaborationSection(),
+    TTSN.offerSection(),
+    TTS.requestForm(),
+  ].join('');
+  document.getElementById('app-footer').innerHTML = TTS.footer();
+  TTS.initInteractions();
+  // AFTER the sections are in the DOM — see components.js requestForm().
+  TTS.loadBeacon();
+</script>
+
+<!-- Cloudflare Web Analytics — same beacon token as the donation site,
+     so traffic to both shows in one dashboard.
+     KNOWN LIMIT (verified against Cloudflare's own Web Analytics FAQ):
+     the free beacon supports page views and referrers ONLY — there is
+     no custom-event API, so CTA clicks cannot be counted here. The
+     brief's other measures (enquiry count, organisation type, country,
+     audience size) come from the form service's own dashboard for
+     free once an endpoint is chosen. See README-screenings.md
+     "Measurement" — nothing fake is instrumented to paper over this. -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "815903f9d9ef4758bc72cea958ed2183"}'></script>
+</body>
+</html>

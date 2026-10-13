@@ -1,0 +1,202 @@
+/* ============================================================
+   NGO PARTNER PAGE — page-specific layout.
+
+   Loaded ONLY by /ngo/. The shared stylesheet is not touched, so the
+   main page and /pt/ do not download rules they never use. Everything
+   here builds on the existing tokens; no new colours are introduced.
+   ============================================================ */
+
+/* A lede under a section title, at a readable measure rather than the
+   full container width. */
+.ngo-lede { max-width: 62ch; }
+
+/* ---- 1. What the film sets out to do ---------------------------- */
+/* Three equal columns: the three subjects carry equal weight, and an
+   uneven grid would imply a priority the film does not claim. */
+.ngo-goals {
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) {
+  .ngo-goals { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+}
+.ngo-goal {
+  border-top: 2px solid var(--brand-primary);
+  padding-top: var(--space-3);
+}
+.ngo-goal h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-h3);
+  color: var(--text-strong);
+}
+.ngo-goal p { margin: 0; color: var(--text-muted); font-size: var(--fs-body); }
+
+/* ---- 2. The film ------------------------------------------------ */
+.ngo-film-top {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 860px) {
+  .ngo-film-top { grid-template-columns: 1.15fr 1fr; gap: var(--space-6); }
+}
+.ngo-facts-wrap .tts-sub { margin-top: 0; }
+
+/* Label/value pairs rather than prose: a partner organisation is
+   scanning for the runtime, not reading a paragraph. */
+.ngo-facts { margin: 0; }
+.ngo-fact {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--fs-body-sm);
+}
+.ngo-fact:last-child { border-bottom: 0; }
+.ngo-fact dt { color: var(--text-muted); }
+.ngo-fact dd { margin: 0; color: var(--text-body); font-weight: 600; }
+@media (max-width: 520px) {
+  .ngo-fact { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* Presenter: two photographs, because this page is partly selling the
+   film's presenter to an organisation that may not know her. */
+.ngo-presenter {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 760px) {
+  .ngo-presenter { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+}
+.ngo-presenter__photos { display: flex; }
+/* height:auto is load-bearing: the width/height attributes on the img
+   map to presentational hints that otherwise beat aspect-ratio and
+   render the portrait at its full natural height. */
+.ngo-presenter__photos img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+.ngo-presenter__text h3 {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  letter-spacing: var(--ls-display);
+  color: var(--text-strong);
+}
+.ngo-presenter__text p { margin: 0; color: var(--text-muted); max-width: 54ch; }
+
+/* Contributors */
+.ngo-people {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+}
+.ngo-people .tts-sub { margin-top: 0; }
+.ngo-people__note {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+.ngo-people__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) { .ngo-people__list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .ngo-people__list { grid-template-columns: repeat(3, 1fr); } }
+.ngo-person {
+  border-left: 2px solid var(--border-subtle);
+  padding: 2px 0 2px var(--space-4);
+}
+.ngo-person__name { margin: 0; font-weight: 700; color: var(--text-strong); }
+.ngo-person__role { margin: 2px 0 0; font-size: var(--fs-body-sm); color: var(--text-body); }
+/* The [CONFIRM] notes are review scaffolding, not copy. They are
+   styled to look unfinished on purpose, so nobody mistakes a gap for
+   a design decision or ships the page with them still in. */
+.ngo-person__note {
+  margin: var(--space-2) 0 0;
+  font-size: var(--fs-caption);
+  color: var(--tt-coral);
+  font-style: italic;
+}
+
+/* ---- 3. Ways to work together ----------------------------------- */
+.ngo-collabs { margin-top: var(--space-6); }
+@media (min-width: 860px) {
+  .ngo-collabs { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---- 4. The offer ------------------------------------------------ */
+/* The one dark block in the body of the page. It is the single thing
+   this page is asking the reader to take up, so it gets the weight. */
+.ngo-offer-section { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+.ngo-offer {
+  background: var(--surface-dark);
+  color: var(--text-on-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-6) var(--space-7);
+}
+@media (min-width: 760px) {
+  .ngo-offer { padding: var(--space-7) var(--space-8); }
+}
+.ngo-offer__flag {
+  margin: 0 0 var(--space-4);
+  display: inline-block;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--cta-text);
+  background: var(--cta-bg);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+.ngo-offer__title {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-display-md);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-display);
+  color: var(--ipnlf-white);
+  max-width: 20ch;
+}
+.ngo-offer__lede {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-body-lg);
+  color: var(--ipnlf-white);
+  max-width: 46ch;
+}
+.ngo-offer__list { margin: 0; }
+.ngo-offer__list li { color: var(--text-on-dark-soft); }
+/* The tick is drawn with borders on ::before in the shared sheet and
+   inherits a colour meant for light backgrounds. */
+.ngo-offer__list li::before {
+  border-left-color: var(--cta-bg);
+  border-bottom-color: var(--cta-bg);
+}
+.ngo-offer__small {
+  margin: var(--space-5) 0 0;
+  font-size: var(--fs-body-sm);
+  color: var(--text-on-dark-soft);
+  max-width: 62ch;
+}

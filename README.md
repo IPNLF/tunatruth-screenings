@@ -263,3 +263,41 @@ the Jackson Wild award category, which is an official category name.
 fields and labels are configured in Beacon rather than in this repo, so
 a Portuguese form means a second form there, with the cost that
 implies. Worth a decision before this page goes to anyone.
+
+## NGO partner page (`/ngo/`)
+
+A standalone page for NGOs and campaign partners, at `/ngo/`.
+**Deliberately not linked from the main page's navigation**: it is a
+page you send to a named organisation, not one a visitor finds.
+
+Shares the header, hero, trailer, enquiry form and footer with the
+main page via `components.js`, which needed no changes beyond
+exporting `trailer`. The four sections unique to this page live in
+`components.ngo.js`, and its layout in `assets/css/ngo.css`, so
+neither the main page nor `/pt/` downloads rules or markup it never
+renders.
+
+- `assets/js/config.ngo.js` — all copy and content
+- `assets/js/components.ngo.js` — goal, film, collaboration, offer
+- `assets/css/ngo.css` — page-specific layout only
+
+**Two things block this page from being sent to anyone.**
+
+1. **The waived licence is not approved.** The offer of free
+   screenings for an NGO's members is an unconfirmed commercial
+   commitment. The pack's permissions note says it "does not grant
+   rights or confirm an approved licensing policy". The page carries a
+   visible DRAFT OFFER flag so it cannot be mistaken for a settled
+   offer, and that flag comes out only when the policy exists.
+2. **Two contributors are first-name-only.** Supplied as "Jess from
+   Blue Marine" and "Amelia". Both are `[CONFIRM]` placeholders.
+   Nothing has been invented to fill them: an unverified affiliation
+   attached to a real person is a correction waiting to happen. The
+   running time and language/caption details are `[CONFIRM]` for the
+   same reason, and are unconfirmed everywhere else in this project too.
+
+There are **7 `[CONFIRM]` markers** on the page, styled in coral and
+italics so they read as unfinished rather than as design.
+
+Note also that "filmmaker Sarah" was supplied, but the official credit
+block reads **Sara Pipernos**, which is what the page uses.

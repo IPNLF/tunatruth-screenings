@@ -400,5 +400,8 @@ const TTS = (() => {
   return {
     header, hero, filmSection, hostingSection, howItWorks,
     requestForm, footer, initInteractions, loadBeacon,
+    // Exported so the NGO page can reuse the same progressive-
+    // enhancement trailer rather than carrying a second copy of it.
+    trailer,
   };
 })();

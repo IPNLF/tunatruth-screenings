@@ -1,0 +1,128 @@
+/* ============================================================
+   NGO PARTNER PAGE — page-specific sections.
+
+   The shared chrome (header, hero, enquiry form, footer) comes from
+   components.js, which is already config-driven and needs no changes.
+   Only the sections unique to this page live here, so the main page's
+   JavaScript does not grow to carry markup it never renders.
+
+   Load AFTER components.js. Reads the same SCREENINGS_CONFIG.
+   ============================================================ */
+const TTSN = (() => {
+  const cfg = SCREENINGS_CONFIG;
+  const n = cfg.ngo;
+  const asset = (path) => (cfg.assetBase || "") + path;
+
+  // ---- 1. What the film is for ---------------------------------
+  // Three equal columns, because the three subjects are presented as
+  // equally important. The film's own argument is that they are the
+  // same subject seen from different angles.
+  function goalSection() {
+    const cards = n.goals.map((g) => `
+      <li class="ngo-goal">
+        <h3>${g.heading}</h3>
+        <p>${g.body}</p>
+      </li>`).join("");
+    return `<section class="tts-section tts-section--soft" id="goal">
+      <div class="tt-container">
+        <h2 class="tts-section__title">${n.goalTitle}</h2>
+        <p class="tts-section__lede ngo-lede">${n.goalLede}</p>
+        <ul class="ngo-goals">${cards}</ul>
+      </div>
+    </section>`;
+  }
+
+  // ---- 2. The film ----------------------------------------------
+  // Trailer, a plain facts table, the presenter, then contributors.
+  // The facts are a definition list rather than prose: a partner
+  // organisation is scanning for runtime and locations, not reading.
+  function filmSection() {
+    const facts = n.facts.map((f) => `
+      <div class="ngo-fact">
+        <dt>${f.label}</dt>
+        <dd>${f.value}</dd>
+      </div>`).join("");
+
+    const people = n.contributors.map((c) => `
+      <li class="ngo-person">
+        <p class="ngo-person__name">${c.name}</p>
+        <p class="ngo-person__role">${c.role}</p>
+        ${c.note ? `<p class="ngo-person__note">${c.note}</p>` : ""}
+      </li>`).join("");
+
+    return `<section class="tts-section" id="film">
+      <div class="tt-container">
+        <h2 class="tts-section__title">${n.filmTitle}</h2>
+
+        <div class="ngo-film-top">
+          ${TTS.trailer()}
+          <div class="ngo-facts-wrap">
+            <h3 class="tts-sub">${n.factsHeading}</h3>
+            <dl class="ngo-facts">${facts}</dl>
+          </div>
+        </div>
+
+        <div class="ngo-presenter">
+          <!-- ONE portrait, not two. The two stills available of
+               Serena (serena-presenter.jpg and serena-still.jpg) are
+               different crops of the same moment, so side by side they
+               read as a duplicated image rather than as a set. A second
+               genuinely different still would make this a pair. -->
+          <div class="ngo-presenter__photos">
+            <img src="${asset("assets/img/serena-still.jpg")}" alt="${n.presenterPhotoAlt}" loading="lazy" width="900" height="1125">
+          </div>
+          <div class="ngo-presenter__text">
+            <h3>${n.presenterHeading}</h3>
+            <p>${n.presenterBody}</p>
+          </div>
+        </div>
+
+        <div class="ngo-people">
+          <h3 class="tts-sub">${n.contributorsHeading}</h3>
+          <p class="ngo-people__note">${n.contributorsNote}</p>
+          <ul class="ngo-people__list">${people}</ul>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  // ---- 3. Ways to work together ---------------------------------
+  function collaborationSection() {
+    const items = n.collaborations.map((c, i) => `
+      <li class="tts-step ngo-collab">
+        <span class="tts-step__n" aria-hidden="true">${i + 1}</span>
+        <div>
+          <h3>${c.heading}</h3>
+          <p>${c.body}</p>
+        </div>
+      </li>`).join("");
+    return `<section class="tts-section tts-section--soft" id="collaborate">
+      <div class="tt-container">
+        <h2 class="tts-section__title">${n.collabTitle}</h2>
+        <p class="tts-section__lede ngo-lede">${n.collabLede}</p>
+        <ol class="tts-steps ngo-collabs">${items}</ol>
+      </div>
+    </section>`;
+  }
+
+  // ---- 4. The offer ----------------------------------------------
+  // Deliberately the loudest block on the page, and deliberately the
+  // one carrying a visible DRAFT flag: it is the only part that
+  // promises something IPNLF has not yet agreed to give.
+  function offerSection() {
+    const points = n.offerPoints.map((p) => `<li>${p}</li>`).join("");
+    return `<section class="tts-section ngo-offer-section" id="offer">
+      <div class="tt-container">
+        <div class="ngo-offer">
+          <p class="ngo-offer__flag">${n.offerFlag}</p>
+          <h2 class="ngo-offer__title">${n.offerTitle}</h2>
+          <p class="ngo-offer__lede">${n.offerLede}</p>
+          <ul class="tts-checklist ngo-offer__list">${points}</ul>
+          <p class="ngo-offer__small">${n.offerSmallPrint}</p>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  return { goalSection, filmSection, collaborationSection, offerSection };
+})();
