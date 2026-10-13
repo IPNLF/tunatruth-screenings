@@ -103,13 +103,7 @@
   padding-top: var(--space-6);
   border-top: 1px solid var(--border-subtle);
 }
-.ngo-people .tts-sub { margin-top: 0; }
-.ngo-people__note {
-  margin: 0 0 var(--space-5);
-  font-size: var(--fs-body-sm);
-  color: var(--text-muted);
-  max-width: 62ch;
-}
+.ngo-people .tts-sub { margin-top: 0; margin-bottom: var(--space-5); }
 .ngo-people__list {
   list-style: none;
   margin: 0;
@@ -162,6 +156,15 @@
   text-transform: uppercase;
   color: var(--tt-coral);
 }
+/* BY-SA attribution. Small, but it has to be visible and the link has
+   to work: that is the whole consideration for using these two photos
+   at all. Do not "tidy" it away. */
+.ngo-person__credit {
+  margin: 3px 0 0;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+.ngo-person__credit a { color: inherit; }
 .ngo-person__name { margin: 0; font-weight: 700; color: var(--text-strong); }
 .ngo-person__role { margin: 2px 0 0; font-size: var(--fs-body-sm); color: var(--text-body); }
 /* The [CONFIRM] notes are review scaffolding, not copy. They are

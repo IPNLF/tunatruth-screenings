@@ -119,25 +119,26 @@ const SCREENINGS_CONFIG = {
     presenterPhotoAltTwo: "Serena Appleby on location during filming of The Tuna Truth.",
 
     contributorsHeading: "Who appears in it",
-    // SUPPLIED BY IPNLF, PARTLY INCOMPLETE. Roles below describe what
-    // each contributor is publicly known for; none has been checked
-    // against the finished film. Two are first-name-only and must be
-    // completed before this page goes anywhere.
-    contributorsNote: "Listed for IPNLF review and not yet checked against the final cut. Headshots still to be sourced.",
     // photo: a file in assets/img/contributors/, or null.
+    // credit/creditUrl/licence: REQUIRED whenever photo is set. These
+    // two portraits are Creative Commons BY-SA from Wikimedia Commons,
+    // and BY-SA is only a licence while the attribution is actually
+    // shown. Strip the credit and the page is simply using someone's
+    // photograph without permission.
     //
-    // ALL FIVE ARE null. No headshot has been sourced, deliberately:
-    // these are photographs of real people and almost all of them
-    // belong to third parties. Lifting one off an organisation's
-    // website onto an IPNLF page is a rights problem, not a shortcut,
-    // and a partner page is exactly where it would be noticed. Each
-    // person (or their press office) supplies a headshot and says it
-    // may be used. Drop the file in and set the filename here.
+    // The other three are still null, and not for want of looking:
+    // no freely licensed photograph of them exists. Their pictures on
+    // their employers' sites belong to those employers, and this is a
+    // page we send TO those employers. Each person (or their press
+    // office) supplies one and says it may be used.
     contributors: [
       {
         name: "Professor Callum Roberts",
         role: "Marine conservation biologist, University of Exeter",
-        photo: null,
+        photo: "callum-roberts.jpg",
+        credit: "Heinrich Böll Stiftung",
+        creditUrl: "https://commons.wikimedia.org/wiki/File:Professor_Callum_Roberts.jpg",
+        licence: "CC BY-SA 2.0",
       },
       {
         // "The Outlaw Ocean Project", not "The Ocean Outlaw Project":
@@ -146,7 +147,10 @@ const SCREENINGS_CONFIG = {
         // easily and this page goes to people who would notice.
         name: "Ian Urbina",
         role: "Investigative journalist, The Outlaw Ocean Project",
-        photo: null,
+        photo: "ian-urbina.jpg",
+        credit: "Eric T. White",
+        creditUrl: "https://commons.wikimedia.org/wiki/File:Ian_Urbina.jpg",
+        licence: "CC BY-SA 4.0",
       },
       {
         name: "Jess Rattle",

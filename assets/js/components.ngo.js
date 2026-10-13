@@ -54,7 +54,7 @@ const TTSN = (() => {
 
     const people = n.contributors.map((c) => {
       const portrait = c.photo
-        ? `<img class="ngo-person__photo" src="${asset("assets/img/contributors/" + c.photo)}" alt="${c.name}" loading="lazy">`
+        ? `<img class="ngo-person__photo" src="${asset("assets/img/contributors/" + c.photo)}" alt="${c.name}" loading="lazy" width="64" height="64">`
         : `<span class="ngo-person__photo ngo-person__photo--missing" role="img" aria-label="No photograph of ${c.name} yet">
              <span class="ngo-person__initials" aria-hidden="true">${initials(c.name)}</span>
              <span class="ngo-person__missing" aria-hidden="true">Photo to source</span>
@@ -65,6 +65,7 @@ const TTSN = (() => {
         <div class="ngo-person__text">
           <p class="ngo-person__name">${c.name}</p>
           <p class="ngo-person__role">${c.role}</p>
+          ${c.credit ? `<p class="ngo-person__credit">Photo: <a href="${c.creditUrl}" target="_blank" rel="noopener">${c.credit}</a>, ${c.licence}</p>` : ""}
           ${c.note ? `<p class="ngo-person__note">${c.note}</p>` : ""}
         </div>
       </li>`;
@@ -99,7 +100,6 @@ const TTSN = (() => {
 
         <div class="ngo-people">
           <h3 class="tts-sub">${n.contributorsHeading}</h3>
-          <p class="ngo-people__note">${n.contributorsNote}</p>
           <ul class="ngo-people__list">${people}</ul>
         </div>
       </div>
