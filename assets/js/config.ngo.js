@@ -50,8 +50,8 @@ const SCREENINGS_CONFIG = {
 
   // --- Shared chrome, read by components.js -------------------------
   copy: {
-    cta: "Talk to us",
-    ctaAria: "Talk to us about working together",
+    cta: "Collaborate",
+    ctaAria: "Collaborate with us on The Tuna Truth",
 
     ipnlfLinkAria: "IPNLF — for one-by-one fishers (opens ipnlf.org)",
     ipnlfLogoAlt: "IPNLF — for one-by-one fishers",
