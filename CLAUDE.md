@@ -171,8 +171,10 @@ state: what exists, what will bite you, and what is unresolved.
 
 - **English:** https://screenings.tunatruth.com
 - **Portuguese (pt-PT):** https://screenings.tunatruth.com/pt/
+- **NGO partner page:** `/ngo/` — deliberately not linked from the main nav.
+- **Free-offer variant:** `/screening-offer/` — a mockup, see the warning below.
 - Repo `IPNLF/tunatruth-screenings`, branch `master`. Push and GitHub Pages
-  redeploys both languages together, usually within 60-120 seconds.
+  redeploys every variant together, usually within 60-120 seconds.
 - `/pt/` is a **folder, not a subdomain**. One Pages site, one certificate.
 - DNS: a CNAME record `screenings` to `ipnlf.github.io`, created in Wix, which
   runs the DNS for tunatruth.com on `ns6/ns7.wixdns.net`. Certificate issued,
@@ -181,6 +183,28 @@ state: what exists, what will bite you, and what is unresolved.
 - If a certificate ever stalls again: clearing the custom domain in Pages
   settings and immediately re-entering it re-triggers provisioning. That fixed
   a two-hour stall here, and the certificate arrived within 30 seconds.
+
+## Four page variants, built in different sessions
+
+`/` and `/pt/` share `components.js` and differ only by config. **`/ngo/` does
+not**: it has its own `components.ngo.js` and `config.ngo.js`, so a change to
+the shared components will not reach it, and vice versa. Check which file you
+are editing.
+
+`/screening-offer/` is **generated** from `config.js` by `tools/make_offer.py`.
+Do not hand-edit `config.offer.js`; re-run the script, or the variant silently
+drifts from the main page.
+
+**Read the header comment in `config.offer.js` before touching that page.** It
+states that every instance of "free" on it is an unconfirmed commercial claim,
+that IPNLF has set no licensing policy, and that it must not be published until
+someone can stand behind that. A free-screening offer was removed from the NGO
+page for the same reason and is recoverable from git history only. **Do not
+reinstate a free offer from memory anywhere.**
+
+The NGO page and the offer variant were built in sessions other than the one
+that wrote this handover. Their own file headers are the authority on their
+status, not this section.
 
 ## Architecture, and the traps in it
 
