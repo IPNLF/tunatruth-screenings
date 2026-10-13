@@ -152,7 +152,7 @@ const SCREENINGS_CONFIG = {
       },
       {
         name: "Sara Pipernos",
-        role: "Director",
+        role: "Director, Sunline Films",
         photo: "sara-pipernos.jpg",
       },
     ],
