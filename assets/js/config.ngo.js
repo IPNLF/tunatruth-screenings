@@ -61,7 +61,11 @@ const SCREENINGS_CONFIG = {
     heroTitleLead: "Work with us",
     heroTitleTail: "on The Tuna Truth",
     // HOLDING COPY — requires IPNLF approval
-    heroLede: "A documentary on food systems, biodiversity and the people behind our seafood, and an open invitation to campaign alongside it.",
+    // Same line as the main page, deliberately: a partner arriving
+    // here should meet the film described the way everyone else meets
+    // it. The 420px cap in screenings.css is tuned to this exact
+    // string, so it lands on three lines here too.
+    heroLede: "Award-shortlisted documentary that unearths secrets of sustainable seafood, the people behind it and how our choices impact the ocean.",
     heroPhotoAlt: "A still from The Tuna Truth",
     trailerAria: "Play the trailer for The Tuna Truth",
     trailerFrameTitle: "Trailer for The Tuna Truth",
