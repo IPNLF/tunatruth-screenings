@@ -61,11 +61,19 @@
   .ngo-fact { grid-template-columns: 1fr; gap: 2px; }
 }
 
-/* Presenter: two photographs, because this page is partly selling the
-   film's presenter to an organisation that may not know her. */
+/* Presenter: the page is partly selling the film's presenter to an
+   organisation that may not know her.
+
+   SIZING IS DELIBERATE. An equal 1fr/1fr split put the photo at 520px
+   wide and drove the block to 423px tall against 153px of text, which
+   read as a section of its own rather than as the first and largest
+   entry in "who is in this film". The fixed 360px column steps the
+   photo down towards the 64px contributor circles below, so the two
+   blocks read as one group at different scales. The hairline border
+   still divides them. */
 .ngo-presenter {
-  margin-top: var(--space-7);
-  padding-top: var(--space-6);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
   border-top: 1px solid var(--border-subtle);
   display: grid;
   gap: var(--space-5);
@@ -73,7 +81,14 @@
   align-items: center;
 }
 @media (min-width: 760px) {
-  .ngo-presenter { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  /* 360px is a CEILING, not a fixed width: just above the 760px
+     breakpoint a rigid 360 left the bio on a 280px measure. The photo
+     gives way first so the text keeps at least 300px. */
+  .ngo-presenter {
+    grid-template-columns: minmax(0, 360px) minmax(300px, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
 }
 .ngo-presenter__photos { display: flex; }
 /* height:auto is load-bearing: the width/height attributes on the img
@@ -99,8 +114,8 @@
 
 /* Contributors */
 .ngo-people {
-  margin-top: var(--space-7);
-  padding-top: var(--space-6);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
   border-top: 1px solid var(--border-subtle);
 }
 .ngo-people .tts-sub { margin-top: 0; margin-bottom: var(--space-5); }
