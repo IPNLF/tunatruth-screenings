@@ -272,39 +272,79 @@ page you send to a named organisation, not one a visitor finds.
 
 Shares the header, hero, trailer, enquiry form and footer with the
 main page via `components.js`, which needed no changes beyond
-exporting `trailer`. The four sections unique to this page live in
+exporting `trailer`. The three sections unique to this page live in
 `components.ngo.js`, and its layout in `assets/css/ngo.css`, so
 neither the main page nor `/pt/` downloads rules or markup it never
 renders.
 
 - `assets/js/config.ngo.js` — all copy and content
-- `assets/js/components.ngo.js` — goal, film, collaboration, offer
+- `assets/js/components.ngo.js` — goal, film, collaboration
 - `assets/css/ngo.css` — page-specific layout only
 
-**Two things block this page from being sent to anyone.**
+`<body class="ngo-page">` is load-bearing. `--soft` and `--form` both
+resolve to cream in `tokens.css`, and this is the only page that puts
+those two sections next to each other, where they merged into one
+undivided block. The override is scoped to that class so the main page
+and `/pt/` are untouched.
 
-1. **The waived licence is not approved.** The offer of free
-   screenings for an NGO's members is an unconfirmed commercial
-   commitment. The pack's permissions note says it "does not grant
-   rights or confirm an approved licensing policy". The page carries a
-   visible DRAFT OFFER flag so it cannot be mistaken for a settled
-   offer, and that flag comes out only when the policy exists.
-2. **No contributor has a headshot.** Every `photo` in
-   `config.ngo.js` is `null`, and each card renders a dashed tile with
-   the person's initials and "PHOTO TO SOURCE". These are photographs
-   of real people and almost all belong to third parties, so none has
-   been lifted off a website. Each person or their press office
-   supplies an image and confirms it may be used; drop the file into
-   `assets/img/contributors/` and set the filename in the config.
-   Running time is confirmed as one hour (13 October 2026). Note
-   that the main screening pack and the student pack still carry it
-   as `[CONFIRM]` and have not been updated.
+### Its own Beacon form
 
-There are **2 `[CONFIRM]` markers** on the page, styled in coral and
-italics so they read as unfinished rather than as design.
+This page uses **`d330ed74`**, "Expression of interest": name, email,
+organisation, consent, and no free-text field, so partner enquiries
+arrive already separated from screening requests. The main page and
+`/pt/` stay on `cc02962e`, which carries the required "when, who for,
+where" field the host workflow depends on.
 
-Note also that "filmmaker Sarah" was supplied, but the official credit
-block reads **Sara Pipernos**, which is what the page uses.
+The id in Beacon's admin URL (for example `.../form/100572`) is
+internal and 404s on `beaconforms.com`. Only the hash from the share
+link works in `data-form`.
+
+### Headshots: two licensed, three missing
+
+Roberts and Urbina use Wikimedia Commons portraits under CC BY-SA,
+cropped to 256px square in `assets/img/contributors/`. Each carries a
+visible credit and licence beside it, and **that credit is the
+licence** — remove it to tidy the layout and the page is using
+someone's photograph without permission.
+
+Jess Rattle, Emilia Dyer and Sara Pipernos render a dashed tile with
+initials and "PHOTO TO SOURCE". No freely licensed photograph of them
+exists. Their pictures on their employers' sites belong to those
+employers, and this is a page we send to those employers, so nothing
+has been lifted. Each person or their press office supplies an image
+and confirms it may be used; drop the file into
+`assets/img/contributors/` and set `photo`, `credit`, `creditUrl` and
+`licence` in the config.
+
+Watch for the Callum Roberts on Commons who plays for Rochdale's youth
+team. Not him.
+
+### Content notes
+
+- The free-screening offer section **was removed** at IPNLF's request
+  on 13 October 2026. It promised a waived licence nobody had agreed
+  to give. Recoverable from commit `aadae9e^`; do not reinstate it
+  from memory.
+- IPNLF supplied "The Ocean Outlaw Project". The correct name is **The
+  Outlaw Ocean Project**, the non-profit Urbina founded in 2019, and
+  that is what the page uses.
+- "filmmaker Sarah" was supplied, but the official credit block reads
+  **Sara Pipernos**, which is what the page uses.
+- Running time is confirmed as one hour (13 October 2026). The main
+  screening pack and the student pack still carry it as `[CONFIRM]`
+  and have not been updated.
+- There are **no `[CONFIRM]` markers left** on this page. The note
+  saying contributor roles were not yet checked against the final cut
+  was removed at IPNLF's request, so the page now presents all five
+  names and roles as settled fact.
+
+### Known gaps
+
+- The hero CTA reads "Collaborate" but jumps to a section headed
+  "Start a conversation".
+- The Beacon iframe has no `title` attribute (WCAG 2.4.1, 4.1.2).
+  Beacon generates it, so fixing it means changing the shared
+  component and affecting the live main page and `/pt/`.
 
 ## Free screening offer variant (`/screening-offer/`)
 
