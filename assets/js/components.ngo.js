@@ -14,19 +14,14 @@ const TTSN = (() => {
   const asset = (path) => (cfg.assetBase || "") + path;
 
   // ---- 1. What the film is for ---------------------------------
-  // Three equal columns, because the three subjects are presented as
-  // equally important. The film's own argument is that they are the
-  // same subject seen from different angles.
+  // One statement, not three columns. The three subjects are made as a
+  // single argument, so splitting them into parallel cards would have
+  // presented them as separate claims of equal weight.
   function goalSection() {
-    const cards = n.goals.map((g) => `
-      <li class="ngo-goal">
-        <h3>${g.heading}</h3>
-        <p>${g.body}</p>
-      </li>`).join("");
     return `<section class="tts-section tts-section--soft" id="goal">
       <div class="tt-container">
         <h2 class="tts-section__title">${n.goalTitle}</h2>
-        <ul class="ngo-goals">${cards}</ul>
+        <p class="ngo-goal-body">${n.goalBody}</p>
       </div>
     </section>`;
   }

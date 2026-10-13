@@ -86,21 +86,12 @@ const SCREENINGS_CONFIG = {
   // --- NGO page content, read by components.ngo.js ------------------
   ngo: {
     // 1. What the film is for
+    // Replaced the three equal columns (food systems / biodiversity /
+    // human rights) with a single statement at IPNLF's request. The
+    // same three subjects are still named, inside one argument rather
+    // than as three parallel claims.
     goalTitle: "What the film sets out to do",
-    goals: [
-      {
-        heading: "Food systems",
-        body: "The film follows the journey tuna takes from the ocean to the shelf, and asks what the true price is – on ecosystems and people.",
-      },
-      {
-        heading: "Biodiversity",
-        body: "What is caught, what is caught alongside it, and what that means for the ocean these fisheries depend on.",
-      },
-      {
-        heading: "Human rights",
-        body: "The conditions of the people working in the seafood industry, and why they are in need of better protection.",
-      },
-    ],
+    goalBody: "We cannot protect oceans and coastal communities without addressing the food system. <em>The Tuna Truth</em> aims to engage consumers in meaningful, educational conversations about where their food comes from, while informing them honestly about biodiversity loss, human rights abuses and related issues. It does this through an engaging presenter, chef Serena Appleby.",
     // 2. The film itself
     filmTitle: "The film",
     factsHeading: "At a glance",

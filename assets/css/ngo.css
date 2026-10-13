@@ -7,29 +7,14 @@
    ============================================================ */
 
 /* ---- 1. What the film sets out to do ---------------------------- */
-/* Three equal columns: the three subjects carry equal weight, and an
-   uneven grid would imply a priority the film does not claim. */
-.ngo-goals {
-  list-style: none;
-  margin: var(--space-6) 0 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-5);
-  grid-template-columns: 1fr;
+/* One paragraph, capped at a readable measure. Full container width
+   would run this to well over 120 characters a line. */
+.ngo-goal-body {
+  margin: var(--space-5) 0 0;
+  max-width: 68ch;
+  font-size: var(--fs-body-lg);
+  color: var(--text-body);
 }
-@media (min-width: 760px) {
-  .ngo-goals { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
-}
-.ngo-goal {
-  border-top: 2px solid var(--brand-primary);
-  padding-top: var(--space-3);
-}
-.ngo-goal h3 {
-  margin: 0 0 var(--space-2);
-  font-size: var(--fs-h3);
-  color: var(--text-strong);
-}
-.ngo-goal p { margin: 0; color: var(--text-muted); font-size: var(--fs-body); }
 
 /* ---- 2. The film ------------------------------------------------ */
 .ngo-film-top {
@@ -196,4 +181,25 @@
 .ngo-collabs { margin-top: var(--space-6); }
 @media (min-width: 860px) {
   .ngo-collabs { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---- Section rhythm --------------------------------------------- */
+/* "Ways to work together" is --soft and the enquiry form is --form,
+   and BOTH resolve to cream in tokens.css. On the main page they are
+   never adjacent so it never shows; here they sit together and read as
+   one undivided block. Overridden on this page only, so the main page
+   and /pt/ are untouched. The result alternates cream, white, cream,
+   white down the page. */
+.ngo-page .tts-section--form { background: var(--surface-page); }
+/* The Beacon form is a white card in a cross-origin iframe, so on a
+   white section it would have no edge. We cannot style the iframe, but
+   we can give the wrapper one. */
+.ngo-page .tts-form-wrap {
+  background: var(--surface-soft);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+@media (min-width: 760px) {
+  .ngo-page .tts-form-wrap { padding: var(--space-6); }
 }
