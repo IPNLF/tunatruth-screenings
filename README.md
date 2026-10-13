@@ -302,10 +302,11 @@ link works in `data-form`.
 ### Headshots
 
 Roberts and Urbina use Wikimedia Commons portraits under CC BY-SA,
-cropped to 256px square in `assets/img/contributors/`. Each carries a
-visible credit and licence beside it, and **that credit is the
-licence**. Remove it to tidy the layout and the page is using
-someone's photograph without permission.
+cropped to 256px square in `assets/img/contributors/`. That licence
+requires a visible credit. **The credits were removed on 13 Oct 2026 at
+IPNLF's request, with that risk accepted.** The photographer, licence
+and source URL for each are kept in a comment in `config.ngo.js`, so
+restoring them is a matter of setting three fields per entry.
 
 Jess Rattle, Emilia Dyer and Sara Pipernos use photographs supplied by
 IPNLF on 13 Oct 2026, cropped to the same 256px square. They carry no

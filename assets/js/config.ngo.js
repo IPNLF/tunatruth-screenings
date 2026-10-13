@@ -113,24 +113,23 @@ const SCREENINGS_CONFIG = {
 
     contributorsHeading: "Who appears in it",
     // photo: a file in assets/img/contributors/, or null.
-    // credit/creditUrl/licence: REQUIRED for any licensed image. These
-    // two portraits are Creative Commons BY-SA from Wikimedia Commons,
-    // and BY-SA is only a licence while the attribution is actually
-    // shown. Strip the credit and the page is simply using someone's
-    // photograph without permission.
+    // credit/creditUrl/licence: optional; a credit line renders when set.
+    // Roberts and Urbina are Creative Commons BY-SA from Wikimedia
+    // Commons, which requires attribution. The credits were removed on
+    // 13 Oct 2026 at IPNLF's request, with that risk accepted knowingly.
+    // To restore them, put these back on the two entries:
+    //   Roberts: "Heinrich Böll Stiftung", CC BY-SA 2.0,
+    //     https://commons.wikimedia.org/wiki/File:Professor_Callum_Roberts.jpg
+    //   Urbina: "Eric T. White", CC BY-SA 4.0,
+    //     https://commons.wikimedia.org/wiki/File:Ian_Urbina.jpg
     //
-    // The other three are not Commons images and carry no credit line:
-    // they were supplied by IPNLF on 13 Oct 2026 for this page. They
-    // were never lifted from employers' sites. If a photographer credit
-    // turns out to be a condition of use, add credit/creditUrl/licence.
+    // Jess Rattle, Emilia Dyer and Sara Pipernos: photos supplied by
+    // IPNLF on 13 Oct 2026, never lifted from employers' sites.
     contributors: [
       {
         name: "Professor Callum Roberts",
         role: "Marine conservation biologist, University of Exeter",
         photo: "callum-roberts.jpg",
-        credit: "Heinrich Böll Stiftung",
-        creditUrl: "https://commons.wikimedia.org/wiki/File:Professor_Callum_Roberts.jpg",
-        licence: "CC BY-SA 2.0",
       },
       {
         // "The Outlaw Ocean Project", not "The Ocean Outlaw Project":
@@ -140,9 +139,6 @@ const SCREENINGS_CONFIG = {
         name: "Ian Urbina",
         role: "Investigative journalist, The Outlaw Ocean Project",
         photo: "ian-urbina.jpg",
-        credit: "Eric T. White",
-        creditUrl: "https://commons.wikimedia.org/wiki/File:Ian_Urbina.jpg",
-        licence: "CC BY-SA 4.0",
       },
       {
         name: "Jess Rattle",
