@@ -70,7 +70,10 @@ const SCREENINGS_CONFIG = {
     trailerFrameTitle: "Trailer for The Tuna Truth",
 
     requestTitle: "Start a conversation",
-    requestLede: "Tell us who you are and what you have in mind. We will come back to you.",
+    // Matched to the expression-of-interest form, which asks only for
+    // details: the previous line invited them to say what they had in
+    // mind, and that form has no field to say it in.
+    requestLede: "Let us know your details and we will be in touch soon to discuss how we can work together.",
     emailFallbackBefore: "Prefer email? Write to ",
     emailFallbackAfter: ".",
 
