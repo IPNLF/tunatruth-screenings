@@ -124,24 +124,5 @@ const TTSN = (() => {
     </section>`;
   }
 
-  // ---- 4. The offer ----------------------------------------------
-  // Deliberately the loudest block on the page, and deliberately the
-  // one carrying a visible DRAFT flag: it is the only part that
-  // promises something IPNLF has not yet agreed to give.
-  function offerSection() {
-    const points = n.offerPoints.map((p) => `<li>${p}</li>`).join("");
-    return `<section class="tts-section ngo-offer-section" id="offer">
-      <div class="tt-container">
-        <div class="ngo-offer">
-          <p class="ngo-offer__flag">${n.offerFlag}</p>
-          <h2 class="ngo-offer__title">${n.offerTitle}</h2>
-          <p class="ngo-offer__lede">${n.offerLede}</p>
-          <ul class="tts-checklist ngo-offer__list">${points}</ul>
-          <p class="ngo-offer__small">${n.offerSmallPrint}</p>
-        </div>
-      </div>
-    </section>`;
-  }
-
-  return { goalSection, filmSection, collaborationSection, offerSection };
+  return { goalSection, filmSection, collaborationSection };
 })();

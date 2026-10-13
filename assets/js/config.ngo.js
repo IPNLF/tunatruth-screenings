@@ -5,20 +5,15 @@
    page's navigation: it is a page you send to a named organisation,
    not one a visitor stumbles into.
 
-   DRAFT. NOT APPROVED. Two things on this page carry more risk than
-   anything on the main site, and both are marked inline:
+   DRAFT. NOT APPROVED.
 
-   1. THE WAIVED LICENCE. The offer of free screenings for an NGO's
-      members is an unconfirmed commercial commitment. The pack's own
-      permissions note says it "does not grant rights or confirm an
-      approved licensing policy", and the student pack flags the same
-      question as open. Someone has to be able to stand behind this
-      before the page is sent to anybody.
+   The free-screening offer that used to sit at the foot of this page
+   has been removed at IPNLF's request: it promised a waived licence
+   that nobody had agreed to give. It is recoverable from git history
+   if the policy is ever settled. Do not reinstate it from memory.
 
-   2. THE CONTRIBUTOR LIST. Two contributors were supplied by first
-      name only and are marked [CONFIRM]. Nothing has been invented to
-      fill the gaps: an unverified affiliation attached to a real
-      person is a correction waiting to happen.
+   The contributor roles below describe what each person is publicly
+   known for. None has been checked against the finished film.
    ============================================================ */
 const SCREENINGS_CONFIG = {
   lang: "en-GB",
@@ -187,18 +182,5 @@ const SCREENINGS_CONFIG = {
         body: "Share the stage with us to promote the film's message as well as our own individual work.",
       },
     ],
-    // 4. The offer
-    offerTitle: "Free screenings for your members",
-    // UNCONFIRMED COMMERCIAL COMMITMENT. See the header of this file.
-    // Every sentence here promises something IPNLF has not yet decided
-    // it can give. Do not send this page to anyone until it has.
-    offerLede: "We will waive the screening licence for community screenings run by your members.",
-    offerPoints: [
-      "No licence fee for a community screening run by one of your member groups",
-      "The digital host pack: discussion prompts, editable posters and invitations",
-      "Practical guidance on running the event, and on what to do afterwards",
-    ],
-    offerSmallPrint: "Each screening is still agreed in advance so we know where the film is going. Ticketed, fundraising and online events are handled separately.",
-    offerFlag: "DRAFT OFFER — not yet approved by IPNLF.",
   },
 };
