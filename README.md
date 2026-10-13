@@ -299,22 +299,18 @@ The id in Beacon's admin URL (for example `.../form/100572`) is
 internal and 404s on `beaconforms.com`. Only the hash from the share
 link works in `data-form`.
 
-### Headshots: two licensed, three missing
+### Headshots
 
 Roberts and Urbina use Wikimedia Commons portraits under CC BY-SA,
 cropped to 256px square in `assets/img/contributors/`. Each carries a
 visible credit and licence beside it, and **that credit is the
-licence** — remove it to tidy the layout and the page is using
+licence**. Remove it to tidy the layout and the page is using
 someone's photograph without permission.
 
-Jess Rattle, Emilia Dyer and Sara Pipernos render a dashed tile with
-initials and "PHOTO TO SOURCE". No freely licensed photograph of them
-exists. Their pictures on their employers' sites belong to those
-employers, and this is a page we send to those employers, so nothing
-has been lifted. Each person or their press office supplies an image
-and confirms it may be used; drop the file into
-`assets/img/contributors/` and set `photo`, `credit`, `creditUrl` and
-`licence` in the config.
+Jess Rattle, Emilia Dyer and Sara Pipernos use photographs supplied by
+IPNLF on 13 Oct 2026, cropped to the same 256px square. They carry no
+credit line. If any of them turns out to need a photographer credit,
+set `credit`, `creditUrl` and `licence` in the config and it renders.
 
 Watch for the Callum Roberts on Commons who plays for Rochdale's youth
 team. Not him.

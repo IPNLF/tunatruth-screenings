@@ -113,17 +113,16 @@ const SCREENINGS_CONFIG = {
 
     contributorsHeading: "Who appears in it",
     // photo: a file in assets/img/contributors/, or null.
-    // credit/creditUrl/licence: REQUIRED whenever photo is set. These
+    // credit/creditUrl/licence: REQUIRED for any licensed image. These
     // two portraits are Creative Commons BY-SA from Wikimedia Commons,
     // and BY-SA is only a licence while the attribution is actually
     // shown. Strip the credit and the page is simply using someone's
     // photograph without permission.
     //
-    // The other three are still null, and not for want of looking:
-    // no freely licensed photograph of them exists. Their pictures on
-    // their employers' sites belong to those employers, and this is a
-    // page we send TO those employers. Each person (or their press
-    // office) supplies one and says it may be used.
+    // The other three are not Commons images and carry no credit line:
+    // they were supplied by IPNLF on 13 Oct 2026 for this page. They
+    // were never lifted from employers' sites. If a photographer credit
+    // turns out to be a condition of use, add credit/creditUrl/licence.
     contributors: [
       {
         name: "Professor Callum Roberts",
@@ -148,17 +147,17 @@ const SCREENINGS_CONFIG = {
       {
         name: "Jess Rattle",
         role: "Head of Investigations, Blue Marine Foundation",
-        photo: null,
+        photo: "jess-rattle.jpg",
       },
       {
         name: "Emilia Dyer",
         role: "Advocacy and Engagement Lead, IPNLF",
-        photo: null,
+        photo: "emilia-dyer.jpg",
       },
       {
         name: "Sara Pipernos",
         role: "Director",
-        photo: null,
+        photo: "sara-pipernos.jpg",
       },
     ],
     // 3. Ways to work together
