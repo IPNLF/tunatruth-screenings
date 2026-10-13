@@ -173,7 +173,7 @@ const SCREENINGS_CONFIG = {
       },
       {
         heading: "Share the messaging",
-        body: "Agreed assets your team can use directly, so we can both promote the film's goals.",
+        body: "Receive agreed assets your team can use directly, so we can both promote the film's goals.",
       },
       {
         heading: "Appear live together",
