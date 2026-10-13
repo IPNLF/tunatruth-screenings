@@ -96,7 +96,7 @@ const SCREENINGS_CONFIG = {
       },
       {
         heading: "Human rights",
-        body: "The conditions of the people who catch and process seafood, and why those working in this sector are in need of protection.",
+        body: "The conditions of the people working in the seafood industry, and why they are in need of better protection.",
       },
     ],
     // 2. The film itself
@@ -183,7 +183,7 @@ const SCREENINGS_CONFIG = {
         body: "Agreed assets your team can use directly, so we can both promote the film's goals.",
       },
       {
-        heading: "Appear together live",
+        heading: "Appear live together",
         body: "Share the stage with us to promote the film's message as well as our own individual work.",
       },
     ],
