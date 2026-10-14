@@ -308,10 +308,11 @@ IPNLF's request, with that risk accepted.** The photographer, licence
 and source URL for each are kept in a comment in `config.ngo.js`, so
 restoring them is a matter of setting three fields per entry.
 
-Jess Rattle, Emilia Dyer and Sara Pipernos use photographs supplied by
-IPNLF on 13 Oct 2026, cropped to the same 256px square. They carry no
-credit line. If any of them turns out to need a photographer credit,
-set `credit`, `creditUrl` and `licence` in the config and it renders.
+Jess Rattle and Emilia Dyer use photographs supplied by IPNLF on
+13 Oct 2026; Luis Rodrigues and Dan Rosser use stills from the film,
+supplied on 14 Oct 2026. All are cropped to the same 256px square and
+carry no credit line. Sara Pipernos was removed from the list on
+14 Oct 2026 but is still credited as director in the facts table.
 
 Watch for the Callum Roberts on Commons who plays for Rochdale's youth
 team. Not him.

@@ -124,8 +124,11 @@ const SCREENINGS_CONFIG = {
     //   Urbina: "Eric T. White", CC BY-SA 4.0,
     //     https://commons.wikimedia.org/wiki/File:Ian_Urbina.jpg
     //
-    // Jess Rattle, Emilia Dyer and Sara Pipernos: photos supplied by
-    // IPNLF on 13 Oct 2026, never lifted from employers' sites.
+    // Jess Rattle and Emilia Dyer: photos supplied by IPNLF on 13 Oct
+    // 2026, never lifted from employers' sites. Luis Rodrigues and Dan
+    // Rosser: stills from the film, supplied by IPNLF on 14 Oct 2026.
+    // Sara Pipernos was removed from this list on 14 Oct 2026; she is
+    // still credited as director in the facts table above.
     contributors: [
       {
         name: "Professor Callum Roberts",
@@ -152,9 +155,14 @@ const SCREENINGS_CONFIG = {
         photo: "emilia-dyer.jpg",
       },
       {
-        name: "Sara Pipernos",
-        role: "Director, Sunline Films",
-        photo: "sara-pipernos.jpg",
+        name: "Luis Rodrigues",
+        role: "Lotaçores",
+        photo: "luis-rodrigues.jpg",
+      },
+      {
+        name: "Dan Rosser",
+        role: "Noah's Restaurant",
+        photo: "dan-rosser.jpg",
       },
     ],
     // 3. Ways to work together
