@@ -156,12 +156,12 @@ const SCREENINGS_CONFIG = {
       },
       {
         name: "Luís Rodrigues",
-        role: "Lotaçor",
+        role: "Consultant, Lotaçor",
         photo: "luis-rodrigues.jpg",
       },
       {
         name: "Dan Rosser",
-        role: "Noah's Restaurant",
+        role: "Owner, Noah's Restaurant",
         photo: "dan-rosser.jpg",
       },
     ],
