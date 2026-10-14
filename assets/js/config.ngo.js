@@ -95,11 +95,12 @@ const SCREENINGS_CONFIG = {
     // 2. The film itself
     filmTitle: "The film",
     factsHeading: "At a glance",
-    // Running time confirmed by IPNLF, 13 October 2026. The same fact
-    // is still [CONFIRM] in the main screening pack and the student
-    // pack, which have not been updated.
+    // Running time: 54 minutes, per IPNLF, 14 October 2026 (it was
+    // "One hour" from 13 October). The same fact is still [CONFIRM] in
+    // the main screening pack and the student pack, which have not
+    // been updated.
     facts: [
-      { label: "Running time", value: "One hour" },
+      { label: "Running time", value: "54 minutes" },
       { label: "Filmed in", value: "Bristol, Cornwall and the Azores (Portugal)" },
       { label: "Presented by", value: "Serena Appleby" },
       { label: "Directed by", value: "Sara Pipernos" },

@@ -327,7 +327,8 @@ team. Not him.
   that is what the page uses.
 - "filmmaker Sarah" was supplied, but the official credit block reads
   **Sara Pipernos**, which is what the page uses.
-- Running time is confirmed as one hour (13 October 2026). The main
+- Running time is 54 minutes (14 October 2026; it read "one hour"
+  from 13 October). The main
   screening pack and the student pack still carry it as `[CONFIRM]`
   and have not been updated.
 - There are **no `[CONFIRM]` markers left** on this page. The note
