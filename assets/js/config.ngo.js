@@ -125,7 +125,7 @@ const SCREENINGS_CONFIG = {
     //     https://commons.wikimedia.org/wiki/File:Ian_Urbina.jpg
     //
     // Jess Rattle and Emilia Dyer: photos supplied by IPNLF on 13 Oct
-    // 2026, never lifted from employers' sites. Luis Rodrigues and Dan
+    // 2026, never lifted from employers' sites. Luís Rodrigues and Dan
     // Rosser: stills from the film, supplied by IPNLF on 14 Oct 2026.
     // Sara Pipernos was removed from this list on 14 Oct 2026; she is
     // still credited as director in the facts table above.
@@ -155,7 +155,7 @@ const SCREENINGS_CONFIG = {
         photo: "emilia-dyer.jpg",
       },
       {
-        name: "Luis Rodrigues",
+        name: "Luís Rodrigues",
         role: "Lotaçores",
         photo: "luis-rodrigues.jpg",
       },

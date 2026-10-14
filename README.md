@@ -309,7 +309,7 @@ and source URL for each are kept in a comment in `config.ngo.js`, so
 restoring them is a matter of setting three fields per entry.
 
 Jess Rattle and Emilia Dyer use photographs supplied by IPNLF on
-13 Oct 2026; Luis Rodrigues and Dan Rosser use stills from the film,
+13 Oct 2026; Luís Rodrigues and Dan Rosser use stills from the film,
 supplied on 14 Oct 2026. All are cropped to the same 256px square and
 carry no credit line. Sara Pipernos was removed from the list on
 14 Oct 2026 but is still credited as director in the facts table.
