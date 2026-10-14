@@ -49,7 +49,7 @@ const TTSN = (() => {
 
     const people = n.contributors.map((c) => {
       const portrait = c.photo
-        ? `<img class="ngo-person__photo" src="${asset("assets/img/contributors/" + c.photo)}" alt="${c.name}" loading="lazy" width="64" height="64">`
+        ? `<img class="ngo-person__photo" src="${asset("assets/img/contributors/" + c.photo)}?v=20261014" alt="${c.name}" loading="lazy" width="64" height="64">`
         : `<span class="ngo-person__photo ngo-person__photo--missing" role="img" aria-label="No photograph of ${c.name} yet">
              <span class="ngo-person__initials" aria-hidden="true">${initials(c.name)}</span>
              <span class="ngo-person__missing" aria-hidden="true">Photo to source</span>
