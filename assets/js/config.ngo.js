@@ -156,7 +156,7 @@ const SCREENINGS_CONFIG = {
       },
       {
         name: "Luís Rodrigues",
-        role: "Lotaçores",
+        role: "Lotaçor",
         photo: "luis-rodrigues.jpg",
       },
       {
