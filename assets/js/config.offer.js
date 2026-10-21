@@ -119,6 +119,11 @@ const SCREENINGS_CONFIG = {
     privacyUrl: "https://ipnlf.org/privacy-policy/",
     privacyLabel: "Privacy policy",
     supportFilmLabel: "Support the film",
+    // Added by hand 2026-10-21 at the user's request, same string as
+    // config.js. Not regenerated with make_offer.py: that script no
+    // longer reproduces the 2026-10-13 hand edits above (formatsLine
+    // removal, hostingCta flag) and re-running it would undo them.
+    footerSmallprint: "The licence fee is waived for screenings of the English-language version of the film. A fee may apply for versions subtitled in other languages.",
   },
 
   brandOrder: {

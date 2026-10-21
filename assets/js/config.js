@@ -98,7 +98,7 @@ const SCREENINGS_CONFIG = {
     supportFilmLabel: "Support the film",
     // Footer smallprint on licensing, added 2026-10-21 at the user's
     // request. Optional: a page whose config leaves it out renders no
-    // smallprint (the pt, ngo and offer variants don't set it).
+    // smallprint. Also set in config.offer.js; pt and ngo don't set it.
     footerSmallprint: "The licence fee is waived for screenings of the English-language version of the film. A fee may apply for versions subtitled in other languages.",
   },
 
