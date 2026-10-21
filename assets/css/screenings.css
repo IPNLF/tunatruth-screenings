@@ -528,6 +528,7 @@ a { color: var(--text-link); }
 .tt-footer__links a { color: var(--text-on-dark-soft); font-size: var(--fs-body-sm); text-decoration: none; }
 .tt-footer__links a:hover { color: var(--ipnlf-white); }
 .tt-footer__copy { margin: 0; color: var(--text-on-dark-soft); font-size: var(--fs-caption); }
+.tt-footer__small { margin: 0; max-width: 60ch; color: var(--text-on-dark-soft); font-size: var(--fs-caption); line-height: 1.5; text-wrap: balance; }
 
 /* ---- focus visibility ---- */
 a:focus-visible, button:focus-visible, input:focus-visible,

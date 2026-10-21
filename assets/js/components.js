@@ -375,6 +375,7 @@ const TTS = (() => {
                single action this page exists for. -->
           <a href="https://donate.tunatruth.com/" target="_blank" rel="noopener">${t.supportFilmLabel}</a>
         </nav>
+        ${t.footerSmallprint ? `<p class="tt-footer__small">${t.footerSmallprint}</p>` : ""}
         <p class="tt-footer__copy">© ${year} IPNLF.</p>
       </div>
     </footer>`;
